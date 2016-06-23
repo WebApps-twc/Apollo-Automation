@@ -66,7 +66,7 @@ public class Admin_CF extends CommonFunctions
 		
 		driver.findElement(By.xpath("//div[@id='collapseFeature_"+feature+"']/div["+val+"]/table/thead/tr/th["+tab+"]/div/label")).click();
 		
-		driver.findElement(By.cssSelector(".btn.btn-primary")).click();
+		focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
 				  
 		if(driver.findElements(By.xpath("//html/body/div[1]/div/div/div/div")).size()>0)
 		 {
@@ -145,7 +145,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 		  
 		 
 		  System.out.println("ok4");
-		  driver.findElement(By.cssSelector("td > button.btn.btn-primary")).click();
+		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
 
 		  if(driver.findElements(By.xpath("//html/body/div[1]/div/div/div/div")).size()>0)
 		  {
@@ -252,7 +252,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 		  logger.info("Fail");
 		  statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
 	  }
-
+	  Thread.sleep(2000);
 	  driver.findElement(By.linkText("Incoming Calls")).click();
 	  
 	  do{
@@ -306,7 +306,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 					else
 					{
 						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/label")),br);
-						focusClick(driver,driver.findElement(By.cssSelector("td > button.btn.btn-primary")),br);
+						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
 			  			  
 						  if(driver.findElements(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).size()>0)
 						  {
