@@ -49,13 +49,13 @@ public class GPSACR extends CommonFunctions
   
   public void turnOnOff(String feature, WebDriver driver, String br,int tab,int val)      
   {
-	  	String onoff=driver.findElement(By.xpath("//*[@id='collapseFeature_CF']/div["+val+"]/table/thead/tr/th[2]/div/input")).getAttribute("class");
+	  	String onoff=driver.findElement(By.xpath("//*[@id='collapseFeature_"+feature+"']/div["+val+"]/table/thead/tr/th[2]/div/input")).getAttribute("class");
   		System.out.println(onoff);
   		String on="ON";
   		String not="OFF";
   		if(onoff.contains("not"))
   		{
-  			String Selected=driver.findElement(By.xpath("//*[@id='collapseFeature_CF']/div["+val+"]/table/thead/tr/th[2]/div")).getAttribute("class"); 
+  			String Selected=driver.findElement(By.xpath("//*[@id='collapseFeature_"+feature+"']/div["+val+"]/table/thead/tr/th[2]/div")).getAttribute("class"); 
   			if(Selected.contains("-"))
   			{	 
   				System.out.println("Some lines are Enabled");
@@ -307,8 +307,9 @@ public class GPSACR extends CommonFunctions
 			  System.out.println("In here 1");
 			  driver.findElement(By.id("cancelSaveFeature")).click();
 			  System.out.println("In here 2");
+			  CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();			  
 			  logger.info("pop up display1");
-			  if(driver.findElements(By.xpath("//html/body/section/div[4]/div[2]")).size()>0)
+			  if(CH==false)
 			  {
 				  logger.info("Success");
 				  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
@@ -341,10 +342,8 @@ public class GPSACR extends CommonFunctions
 	public void Cancel(String br,WebDriver driver, String feature,int tab,int val) throws InterruptedException
 	  {
 	      driver.findElement(By.linkText("Incoming Calls")).click();
-	    	  
+	      Thread.sleep(2000);
 	      focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);
-	      
-	      boolean b= driver.findElement(By.xpath("//div[@id='collapseFeature_"+feature+"']/div["+val+"]/table/thead/tr/th["+tab+"]/div/label")).isEnabled();
 	      
 	      focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature_"+feature+"']/div["+val+"]/table/thead/tr/th["+tab+"]/div/label")),br);
 	    	
@@ -449,14 +448,41 @@ public class GPSACR extends CommonFunctions
   	       				{
   	       					if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/h2")).isDisplayed())
   	       					{
-  	       						statusTracker(br,"","ACR Modal slides are displayed","","");
-  	       						driver.findElement(By.cssSelector("i.icomatic.close-btn")).click();
-  	       						divval=3;
+                              statusTracker(br,"","CF Modal slides shows are displayed","","");
+                              int pg1=0,pg2=0;
+                              driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/div/div[2]/a[2]")).click();
+                              if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/div/div[2]/a[2]")).getAttribute("class").equals("active"))
+                            	  pg1=1;
+                              
+                              driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/div/div[2]/a[1]")).click();
+                              if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/div/div[2]/a[1]")).getAttribute("class").equals("active"))
+                            	  pg2=1;
+                              
+                              if(pg1 == 1 && pg2 == 1)
+                              {
+                            	  statusTracker(br,"","ACR Modal slides Pages displayed on page navigation","","");
+                		      }
+                              else
+                              {
+                        		statusTracker(br,"","ACR Modal slides Pages not displayed on page navigation","","");
+                              }
+                              
+                              driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/button")).click();
+                              Thread.sleep(1000);
+                              if(driver.findElements(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/h2")).size()>0)
+                      		  {
+                            	  statusTracker(br,"","ACR Modal slides are displayed on clicking the Close","","");
+                      		  }
+                              else
+                              {
+                            	  statusTracker(br,"","ACR Modal slides are not displayed on clicking the Close","","");
+                              }
+                              divval=3;
   	       					}
   	       				}
   	       				catch(Exception e)
   	       				{
-  	       					statusTracker(br,"","CF Modal pop up is not displayed second time","","");
+  	       					statusTracker(br,"","ACR Modal pop up is not displayed second time","","");
   	       					first=1;
   	       				}												
     	  
@@ -492,7 +518,7 @@ public class GPSACR extends CommonFunctions
                         }
 						
 						Unsavedpopup(br,driver,featureName,2,divval);
-			            Cancel(br,driver,featureName,2,divval);
+			           // Cancel(br,driver,featureName,2,divval);
         	         	
 						first=1;
 					}
