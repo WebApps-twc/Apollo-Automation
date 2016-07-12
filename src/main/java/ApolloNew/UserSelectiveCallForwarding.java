@@ -27,7 +27,8 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
     String butnxpath,accdcheck,AddnewNum,Err;
     String svexpath="form[name=\"selectiveCallForward\"] > div.accordian-actions > button.btn.btn-primary";
     String TNxpath="//html/body/section/div[12]/div[2]/form/div[5]/div/label";
-    String phoneline,phoneline_ac,Acccode,frntn;
+    String phoneline,phoneline_ac,Acccode,frntn,phoneline1;
+    
 	int rank[]= new int[50];
 	int c_sequence;
 	String name_for_rank[]= new String[40];
@@ -43,10 +44,60 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 		this.path2 = file2;
 	}
 		 	
+	public int Select_TN(WebDriver driver,String featureName,int rowCount,String br,int val)
+	{
+		int TN = 0;
+		for(int j=1;j<rowCount;j++)
+			{
+				try
+				{
+			
+					if(focusSearch(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[1]/i")),br))
+					{
+						System .out.println("TN is suspended");
+						continue;
+					}                                    
+					else if(driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/input")).getAttribute("class").contains("not"))
+					{ 
+						System.out.println("tn2");
+						TN=j;
+						break;
+					}
+					else
+					{
+						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/label")),br);
+						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
+			  			  						  
+						int chk=0;
+						do{	
+							chk++;
+						}while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+						if(driver.findElement(By.id("dataSaveSucess2")).isDisplayed())
+						{
+							TN=j;    
+							break;
+						}
+						else
+						{
+							System.out.println("This feature cannot be  Enabled because "+driver.findElement(By.cssSelector("div.ng-scope > ul > li.ng-scope.ng-binding")).getText());   
+							statusTracker(br,"Fail","","This feature cannot be  Enabled because "+driver.findElement(By.cssSelector("div.ng-scope > ul > li.ng-scope.ng-binding")).getText(),"");  
+							TN=0;
+						}
+				
+					}
+				}
+				catch(Exception e)
+				{
+					rowCount++;
+				}			
+			}
+			return TN;	
+		}
+	
 	public String turnoff(WebDriver driver, String status, String acc,String br)
 	  {
 		  String initialstate=status, chngetostate="Off",state="Fail", accst=acc;
-		  		  
+		  
 		  focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
 		  
 		  for(int i=1;i<50;i++){}
@@ -97,10 +148,9 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	  public String turnOn(WebDriver driver, String status, String acc,String br)
 	  {
 	      String initialstate=status, chngetostate="On",state = "Fail", accst=acc;
-	      
-	      focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-	      
-	      String num=randomNO(6666,9999);
+	      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+
+		  String num=randomNO(6666,9999);
 		    driver.findElement(By.id("newNumber")).sendKeys(phoneline+num);
 		    focusClick(driver,driver.findElement(By.xpath(AddnewNum)),br);
 
@@ -201,7 +251,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	        }
 	  }
 	  
-	  public void DeltTn(WebDriver driver,String br) throws InterruptedException
+	  public void DeltTn(WebDriver driver,String br)
 	  {
 		  int cnt;
 		  if(driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"))
@@ -231,7 +281,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 			  do{
 		          chk++;
 		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-			  Thread.sleep(1000);
+
 		        if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 		        {
 		          logger.info("Success");
@@ -256,7 +306,6 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 		      do{
 		          //chk++;
 		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-		      Thread.sleep(2000);
 		      focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/form/section/label/i")),br);
 
 		      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
@@ -544,19 +593,36 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
                   
                   if(!(InternalException(driver,br)))
                   {               
-                  int count1=driver.findElements(By.xpath("//html/body/section/div")).size();
-	              String featureName="Selective Call Forwarding";
-	              int featureOrder=FeatureListIncoming(driver,count1,featureName);
+                 
+                	  int featureOrder=0;String featureName="SCF";
+                	  focusClick(driver,driver.findElement(By.xpath("//*[@id='accordion_SCF']/h3")),br);    	  
+							System.out.println("c");
 
-	              System.out.println("Feature Order " + featureOrder);  
-	              focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
-	               Thread.sleep(3000);
-	              
-	               phoneline_ac= Select_TN(driver,featureName,featureOrder,br);
-	              System.out.println(phoneline_ac);
-	              logger.info("c");
-
-	              if(phoneline_ac!=null)
+							int divval=3;
+							try
+ 	       					{
+								if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/div/h2")).isDisplayed())
+								{
+									statusTracker(br,"","SCF Modal pop up is  displayed","","");
+									//driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/button")).click();
+									divval=3;
+								}
+ 	       					}
+ 	       					catch(Exception e)
+ 	       					{
+ 	       						statusTracker(br,"","SCF Modal pop up is not displayed second time","","");
+ 	       						first=1;
+ 	       					}												
+   	  
+							int numberOfTns=driver.findElements(By.xpath("//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody")).size(); 
+							System.out.println("d: "+numberOfTns);
+							int TN= Select_TN(driver,featureName,numberOfTns,br,divval);
+							System.out.println("TN1"+TN);
+                        	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN+"]/tr[1]/td[1]")).getText();
+                        	phoneline=phoneline1.substring(0, 8);
+                        	System.out.println("phoneline"+phoneline);
+							
+	              if(phoneline1!=null)
 	              {
 	              focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[1]/a")),br);
 
@@ -582,8 +648,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
                 	  logger.info("cnt is"+cnt);
                 	  accdcheck="//html/body/section/div[8]/div[2]/form/div[3]/div[3]/div/label";
                 	  AddnewNum="//html/body/section/div[8]/div[2]/form/div[1]/div[2]/div/button";
-                	  Err="//html/body/section/div[8]/div[2]/div[2]/div/div/div/ul";  
-                	        
+                	  Err="//html/body/section/div[8]/div[2]/div[2]/div/div/div/ul";                	  
                 	  //tncount=driver.findElements(By.xpath("//html/body/section/div[8]/div[2]/form/section/label")).size();
                   }
                   else
@@ -718,4 +783,3 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 		return false;
 	}
 	}
-

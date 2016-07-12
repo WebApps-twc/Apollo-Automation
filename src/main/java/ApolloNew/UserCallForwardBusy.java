@@ -283,7 +283,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 			  driver.findElement(By.name("forwardBusyCallAccount")).clear();
 			  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
 			  for(int i=1;i<100;i++){}
-			  focusClick(driver,driver.findElement(By.cssSelector(".//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]/form/div/div[6]/button[2]")),br);
+			  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]/form/div/div[6]/button[2]")),br);
 		   
 		   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 		     {
@@ -308,7 +308,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 			  TN1=TN+randomNO(3333,9999);
 			   driver.findElement(By.name("forwardBusyCallTo")).sendKeys(TN1);
 			 Thread.sleep(2000);
-			 focusClick(driver,driver.findElement(By.cssSelector(".//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]/form/div/div[4]/button[2]")),br);
+			 focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]/form/div/div[4]/button[2]")),br);
 			  
 			   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 			     {

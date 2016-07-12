@@ -32,92 +32,55 @@ public class UserSpeedDial extends CommonFunctions
                                 this.path2 = file2;
                 }
   
-                public int countNumberTns(int featureOrder, String featureName, WebDriver driver, String br)
-                  {
-                                  int numberOfTns=0;
-                                  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                                  for(int i=0;i<50;i++)
-                                  {
-                                                                  //if(driver.findElements(By.id("check"+featureName+i)).size()>0)
-                                                  try{
-                                                                 if(focusSearch(driver,driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+(5+i)+"]/label")),br))
-                                                                 {
-                                                                                 System.out.println("in11");
-                                                                                  numberOfTns++;
-                                                                 }
-                                                                 else
-                                                                 {
-                                                                                 System.out.println("in22");
-                                                                                  i=101;
-                                                                 }
-                                                                }
-                                                  catch(Exception e)
-                                                  {
-                                                                  i=51;
-                                                  }
-                                  }
-                                 
-                                  
-                                  
-                                  return numberOfTns;
-                  }
-                public String Select_TN(WebDriver driver,String Featurename,int count,String br)
-                {   
-                                Featurename="{\"name\":\"SC1D_FeatureName\",\"value\":\"Speed Dial\",\"parameters\":[],\"text\":\"Speed Dial\",\"exampleText\":\"Speed Dial\"}";       
-                                int numberOfTns=countNumberTns(count,Featurename,driver,br);
-                                System.out.println(numberOfTns);
-                                String TN="";
-                                driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-                                for(int j=0;j<numberOfTns;j++)
-                                {
-                                                try
-                                                {
-                                                if(focusSearch(driver,driver.findElement(By.xpath("//*[@id='collapseFeature"+(count)+"']/div[2]/form/div["+(5+j)+"]/i")),br))
-                                                {
-                                                                System .out.println("TN is suspended");
-                                                                continue;
-                                                }
-                                                else if(driver.findElement(By.id("check"+Featurename+j)).isSelected())
-                                                { 
-                                                                System.out.println("tn2");
-                                                                TN=driver.findElement(By.xpath("//*[@id='collapseFeature"+(count)+"']/div[2]/form/div["+(5+j)+"]/label")).getText();
-                                                                break;
-                                                }
-                                                else
-                                                {
-                                                                /*driver.findElement(By.id("check"+Featurename+j)),br);*/
-                                                                focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature"+(count)+"']/div[2]/form/div["+(5+j)+"]/label")),br);
-                                                                focusClick(driver,driver.findElement(By.xpath("(//button[@type='submit'])[15]")),br);
-                                                   int chk=0;
-                                                                do{
-                             
-                                                                                
-                             chk++;
-                           }while(focusSearch(driver,driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")),br));
-                         if(focusSearch(driver,driver.findElement(By.id("dataSaveSucess")),br))
-                         {
-                                         TN=driver.findElement(By.xpath("//*[@id='collapseFeature"+(count)+"']/div[2]/form/div["+(5+j)+"]/label")).getText();    
-                        break;
-                         }
-                         else
-                                  {
-                                  System.out.println("This feature cannot be  Enabled because "+driver.findElement(By.cssSelector("div.ng-scope > ul > li.ng-scope.ng-binding")).getText());   
-                                  
-                                  }
-                                                                
-                                                }
-                                                }
-                                                catch(Exception e)
-                                                  {
-                                                                numberOfTns++;
-                                                  }
-                                                
-                                }
-                  return TN;         
-                }
-                
-                
-                
+                public int Select_TN(WebDriver driver,String featureName,int rowCount,String br,int tab,int val)
+             	{
+             		int TN = 0;
+             		for(int j=1;j<rowCount;j++)
+             			{
+             				try
+             				{
+             			
+             					if(focusSearch(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[1]/i")),br))
+             					{
+             						System .out.println("TN is suspended");
+             						continue;
+             					}                                    
+             					else if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/input")).getAttribute("class").contains("not"))
+             					{ 
+             						System.out.println("tn2");
+             						TN=j;
+             						break;
+             					}
+             					else
+             					{
+             						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/label")),br);
+             						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
+
+             						int chk=0;
+             						do{	
+             							chk++;
+             						}while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+             						if(driver.findElement(By.id("dataSaveSucess2")).isDisplayed())
+             						{
+             							TN=j;    
+             							break;
+             						}
+             						else
+             						{
+             							System.out.println("This feature cannot be  Enabled because "+driver.findElement(By.cssSelector("div.ng-scope > ul > li.ng-scope.ng-binding")).getText());   
+             							statusTracker(br,"Fail","","This feature cannot be  Enabled because "+driver.findElement(By.cssSelector("div.ng-scope > ul > li.ng-scope.ng-binding")).getText(),"");  
+             							TN=0;
+             						}
+             				
+             					}
+             				}
+             				catch(Exception e)
+             				{
+             					rowCount++;
+             				}			
+             			}
+             			return TN;	
+             		}
   public String TurnSpeedDialOn(String br,WebDriver driver,String status,String TN) throws Exception
   {
                   String state="Fail";
@@ -535,24 +498,37 @@ public String SpeedDialValidation(String br,WebDriver driver) throws Exception
 
                   if(!(InternalException(driver,br)))
                   {
+                	  int featureOrder=0;String featureName="DND";
+                	  focusClick(driver,driver.findElement(By.xpath(".//*[@id='accordion_"+featureName+"']/h3")),br);    	  
+						System.out.println("c");
 
+						int divval=3;
+						try
+	       					{
+							if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/h2")).isDisplayed())
+							{
+								statusTracker(br,"","DND Modal pop up is  displayed","","");
+								//driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/button")).click();
+								divval=3;
+							}
+	       					}
+	       					catch(Exception e)
+	       					{
+	       						statusTracker(br,"","DND Modal pop up is not displayed second time","","");
+	       						first=1;
+	       					}					
                                                   int count1=driver.findElements(By.xpath("//html/body/section/div")).size();
-                                                              String featureName="Speed Dial";
-                                                              int featureOrder=FeatureListIncoming(driver,count1,featureName);
+                                                             // String featureName="Speed Dial";
+                                                              int rowCount=driver.findElements(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tbody")).size();
+                                   							System.out.println("d: "+rowCount);
+                                   							int TN= Select_TN(driver,"SC1D",rowCount,br,2,divval);
+                                   							String TN1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+divval+"]/table/tbody["+TN+"]/tr/td[1]")).getText();
+
                                 
-                                                              System.out.println("Feature Order " + featureOrder);  
-                                                             
-                                                              focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
-                                                               Thread.sleep(3000);
-                                                              
-                                                              TN= Select_TN(driver,featureName,featureOrder,br);
-                                                              System.out.println(TN);
-                                                              logger.info("c");
-                                
-                                                              if(TN!=null)
+                                                              if(TN1!=null)
                                                               {
                                                                                 System.out.println("print");
-                                                                                 state=TurnSpeedDialOn(br,driver,status1,TN);
+                                                                                                  state=TurnSpeedDialOn(br,driver,status1,TN1);
                                                                                       Thread.sleep(5000);
                                                                                     state= EditTN(br,driver,status1);
                                                                         state=Unsavedpopup(br,driver,status1);
