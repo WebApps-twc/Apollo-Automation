@@ -184,7 +184,29 @@ public class GPSDoNotDisturb extends CommonFunctions
 		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+featureName+" > div.header-right > div.align-right")),br);
 	  }
   }
-  
+   public String[] suspendedStatus(int numberOfTns,String feature, WebDriver driver,int val)
+	  {
+		  String []a=new String[numberOfTns];
+		  
+		  for(int i=1;i<=numberOfTns;i++)
+		  {
+			  
+				  if(driver.findElement(By.xpath("//*[@id='collapseFeature_"+feature+"']/div["+val+"]/table/tbody["+i+"]/tr[1]/td[1]/i")).isDisplayed())
+					  
+				  {
+					  a[i-1]="yes";
+					  System.out.println("line suspended");
+					 
+				  }
+				  else
+				  {
+					  a[i-1]="no";
+					  
+				  }
+		 }
+		
+		  return a;
+	  }
 	public int Select_TN(WebDriver driver,String featureName,int rowCount,String br,int val)
 	{
 		int TN = 0;
@@ -481,7 +503,7 @@ public class GPSDoNotDisturb extends CommonFunctions
 						System.out.println("d: "+rowCount);
 
 				    	tnSuspendedStatus=new String[rowCount];
-				    	tnSuspendedStatus=suspendedStatus(rowCount,featureOrder, featureName,driver,1);				    	  
+				    	tnSuspendedStatus=suspendedStatus(rowCount,featureName,driver,divval);					    	  
 				    	System.out.println("e: "+tnSuspendedStatus.length);
 				    	
 				    	Boolean suspended=suspended(tnSuspendedStatus,driver);
