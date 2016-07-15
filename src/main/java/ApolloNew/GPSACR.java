@@ -188,42 +188,7 @@ public class GPSACR extends CommonFunctions
 		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+featureName+" > div.header-right > div.align-right")),br);
 	  }
   }
-  public String[] suspendedStatus(int numberOfTns,String featureName, WebDriver driver,int tab)
-	  {
-		  String []a=new String[numberOfTns];
-		  
-		  for(int i=0;i<numberOfTns;i++)
-		  {
-			  if(tab==1)
-			  {
-			  if(isAttributePresent(driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+(5+i)+"]/div/input")),"disabled"))
-			  {
-				  a[i]="yes";
-				  System.out.println("yes");
-			  }
-			  else
-			  {
-				  a[i]="no";
-				  System.out.println("no");	  
-			  }
-			  }
-			  else{
-				  if(isAttributePresent(driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+(5+i)+"]/input")),"disabled"))
-				  {
-					  a[i]="yes";
-					  System.out.println("yes");
-				  }
-				  else
-				  {
-					  a[i]="no";
-					  System.out.println("no");	  
-				  }
-			  }
-		
-		  
-		  }
-		  return a;
-	  }
+  
 	public int Select_TN(WebDriver driver,String featureName,int rowCount,String br,int val)
 	{
 		int TN = 0;
@@ -520,11 +485,11 @@ public class GPSACR extends CommonFunctions
 						System.out.println("d: "+rowCount);
 
 				    	tnSuspendedStatus=new String[rowCount];
-				    	tnSuspendedStatus=suspendedStatus(rowCount,featureName,driver,divval);					    	  
+				    	tnSuspendedStatus=suspendedStatus(rowCount,featureName,driver,divval);			    	  
 				    	System.out.println("e: "+tnSuspendedStatus.length);
 				    	
 				    	Boolean suspended=suspended(tnSuspendedStatus,driver);
-				    	System.out.println("f");
+				    	System.out.println("f"+suspended);
 				    	
 				    	int numberSuspended=getNumSuspended(tnSuspendedStatus,driver);
 				    	System.out.println("g");

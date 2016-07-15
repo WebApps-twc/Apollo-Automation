@@ -46,12 +46,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
-
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 import java.beans.EventHandler;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.WebDriverWait.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -896,7 +896,31 @@ return TN;
 		  }
 		  return a;
 	  }
-	     
+	    
+	 public String[] suspendedStatus(int numberOfTns,String feature, WebDriver driver,int val)
+	  {
+		  String []a=new String[numberOfTns];
+		  
+		  for(int i=1;i<=numberOfTns;i++)
+		  {
+			  
+				  if(driver.findElement(By.xpath("//*[@id='collapseFeature_"+feature+"']/div["+val+"]/table/tbody["+i+"]/tr[1]/td[1]/i")).isDisplayed())
+					  
+				  {
+					  a[i-1]="yes";
+					  System.out.println("line suspended");
+					 
+				  }
+				  else
+				  {
+					  a[i-1]="no";
+					  
+				  }
+		 }
+		
+		  return a;
+	  }
+	  
 	public boolean suspended(String a[], WebDriver driver)
 	  {
 		  Boolean result=false;
