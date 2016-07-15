@@ -188,7 +188,7 @@ public class GPSACR extends CommonFunctions
 		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+featureName+" > div.header-right > div.align-right")),br);
 	  }
   }
-  public String[] suspendedStatus(int numberOfTns, int featureOrder,String featureName, WebDriver driver,int tab)
+  public String[] suspendedStatus(int numberOfTns,String featureName, WebDriver driver,int tab)
 	  {
 		  String []a=new String[numberOfTns];
 		  
