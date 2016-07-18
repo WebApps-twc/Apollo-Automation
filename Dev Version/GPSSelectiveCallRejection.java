@@ -262,8 +262,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
       {
     	  logger.info("Fail");
     	  statusTracker(br,"Fail","Verify if the user is able to cancel the changes made","Cancelling the order did not revert the changes made","Should be able to successfully cancel the order");
-      }
-      driver.findElement(By.cssSelector("#accordion_SCF > div.header-right > div.align-right")).click();
+      }      
   }
      
   public int Select_TN(WebDriver driver,String feature,int rowCount,String br,int tab,int divval)
@@ -508,23 +507,59 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 	  
   }
   
-  public void maxTN(WebDriver driver,String br,int val) throws Exception
+  public void EditTn(WebDriver driver, String br,int val)
+	{
+                String num;
+                
+                for(int i=1;i<10;i++){}
+                
+                int tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div")).size();
+            	  System.out.println("tnlst"+tnlst);
+                if(tnlst<30)
+            	  {
+              	  	for(int i=1;i<5;i++){
+              		num=randomNO(3333,9999);
+              		driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input")).clear();
+                    driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input")).sendKeys(phoneline+num);
+                    focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_add+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/span/button")),br);
+              	  	}
+                }
+
+                focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_save1+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[3]/button[2]")),br);
+                int chk=0;
+                do{
+              	  chk++;
+                }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+
+                if(driver.findElement(By.id("dataSaveSucess2")).isDisplayed())
+                {
+              	  logger.info("Success");
+              	  statusTracker(br,"Pass","Verify order process for editing TN","Successfully be able to process order","Successfully processed order");
+                }
+                else
+                {
+              	  logger.info("Fail");
+              	  statusTracker(br,"Fail","Verify order process for editing TN","Unable to process order","Unable to process successfully");
+                }
+	}
+  
+  public void maxTN(WebDriver driver,String br,int divval) throws Exception
   {
 	  int tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div")).size();
   	  System.out.println("tnlst"+tnlst);
   	do
   	  {
     		String num=randomNO(3333,6666);
-    		driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/input")).clear();
-    		driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/input")).sendKeys(phoneline+num);
-    		focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_add+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/span/button")),br);
+    		driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input")).clear();
+            driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input")).sendKeys(phoneline+num);
+            focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_add+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/span/button")),br);
     		
     		tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div")).size();
   	  }while(tnlst<=31);
   	
   	if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/span")).isDisplayed())
  	{
- 		statusTracker(br,"Pass","Verify if message is displayed when adding 30 TN's to list","The message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+val+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/span")).getText(),"The message should be displayed");
+ 		statusTracker(br,"Pass","Verify if message is displayed when adding 30 TN's to list","The message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+divval+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/span")).getText(),"The message should be displayed");
     }
     else
     {
@@ -536,16 +571,16 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
   {
          	String schk="Fail";
          	int check1=check;
-         	driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).clear();
-            driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).sendKeys(ac);      
+         	driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/input")).clear();
+            driver.findElement(By.xpath(SCRxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/input")).sendKeys(ac);      
           
-         	focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_add+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/span/button")),br);
+            focusClick(driver,driver.findElement(By.xpath(SCRxpath_GPSexecute_add+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div/span/button")),br);
                  
          	Thread.sleep(6000);
          	                                
-         	if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+val+"]//div[2]/div/div/ul/li")).isDisplayed())
+         	if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/div/div/div/ul/li")).isDisplayed())
          	{
-         		statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+val+"]/div[2]/div/div/ul/li")).getText(),"Error message should be displayed");
+         		statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/div/div/div/ul/li")).getText(),"Error message should be displayed");
                 schk="Pass";
             }
             else
@@ -647,14 +682,14 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                 						WebElement mainMenu = driver.findElement(By.xpath(".//*[@id='accordion_"+feature+"']/div"));
                 						actions.moveToElement(mainMenu);
                 						                                                  
-                						WebElement subMenu = driver.findElement(By.xpath(".//*[@id='newFeature_SCR']/div[2]"));
+                						WebElement subMenu = driver.findElement(By.xpath(SCRxpath_GPSexecute_newfeature));
                 						actions.moveToElement(subMenu);
                 						actions.click().build().perform();
                 						
-                						if(driver.findElement(By.xpath(".//*[@id='newFeature_SCR']/div[2]")).isDisplayed())
+                						if(driver.findElement(By.xpath(SCRxpath_GPSexecute_newfeature)).isDisplayed())
                 						{
                 						    System.out.println("Tooltip is coming up fine");
-                						    statusTracker(br,"","SCR Modal pop up is displayed",driver.findElement(By.xpath(".//*[@id='newFeature_SCR']/div[2]")).getText(),"");					    
+                						    statusTracker(br,"","SCR Modal pop up is displayed",driver.findElement(By.xpath(SCRxpath_GPSexecute_newfeature)).getText(),"");					    
                 						 }
                 						else
                 						{
@@ -730,26 +765,24 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                     	Unsavedpopup(br,driver, divval,2);
                                     	Cancel(br,driver,"SCR",2,divval);
                                   
-                                    	TN1=1;Select_TN(driver,"SCR",numberOfTns,br,2,divval);
+                                    	TN1=Select_TN(driver,"SCR",numberOfTns,br,2,divval);
                                     	System.out.println("TN1"+TN1);
-                                    	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeatureSCR']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[1]")).getText();
+                                    	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[1]")).getText();
                                     	phoneline=phoneline1.substring(0, 11);
                                     	System.out.println("phoneline"+phoneline);
                                     	
-                                    	statusTracker(br,"","The SCR Phone number is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[3]/span")).getText(),"");	                                    		
-                                    	//statusTracker(br,"","The SCF Forward To is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[4]/span")).getText(),"");	                                    		
-                                    	//statusTracker(br,"","The SCF Account code is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[5]/span")).getText(),"");	                                    		
-                                    	
+                                    	statusTracker(br,"","The SCR Phone number is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[3]/span")).getText(),"");	                                    		
+                                    	statusTracker(br,"","The SCR current status is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[4]/span")).getText(),"");	                                    		
                                     	
                                     	if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[2]/div/label")).getText().contains("OFF"))
                                     	{                                                  
                                     		focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[2]/i")),br);
-                                    		statusTracker(br,"","The SCR tool tip containt is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[1]/td[2]/div[2]/div[2]")).getText(),"");	                                    		
+                                    		statusTracker(br,"","The SCR tool tip containt is",driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[2]/div[2]/div[2]")).getText(),"");	                                    		
                                     	}
                                   
-                                    	focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[1]/td[5]/button")),br);
+                                    	focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
                                          
-                                    		boolean status= driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[1]/span[1]/label/span[1]")).isSelected();
+                                    		boolean status= driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[1]/span[1]/label/span[1]")).isSelected();
                                     		
                                
                                     		if(status==true)
@@ -762,13 +795,12 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                     		}
                                     		logger.info("orderprocess is done");
                                       
-                                    	//	EditTn(driver,br,divval);
+                                    		EditTn(driver,br,divval);
                                     		DeltTn(driver,br,divval);
-                                    	TNValidation(driver,br,divval, numberSuspended);
-                                    	
-                                    	
+                                    		TNValidation(driver,br,divval, numberSuspended);
+                                    		maxTN(driver, br, divval);
                                       		  	
-                                      		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[1]/td[5]/button")),br);
+                                      		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
                                       		  
                                       		driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
                                       		logger.info("OK");
@@ -785,13 +817,13 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                       		}                                                                                   	 
                                     	
                                     	
-                                    	driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).clear();
-                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).sendKeys("9193220001");
+                                    	driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).clear();
+                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).sendKeys("9193220001");
                             			
-                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[3]/button[1]")).click();
+                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[3]/button[1]")).click();
                                 		  
                                   	  	Thread.sleep(2000);                                           
-                                        if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[3]/button[1]")).getAttribute("disabled").equals("disabled"))
+                                        if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[3]/button[1]")).getAttribute("disabled").equals("disabled"))
                                         {
                                       	  logger.info("Success");
                                       	 // state="Pass";
@@ -803,9 +835,9 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                       	  statusTracker(br,"Fail","Verify if the user is able to cancel the changes made","Cancelling the order did not revert the changes made","Should be able to successfully cancel the order");
                                         }
                                         
-                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).clear();
-                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).sendKeys("9193220001");
-                                        focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[1]/td[5]/button")),br);
+                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).clear();
+                                        driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div/input[1]")).sendKeys("9193220001");
+                                        focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
                                         
                                         Boolean CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();
                               		  	logger.info("pop up display");
@@ -827,7 +859,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                               			  }
                               		  	}
                               		  	
-                              		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody[1]/tr[1]/td[5]/button")),br);
+                              		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
                               		  
                               		driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
                               		logger.info("OK");

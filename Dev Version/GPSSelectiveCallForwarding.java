@@ -613,9 +613,9 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
          driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div[1]/input")).sendKeys(Tn);      
          focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
  	  	                 
-         Thread.sleep(4000);
+         Thread.sleep(6000);
      
-         if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]//div[2]/div/div/ul/li")).isDisplayed())
+         if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]//div[2]/div/div/ul")).isDisplayed())
    	     {
    		  statusTracker(br,"Pass","Verify if error message is displayed for FROM field when adding "+Tn+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]//div[2]/div/div/ul/li")).getText(),"Error message should be displayed");
    		  schk="Pass";
@@ -830,7 +830,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                     	
                                     	focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[6]/button")),br);
                                                                         
-                                    	int cnt=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody[1]/tr[2]/td/div/div[1]/div/div")).size();
+                                    	int cnt=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div")).size();
                                     	System.out.println("cnt"+cnt);
                                     	if(cnt==2)
                                     	{
