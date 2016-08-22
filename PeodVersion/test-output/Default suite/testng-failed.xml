@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test verbose="2" name="Default test">
+    <classes>
+      <class name="ApolloNew.Main_Function"/>
+    </classes>
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="ApolloNew.Main_Function">
+        <methods>
+          <include name="UserDND_001" invocation-numbers="0"/>
+          <include name="AA_001" invocation-numbers="0"/>
+          <include name="CustomCallerId_001" invocation-numbers="0"/>
+          <include name="VMSettings_001" invocation-numbers="0"/>
+          <include name="GPSSuspendedLine_001" invocation-numbers="0"/>
+          <include name="UserACR_001" invocation-numbers="0"/>
+          <include name="UserCFU_001" invocation-numbers="0"/>
+          <include name="UserSequentialRing_001" invocation-numbers="0"/>
+          <include name="UserSCR_001" invocation-numbers="0"/>
+          <include name="GPSCallForward_001" invocation-numbers="0"/>
+          <include name="GPSCallWaiting_001" invocation-numbers="0"/>
+          <include name="UserSimultaneousRing_001" invocation-numbers="0"/>
+          <include name="UserSCF_001" invocation-numbers="0"/>
+          <include name="GPSCallParkandRetrieve_001" invocation-numbers="0"/>
+          <include name="GPSSpeedDial_001" invocation-numbers="0"/>
+          <include name="UserCallScheduler_001" invocation-numbers="0"/>
+          <include name="GPSLastNumberRedial_001" invocation-numbers="0"/>
+          <include name="GPSPersonalAttendant_001" invocation-numbers="0"/>
+          <include name="GPSCallReturn69_001" invocation-numbers="0"/>
+          <include name="UserSpeedDial_001" invocation-numbers="0"/>
+          <include name="UserCallLogs_001" invocation-numbers="0"/>
+          <include name="GPSACR_001" invocation-numbers="0"/>
+          <include name="GPSCallForwardBusy_001" invocation-numbers="0"/>
+          <include name="UserCFB_001" invocation-numbers="0"/>
+          <include name="GPSCallHold_001" invocation-numbers="0"/>
+          <include name="GPSCallLogs_001" invocation-numbers="0"/>
+          <include name="GPSDirectedCallPickUp_001" invocation-numbers="0"/>
+          <include name="GPSCallTransfer_001" invocation-numbers="0"/>
+          <include name="UserCFNA_001" invocation-numbers="0"/>
+          <include name="end"/>
+          <include name="AddUser_001" invocation-numbers="0"/>
+          <include name="Hotline_001" invocation-numbers="0"/>
+          <include name="GPSThreeWayCalling_001" invocation-numbers="0"/>
+          <include name="GPSDoNotDisturb_001" invocation-numbers="0"/>
+          <include name="GPSCallForwardNoAnswer_001" invocation-numbers="0"/>
+          <include name="EditUser_001" invocation-numbers="0"/>
+          <include name="GPSOfficeAnywhere_001" invocation-numbers="0"/>
+          <include name="GPSCallScheduler" invocation-numbers="0"/>
+          <include name="GPSSelectiveCallRejection_001" invocation-numbers="0"/>
+          <include name="Hunting_001" invocation-numbers="0"/>
+          <include name="MyProfile_001" invocation-numbers="0"/>
+          <include name="Reader"/>
+          <include name="GPSSelectiveCallForwarding_001" invocation-numbers="0"/>
+          <include name="UserOfficeAnywhere_001" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- ApolloNew.Main_Function -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
