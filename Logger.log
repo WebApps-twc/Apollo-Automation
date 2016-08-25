@@ -1,0 +1,582 @@
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Path C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) inputfile C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile\Input_Sheet.xls outputfile C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile\Test_Results\Results
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) RO initialized
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) total number of rows--------------->1
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Last_row 52
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) first_row 0
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1  IM variable 0 Apollo Input Sheet
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1  IM variable 1 
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1  IM variable 2 Select Environment : 
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 Grid IM variable 3 
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 No IM variable 4 https://voicemanager.timewarnercable.com
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1  IM variable 5 
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1  IM variable 6 
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 Execute 
+(Y/N) IM variable 7 CHILD TEST CASE
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 N IM variable 8 UserACR
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 N IM variable 9 UserDND
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) TC1 Y IM variable 10 GPSACR
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) first_tc: 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserACR is called
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserDND is called
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSACR is called
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser and excel location of test1  is  and 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GRID IS NOT In MAIN!
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  Test_called value inside validation1
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ^^^^^^^^^^^ Br  and loc value validation is ^^^^^^^^^FF 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ro[0] is10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ro[1] is10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) validation called
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) testcalled value iz : 1
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) firstpage true
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) locvalue iz: 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) validation called3
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Merging of heading part done now
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check1
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check2
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check3
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check4
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check5
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check6
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check7
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) *******check8
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Sep1---> number of rows 52
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_b
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_a
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Grid status NA
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) br valueis^^^^^^^^^:FF
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_C
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) exec1 Y loc 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_a
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Grid status No
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) br valueis^^^^^^^^^:FF
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_C
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) exec1 Y loc 10
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_d
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) location_f
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Starting execution!!
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) total number of rows--------------->2
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Keyword ---> UserACR
+08-24-2016 10:41:15  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Locator ---> 8
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) total number of rows--------------->2
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Keyword ---> UserDND
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Locator ---> 9
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Keyword ---> UserDND
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Locator ---> 9
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) total number of rows--------------->2
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Keyword ---> GPSACR
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Row Locator ---> 10
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) got inside
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Obj run is called
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser has already been closed
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) set up is called
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) set up is called
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) name1 in setup GPSACR
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Grid is NO and inside setup 10
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Grid is NO and inside setup
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Grid_Status No br FF
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) https://voicemanager.timewarnercable.com
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fire fox browser started
+08-24-2016 10:41:16  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) i went inside this loop of firefox
+08-24-2016 10:41:22  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Before grid remote
+08-24-2016 10:41:22  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) helo
+08-24-2016 10:41:22  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Just reached end of setup
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get results
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 11br FF
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 11br FF
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actualNew Feature
+close
+Anonymous Call Rejection
+Reject blocked or private callers in two easy steps.
+Set Up Anonymous Call Rejection
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expected
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioACR Modal pop up is displayed
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result 
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 11br FF arrcount [I@2066d3ec
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ACR Modal pop up is displayed
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) New Feature
+close
+Anonymous Call Rejection
+Reject blocked or private callers in two easy steps.
+Set Up Anonymous Call Rejection
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:44:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get results
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 12br FF
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 12br FF
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actual
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expected
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioACR Modal slides shows are displayed
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result 
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 12br FF arrcount [I@2066d3ec
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ACR Modal slides shows are displayed
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:44:19  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get results
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 13br FF
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 13br FF
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actual
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expected
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioACR Modal slides Pages displayed on page navigation
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result 
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 13br FF arrcount [I@2066d3ec
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ACR Modal slides Pages displayed on page navigation
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:44:20  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get results
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 14br FF
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 14br FF
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actual
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expected
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioACR Modal slides are not displayed on clicking the Close
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result 
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 14br FF arrcount [I@2066d3ec
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) ACR Modal slides are not displayed on clicking the Close
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) 
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:44:52  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get resultsPass
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 15br FF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 15br FF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actualSuccessfully switched feature : No screenshot required 
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expectedSuccessfully able to switch feature
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioVerify switching feature from Selected to OFF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result Pass
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 15br FF arrcount [I@2066d3ec
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Pass
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Verify switching feature from Selected to OFF
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully switched feature
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully able to switch feature
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Pass
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:45:24  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get resultsFail
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 16br FF
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) _August 24_10.46AM
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 16br FF
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actualUnsuccessfully switched feature Refer screenshot: C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile\//Test_Results//Fail_Screenshots////null_Int_Fail1_August 24_10.46AM.png
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expectedSuccessfully able to switch feature
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioVerify switching feature from OFF to ON
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result Fail
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 16br FF arrcount [I@2066d3ec
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Verify switching feature from OFF to ON
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Unsuccessfully switched feature
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully able to switch feature
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:46:26  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get resultsFail
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 17br FF
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) _August 24_10.49AM
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 17br FF
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actualUnsuccessfully processed order Refer screenshot: C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile\//Test_Results//Fail_Screenshots////null_Int_Fail2_August 24_10.49AM.png
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expectedSuccessfully be able to process order
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenarioVerify order process when some lines are selected
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result Fail
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 17br FF arrcount [I@2066d3ec
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Verify order process when some lines are selected
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Unsuccessfully processed order
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully be able to process order
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:49:38  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:51:17  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Get resultsFail
+08-24-2016 10:51:17  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i] FF
+08-24-2016 10:51:17  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[ij]!=null
+08-24-2016 10:51:17  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 18br FF
+08-24-2016 10:51:17  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) _August 24_10.51AM
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) storing done******
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 18br FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_actualThe browser has taken too long to respond or an intermediate error has occurred Element is not clickable at point (1020.9500122070312, 392.23333740234375). Other element would receive the click: <div class="popover-content"></div>
+Command duration or timeout: 170 milliseconds
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'BDC8-D-6P2HH92', ip: '10.143.18.97', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_77'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca92772a-8227-4802-9fb3-e5ec3c8eea7d Refer screenshot: C:\Users\k.y.sadashivappa\ApolloAutomation\src\main\java\ProdVersionFeaturesFile\//Test_Results//Fail_Screenshots////null_Int_Fail3_August 24_10.51AM.png
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_expected 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_scenario 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RB ... if...{}
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) COUNTER RESULT SHEET VALUE ******** 18br FF arrcount [I@2066d3ec
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The browser has taken too long to respond or an intermediate error has occurred Element is not clickable at point (1020.9500122070312, 392.23333740234375). Other element would receive the click: <div class="popover-content"></div>
+Command duration or timeout: 170 milliseconds
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'BDC8-D-6P2HH92', ip: '10.143.18.97', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_77'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca92772a-8227-4802-9fb3-e5ec3c8eea7d
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The set of keys are!@#$%^&* []
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Values **** rb.getResult()**= nulln
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) STATUS TRACKER OVER**************
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount is [I@2066d3ec brFF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSACR over FF cF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Set Up over!!********************
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) [I@2066d3ec
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) **VALUES fetched in OBJ_RUN***
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Inside while obj_run
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Inside obj_run If
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[1] in OBJ_RUN FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) br in OBJ_RUN FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) l_browser8
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) i_browser 0
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RO****************************ro is 10
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 0
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] ACR Modal pop up is displayed
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] New Feature
+close
+Anonymous Call Rejection
+Reject blocked or private callers in two easy steps.
+Set Up Anonymous Call Rejection
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] ACR Modal slides shows are displayed
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 2
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] ACR Modal slides Pages displayed on page navigation
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 3
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] ACR Modal slides are not displayed on clicking the Close
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 4
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] Pass
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] Verify switching feature from Selected to OFF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] Successfully switched feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] Successfully able to switch feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 5
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] Verify switching feature from OFF to ON
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] Unsuccessfully switched feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] Successfully able to switch feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff2
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Verify switching feature from OFF to ON
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Unsuccessfully switched feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully able to switch feature
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 6
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo] Verify order process when some lines are selected
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] Unsuccessfully processed order
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo] Successfully be able to process order
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff2
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Verify order process when some lines are selected
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Unsuccessfully processed order
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Successfully be able to process order
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Iteration number 7
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Browser : FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[0][jo] Fail
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[1][jo]  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[2][jo] The browser has taken too long to respond or an intermediate error has occurred Element is not clickable at point (1020.9500122070312, 392.23333740234375). Other element would receive the click: <div class="popover-content"></div>
+Command duration or timeout: 170 milliseconds
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'BDC8-D-6P2HH92', ip: '10.143.18.97', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_77'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca92772a-8227-4802-9fb3-e5ec3c8eea7d
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) result_array[3][jo]  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Print stuff2
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) The browser has taken too long to respond or an intermediate error has occurred Element is not clickable at point (1020.9500122070312, 392.23333740234375). Other element would receive the click: <div class="popover-content"></div>
+Command duration or timeout: 170 milliseconds
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'BDC8-D-6P2HH92', ip: '10.143.18.97', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_77'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca92772a-8227-4802-9fb3-e5ec3c8eea7d
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) arrcount end of obj run [I@2066d3ec
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RO wen obj run ends : +br :19 FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Inside while obj_run
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Returning value in obj_run start
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Returning value in obj_run **0
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) RESULT_SHEET VALUE AFTER OBJ_RUN= FINAL counter_result_sheet: 18
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run2
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) browser[i_browser] FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run23
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:)  Merging testname cell 
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) br FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) counter_result_initial[i_browser] 10
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) counter_result_final[i_browser] 18
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) i_browser n loc respectively  0 10
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run234
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation 0 browser FF
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Merging 0 ,18,4,18
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run2345
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run23456
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run27
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Complete
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) check1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Test completed yes or NO inside validation isNo
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Workbook closed: LS
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run28
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) #####################################################
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Validation******* after obj_run29
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) total1
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) nmbr is jxl.write.Number@1a5d2efd
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) #####################################################
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Workbook closed: LS
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Excel location value in test1 is 10
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Test completed yes or NOYes
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserCFU is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserCFNA is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserCFB is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserSCF is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserSCR is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserSpeedDial is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserCallLogs is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) VMSettings is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserCallScheduler is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserOfficeAnywhere is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserSequentialRing is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) UserSimultaneousRing is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) CustomCallerId is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Hotline is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) Hunting is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) AA is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) EditUser is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) AddUser is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) MyProfile is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallForward is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallForwardBusy is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallForwardNoAnswer is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallTransfer is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallWaiting is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSDoNotDisturb is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSelectiveCallForwarding is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSelectiveCallRejection is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) CallLogs is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallReturn*69 is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSLastNumberRedial is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSpeedDial is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSuspendedLine is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSThreeWayCalling is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallScheduler is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallHold is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSCallParkandRetrieve is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSDirectedCallPickUp is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSOfficeAnywhere is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSPersonalAttendant is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSequentialRing is called
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Getting inside
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) no_of_browsers NA
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (main:) Grid option set to NO
+08-24-2016 10:51:18  [ProdVersionFeaturesFile.CommonFunctions] (PoolService-0:) GPSSimultaneousRing is called
