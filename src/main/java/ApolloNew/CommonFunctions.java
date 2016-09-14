@@ -1103,16 +1103,14 @@ return TN;
 		  driver.findElement(By.id("UserName")).sendKeys(username);
 		  driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();*/
 		
-		 driver.get("https://voicemanager-staging.timewarnercable.com");
+		 driver.get("https://voicemanager.timewarnercable.com");
 		
 		driver.findElement(By.id("Ecom_User_ID")).sendKeys(username);
 		  System.out.println("qtest1");
 		  driver.findElement(By.id("Ecom_Password")).sendKeys(password);
 		  driver.findElement(By.id("btnLogin")).click();
 		  
-		  driver.findElement(By.id("UserName")).clear();
-		  driver.findElement(By.id("UserName")).sendKeys(username);
-		  driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+		  
     }
 	
 	public abstract void execute(String br, WebDriver driver, String url, int loc, String name1)
