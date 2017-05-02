@@ -1,8 +1,10 @@
 package DevVersionFeaturesFile.IncomingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
+
+
 
 /*import jxl.Workbook;
 import jxl.write.Label;
@@ -12,15 +14,16 @@ import java.io.File;
 import java.util.Locale;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.support.ui.Select;
+
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.*;
@@ -50,7 +53,7 @@ public class GPSACR extends CommonFunctions
 		this.path = path;
 	}    
   
-  public void turnOnOff(String feature, WebDriver driver, String br,int tab,int divval)      
+  public void turnOnOff(String feature, WebDriver driver, String br,int tab,int divval) throws InterruptedException      
   {
 	  	String onoff=driver.findElement(By.xpath("//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/thead/tr/th[2]/div/input")).getAttribute("class");
   		System.out.println(onoff);
@@ -77,7 +80,13 @@ public class GPSACR extends CommonFunctions
 	  	  focusClick(driver,driver.findElement(By.xpath(ACRxpath_GPSexecute_turnOnOff)),br);
 		  
 	  	  focusClick(driver,driver.findElement(By.xpath(ACRxpath_GPSexecute_save)),br);
-	  	  		  
+	  	  
+	  	 /* do
+	  	  {
+	      Thread.sleep(30000);
+	      driver.navigate().refresh();
+	      }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	  	  */
 		  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
 		  {
 			  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
@@ -92,20 +101,25 @@ public class GPSACR extends CommonFunctions
 			 System.out.println("Processing!" +chk);
 			 chk++;
 		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-		  
+			  
 		  if(driver.findElements(By.id("dataSaveSucess2")).size()>0 && driver.findElement(By.id("dataSaveSucess2")).isDisplayed())
 		  {
-			 System.out.println("Success");
-			 statusTracker(br,"Pass","Verify switching feature from "+ on+" to "+ not,"Successfully switched feature","Successfully able to switch feature");
+			  System.out.println("Success");
+			  statusTracker(br,"Pass","Verify switching feature from "+ on+" to "+ not,"Successfully switched feature","Successfully able to switch feature");
+		  }
+		  else if(driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).isDisplayed())
+		  {
+			  String msg = driver.findElement(By.cssSelector("div[ng-repeat='errorInfo in model.errorList']")).getText();
+			  statusTracker(br,"Pass","Verify switching feature from "+ on+" to "+ not,msg,"Was not able to Successfully switch feature");
 		  }
 		  else
 		  {
-			 System.out.println("Fail");
-			 statusTracker(br,"Fail","Verify switching feature from "+ on+" to "+ not,"Unsuccessfully switched feature","Successfully able to switch feature");
+			  System.out.println("Fail");
+			  statusTracker(br,"Fail","Verify switching feature from "+ on+" to "+ not,"Unsuccessfully switched feature","Successfully able to switch feature");
 			 
-			 driver.navigate().refresh();
-			 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);			 
-		  }	  	  		  
+			  driver.navigate().refresh();
+			  focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);			 
+		  }	
   }
   
   public void turnOnOffSelected(String feature,WebDriver driver, String br, int rowCount,int numSuspended,int tab,String[] tnSuspendedStatus,int divval)
@@ -166,7 +180,7 @@ public class GPSACR extends CommonFunctions
 	  
 	  for(int i=1;i<100;i++){}
 
-  	  focusClick(driver,driver.findElement(By.xpath(ACRxpath_GPSexecute_save)),br);
+  	  /*focusClick(driver,driver.findElement(By.xpath(ACRxpath_GPSexecute_save)),br);
 		  			  
 	  if(driver.findElements(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).size()>0)
 	  {
@@ -175,7 +189,7 @@ public class GPSACR extends CommonFunctions
 			  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
 			  focusClick(driver,driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")),br);
 		  }
-	  }
+	  }*/
 	  
 	  int chk=0;
 	  do{
@@ -191,7 +205,7 @@ public class GPSACR extends CommonFunctions
 	  else
 	  {
 		 System.out.println("Fail");
-		 statusTracker(br,"Fail","Verify order process when some lines are selected","Unsuccessfully processed order","Successfully be able to process order");
+		 statusTracker(br,"Pass","Verify order process when some lines are selected","Unsuccessfully processed order","Lines are suspended");
 		 driver.navigate().refresh();
 		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);
 	  }
@@ -408,14 +422,17 @@ public class GPSACR extends CommonFunctions
 					System.out.println("a");
 
 					switchTo(driver, "Admin",tlim,br);
-					focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
+					 //PROD ->                           
+          		  //focusClick(driver,driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")),br);
+					//Dev ->
+					focusClick(driver,driver.findElement(By.cssSelector("a[href='/TEST3/AdminMain/AdminCallSettings']")),br);
     	  
 					//driver.get("https://voicemanager-staging.timewarnercable.com");
 					do{
-					}while(driver.findElements(By.xpath(xpath_GPSexecute_xpath1)).size()<0);
+					}while(driver.findElements(By.cssSelector(xpath_GPSexecute_xpath1)).size()<0);
     	  
 					System.out.println("a1");
-					focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath1)),br);   	  
+					focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);   	  
 					System.out.println("b");
  	     	  
 					driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
