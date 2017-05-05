@@ -423,9 +423,9 @@ public class GPSACR extends CommonFunctions
 
 					switchTo(driver, "Admin",tlim,br);
 					 //PROD ->                           
-          		  //focusClick(driver,driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")),br);
+          		  focusClick(driver,driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")),br);
 					//Dev ->
-					focusClick(driver,driver.findElement(By.cssSelector("a[href='/TEST3/AdminMain/AdminCallSettings']")),br);
+          		//focusClick(driver,driver.findElement(By.cssSelector("a[href='/TEST3/AdminMain/AdminCallSettings']")),br);
     	  
 					//driver.get("https://voicemanager-staging.timewarnercable.com");
 					do{
