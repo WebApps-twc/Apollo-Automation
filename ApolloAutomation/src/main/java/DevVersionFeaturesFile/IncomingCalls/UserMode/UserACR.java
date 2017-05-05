@@ -65,7 +65,20 @@ public class UserACR extends CommonFunctions {
                 }
                                 */
                 
-                 public String turnoffon(String br, WebDriver driver, String status,String TN1)throws Exception
+                
+                public boolean elemcheck(String id, WebDriver driver) {
+             		// TODO Auto-generated method stub
+             		try{
+             			driver.findElement(By.xpath(id));
+             			return true;
+             		}
+             		catch (org.openqa.selenium.TimeoutException e){
+             			return false;
+             		}
+             		
+             	}
+                
+                 public String turnoffon(String br, WebDriver driver, String status,int rowCount)throws Exception
                   {
                      xpath_ACRsection = ACR.getProperty("xpath_ACRsection");
                      xpath_ACRsection_header = ACR.getProperty("xpath_ACRsection_header");
@@ -73,69 +86,56 @@ public class UserACR extends CommonFunctions {
   
                      String initialstate=status, chngetostate="Off",state="Fail";
 
-                     focusClick(driver,driver.findElement(By.linkText("Switch to User mode")),br);
-                     logger.info("UserMode");
-              
-                     for(int i=1;i<100;i++){}
-                     focusClick(driver,driver.findElement(By.xpath(xpath_ACRsection)),br);
-                     do{
-            
-                     }while(driver.findElements(By.xpath("//html/body/header/div[4]/div[3]/div/div/span/select")).size()<0);
- 
-                     focusDropdown(driver,"//html/body/header/div[4]/div[3]/div/div/span",TN1,br);
-                     do{
-                    	 //logger.info("Processing!" +chk);
-                 
-                     }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-                     logger.info("ACR");
-
-                     focusClick(driver,driver.findElement(By.cssSelector("div.header-right")),br);
-
-                     focusClick(driver,driver.findElement(By.xpath(xpath_ACRsection_header)),br);
-
-                     logger.info("TurnOFF");
-
-                     focusClick(driver,driver.findElement(By.cssSelector("button.btn.btn-primary")),br);
                      int chk=0;
-                     do{
-                    	 //logger.info("Processing!" +chk);
-                    	 chk++;
-                     }while(focusSearch(driver,driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")),br));
-          
-
-
-                     if(driver.findElements(By.id("dataSaveSucess")).size()>0)
+                     for(int p=1; p<=rowCount; p++)
                      {
-                    	 logger.info("Success");
-                    	 statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
-                     }
-                     else
-                     {
-                    	 logger.info("Fail");
-                    	 statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
-                     }
+                    	 focusClick(driver,driver.findElement(By.xpath("//select[@ng-change='changeTn()']/option["+p+"]")),br);
+                    	 logger.info("ACR");
+                    	 statusTracker(br,"Pass","Selecting the phone numbers","Phone number selected is : "+p,"");
+                    	 Thread.sleep(20000);
+                    	 String d = driver.findElement(By.xpath("//div[@id='collapseFeature0']//h4")).getText();
+                    	 logger.info("ON/OFF text: "+d);
+                    	 
+	       				if(d.contains("DISABLED BY ADMINISTRATOR"))
+	       				{
+	       				 String disableMsg = driver.findElement(By.xpath("//div[@id='collapseFeature0']/div[1]/div/div/h4")).getText();
+	              		 statusTracker(br,"Pass","Verifying whether Anonymous Call Rejection is Enabled or Disabled","Anonymous Call Rejection is "+disableMsg,"");
+	       				}
+	       				else
+	       				{ 
+	       					focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature0']//h3")),br);
+	       					for(int i=1; i<=2; i++)
+	       					{
+	       						
+	       						focusClick(driver,driver.findElement(By.cssSelector(xpath_ACRsection_header)),br); 
 
-                     focusClick(driver,driver.findElement(By.xpath(xpath_ACRsection_submit)),br);
-                     logger.info("TurnON");
+	       						logger.info("TurnOFF/ON");
 
-                     focusClick(driver,driver.findElement(By.cssSelector("button.btn.btn-primary")),br);
+	       						focusClick(driver,driver.findElement(By.cssSelector("button.btn.btn-primary")),br);
+                    
+	       						do{
+	       							logger.info("Processing!" +chk);
+	       							chk++;
+	       						   }while(focusSearch(driver,driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")),br));
+         
 
-                     do{
 
-                    	 chk++;
-                     }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-                     for(int i1=1;i1<100;i1++){}
+	       						if(driver.findElements(By.id("dataSaveSucess")).size()>0)
+	       						{
+	       							logger.info("Success");
+	       							state="Pass";
+	       							statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
+	       						}
+	       						else
+	       						{
+	       							logger.info("Fail");
+	       							statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
+	       						}
+	       					}
+	       				}		
 
-                     if(driver.findElements(By.id("dataSaveSucess")).size()>0)
-                     {
-                    	 logger.info("Success");
-                    	 state="Pass";
-                    	 statusTracker(br,"Pass","Verify order process for changing status from:"+chngetostate+ "to:"+initialstate,"Successfully be able to process order","Successfully processed order");
-                     }
-                     else
-                     {
-                    	 logger.info("Fail");
-                    	 statusTracker(br,"Fail","Verify order process for changing status from:"+chngetostate+ "to:"+initialstate,"Successfully be able to process order","Unable to process successfully");
+            
+                    	
                      }
                      return state;
                   }
@@ -330,52 +330,55 @@ public class UserACR extends CommonFunctions {
                                                 		  logger.info("b");   
                                                 		  switchTo(driver, "Admin",tlim,br);
                                                 		  logger.info("c");
-                                                                                      
-                                                		  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
+                                                           //PROD-->                           
+                                                		  if(driver.findElement(By.cssSelector("a[href='/UserMain/UserCallSettings']")).isDisplayed())
+                                                		  {
+                                                			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+                                                		  }
+                                                		  else
+                                                		  {
+                                                			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+                                                		  }
                               
                                                 		  logger.info("checkpoint1");
                               
-                                                		  //driver.findElement(org.openqa.selenium.By.xpath(xpath_ACRexecute_xpath2)).click();
-                                                		  focusClick(driver,driver.findElement(By.xpath(xpath_ACRexecute_xpath2)),br);
+                                                		  focusClick(driver,driver.findElement(By.cssSelector(xpath_ACRexecute_xpath2)),br);
                                                 		  for(int i=1;i<30;i++){}
                                                 		  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);  
 
                                                 			  logger.info("c");  
                                                 			  int featureOrder=0;String featureName="ACR";
-                                                			  focusClick(driver,driver.findElement(By.xpath(".//*[@id='accordion_"+featureName+"']/h3")),br);    	  
+                                                			  focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature0']//h3")),br);    	  
                                       							System.out.println("c");
-
+                                      							statusTracker(br,"Pass","Verifying if the Incoming Calls page is displayed","Navigated to Incoming Calls page","");
                                       							int divval=3;
                                       							try
                                         	       				{
-                                        	       				if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/h2")).isDisplayed())
+                                        	       				if(driver.findElement(By.xpath("//div[@id='collapseFeature0']/div[3]/div/h2")).isDisplayed())
                                         	       				{
-                                        	       				statusTracker(br,"","ACR Modal pop up is  displayed","","");
+                                        	       					statusTracker(br,"Fail","Verifying if the CF Modal pop up is displayed","CF Modal pop up is displayed","");
                                         	       				driver.findElement(By.cssSelector("i.icomatic.close-btn")).click();
                                         	       				divval=3;
                                         	       				}
                                         	       				}
                                         	       				catch(Exception e)
                                         	       				{
-                                        	       					statusTracker(br,"","CF Modal pop up is not displayed second time","","");
+                                        	       					statusTracker(br,"Pass","Verifying if the CF Modal pop up is displayed","CF Modal pop up is not displayed","");
                                         	       					first=1;
                                         	       				}												
                                           	  
-                                      							int rowCount=driver.findElements(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tbody")).size();
+                                      							int rowCount=driver.findElements(By.xpath("//select[@ng-change='changeTn()']/option")).size();
                                       							System.out.println("d: "+rowCount);
-                                      							int TN= Select_TN(driver,featureName,rowCount,br,divval);
-                                      							String TN1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+divval+"]/table/tbody["+TN+"]/tr/td[1]")).getText();
-                
-                                                			  if(TN1!= null)
-                                                			  {
-                                                				  logger.info("print");
-                                                				  status1="On";
-                                                				  state=turnoffon(br,driver, status1,TN1);
-                                                				  Thread.sleep(1000);
-                                                				  state=Unsavedpopup(br,driver, status1);
-                                                				  //state=Cancel(br,driver, status1);
-                                                				  logger.info("started");
-                                                			  }
+                                      							 if(rowCount!= 0)
+                                                   			  {
+                                                   				  logger.info("print");
+                                                   				  status1="On";
+                                                   				  state=turnoffon(br,driver, status1,rowCount);
+                                                   				  Thread.sleep(1000);
+                                                   				  state=Unsavedpopup(br,driver, status1);
+                                                   				  state=Cancel(br,driver, status1);
+                                                   				  logger.info("Ended");
+                                                   			  }
                                              
                                   
                                                 			  first=1;
@@ -385,7 +388,7 @@ public class UserACR extends CommonFunctions {
                   
                                                   catch (Exception e)
                                                   {
-                                                	  exceptionHandler(br,e,driver);
+                                                 	  exceptionHandler(br,e,driver);
                                                   }
                     }
                     catch (Exception e)
@@ -400,4 +403,6 @@ public class UserACR extends CommonFunctions {
                      
                     }
                   }
+
+              	
                 }
