@@ -6,6 +6,7 @@ import DevVersionFeaturesFile.CommonFunctions;
 
 
 
+
 /*import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -423,7 +424,14 @@ public class GPSACR extends CommonFunctions
 
 					switchTo(driver, "Admin",tlim,br);
 					 //PROD ->                           
-          		  focusClick(driver,driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")),br);
+					if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+					  {
+						  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+					  }
+					  else
+					  {
+						  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+					  }
 					//Dev ->
           		//focusClick(driver,driver.findElement(By.cssSelector("a[href='/TEST3/AdminMain/AdminCallSettings']")),br);
     	  
