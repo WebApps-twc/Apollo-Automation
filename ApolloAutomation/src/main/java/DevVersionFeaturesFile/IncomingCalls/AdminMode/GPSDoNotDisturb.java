@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.IncomingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -157,18 +157,27 @@ public class GPSDoNotDisturb extends CommonFunctions
 	  
 	  for(int i=1;i<100;i++){}
 
-	  focusClick(driver,driver.findElement(By.xpath(DNDxpath_GPSexecute_save)),br);
-		  			  
-	  if(driver.findElements(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).size()>0)
+	  //focusClick(driver,driver.findElement(By.xpath(DNDxpath_GPSexecute_save)),br);
+		//****Check from here*****  			  
+	  if(driver.findElements(By.cssSelector("div[id='dataSaveSucess2']")).size()>0)
 	  {
-		  if(driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText().contains("warning"))
-		  {
+		  System.out.println("Success");
+			 statusTracker(br,"Pass","Verify order process when some lines are selected","Successfully processed order","Successfully be able to process order");
+	  }
+	  else if(driver.findElement(By.cssSelector("body > div.modal.fade.ng-scope.ng-isolate-scope.in > div > div > div > div")).getText().contains("warning"))
+	  {
 			  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
-			  focusClick(driver,driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")),br);
-		  }
+			  focusClick(driver,driver.findElement(By.cssSelector("span[ng-click='cancel()'']")),br);
+	  }
+	  else
+	  {
+		 System.out.println("Fail");
+		 statusTracker(br,"Fail","Verify order process when some lines are selected","Unsuccessfully processed order","Successfully be able to process order");
+		 driver.navigate().refresh();
+		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);
 	  }
 	  
-	  int chk=0;
+	 /* int chk=0;
 	  do{
 		 System.out.println("Processing!" +chk);
 		 chk++;
@@ -185,7 +194,7 @@ public class GPSDoNotDisturb extends CommonFunctions
 		 statusTracker(br,"Fail","Verify order process when some lines are selected","Unsuccessfully processed order","Successfully be able to process order");
 		 driver.navigate().refresh();
 		 focusClick(driver,driver.findElement(By.cssSelector("#accordion_"+feature+" > div.header-right > div.align-right")),br);
-	  }
+	  }*/
   }
   
 	public int Select_TN(WebDriver driver,String feature,int rowCount,String br,int divval)
@@ -400,14 +409,22 @@ public class GPSDoNotDisturb extends CommonFunctions
 				System.out.println("a");
 				
 					switchTo(driver, "Admin",tlim,br);
-					focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
     	  
+					if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+					  {
+						  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+					  }
+					  else
+					  {
+						  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+					  }
+					
 					//driver.get("https://voicemanager-staging.timewarnercable.com");
 					do{
-					}while(driver.findElements(By.xpath(xpath_GPSexecute_xpath1)).size()<0);
+					}while(driver.findElements(By.cssSelector(xpath_GPSexecute_xpath1)).size()<0);
     	  
 					System.out.println("a1");
-					focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath1)),br);   	  
+					focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);   	  
 					System.out.println("b");
  	     	  
 					driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
@@ -484,7 +501,7 @@ public class GPSDoNotDisturb extends CommonFunctions
 						System.out.println("d: "+rowCount);
 
 				    	tnSuspendedStatus=new String[rowCount];
-				    	tnSuspendedStatus=suspendedStatus(rowCount,featureOrder, featureName,driver,1);				    	  
+				    	tnSuspendedStatus=suspendedStatusDND(rowCount,featureOrder, featureName,driver,1);				    	  
 				    	System.out.println("e: "+tnSuspendedStatus.length);
 				    	
 				    	Boolean suspended=suspended(tnSuspendedStatus,driver);

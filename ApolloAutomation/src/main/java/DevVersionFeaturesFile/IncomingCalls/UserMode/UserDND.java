@@ -14,14 +14,16 @@ import jxl.WorkbookSettings;
 
 public class UserDND extends CommonFunctions {
 
-                
-                String table,TN, tns[];
+	 
+    String table,TN, tns[];
     String tlimit,username,pwd;
     int tncount;
     String initialstate,chngetostate;
                 public UserDND(String path) {
                                 this.path = path;
                 }
+                
+               
 
 //                public UserDND(String path, String file1, String file2) {
 //                                this.path = path;
@@ -55,12 +57,12 @@ public class UserDND extends CommonFunctions {
                                       if(driver.findElements(By.id("dataSaveSucess")).size()>0)
                                         {
                                            logger.info("Success");
-                                          statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
+                                          statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ ":to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
                                         }
                                          else
                                         {
                                            logger.info("Fail");
-                                          statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
+                                          statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ ":to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
                                         }
                                   }
                                   
@@ -82,12 +84,12 @@ public class UserDND extends CommonFunctions {
                                         {
                                            logger.info("Success");
                                           state="Pass";
-                                          statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate1+ "to:"+chngetostate1,"Successfully be able to process order","Successfully processed order");
+                                          statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate1+ "::to:"+chngetostate1,"Successfully be able to process order","Successfully processed order");
                                         }
                                          else
                                         {
                                            logger.info("Fail");
-                                          statusTracker(br,"Fail","Verify order process for changing status from:"+chngetostate+ "to:"+initialstate,"Successfully be able to process order","Unable to process successfully");
+                                          statusTracker(br,"Fail","Verify order process for changing status from:"+chngetostate+ ":to:"+initialstate,"Successfully be able to process order","Unable to process successfully");
                                         }
                                    
                                   
@@ -115,12 +117,12 @@ public class UserDND extends CommonFunctions {
           {
              logger.info("Success");
              state="Pass";
-            statusTracker(br,"Pass","Verify order process for changing status from:"+chngetostate+ "to:"+initialstate,"Successfully be able to process order","Successfully processed order");
+            statusTracker(br,"Pass","Verify order process for changing status from:"+chngetostate+ ":to:"+initialstate,"Successfully be able to process order","Successfully processed order");
           }
            else
           {
              logger.info("Fail");
-            statusTracker(br,"Fail","Verify order process for changing status from:"+chngetostate+ "to:"+initialstate,"Successfully be able to process order","Unable to process successfully");
+            statusTracker(br,"Fail","Verify order process for changing status from:"+chngetostate+ ":to:"+initialstate,"Successfully be able to process order","Unable to process successfully");
           }
 
          logger.info("TurnOFF1");
@@ -143,12 +145,12 @@ public class UserDND extends CommonFunctions {
              if(driver.findElements(By.id("dataSaveSucess")).size()>0)
                {
                   logger.info("Success");
-                 statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
+                 statusTracker(br,"Pass","Verify order process for changing status from:"+initialstate+ ":to:"+chngetostate,"Successfully be able to process order","Successfully processed order");
                }
                 else
                {
                   logger.info("Fail");
-                 statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ "to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
+                 statusTracker(br,"Fail","Verify order process for changing status from:"+initialstate+ ":to:"+chngetostate,"Successfully be able to process order","Unable to process successfully");
                }
          }  
          
@@ -315,45 +317,46 @@ public class UserDND extends CommonFunctions {
                               logger.info("a");
 
                               switchTo(driver, "Admin",tlim,br);   
-                                  do{
-                                  }while(driver.findElements(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[2]/a")).size()<0);
-                                  
-                                  focusClick(driver,driver.findElement(By.xpath("//section[@id='admin-homepage-shortcuts']/div/a[3]/span/div")),br);
+                              if(driver.findElement(By.cssSelector("a[href='/UserMain/UserCallSettings']")).isDisplayed())
+                    		  {
+                    			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+                    		  }
+                    		  else
+                    		  {
+                    			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+                    		  }
+                              
+                              focusClick(driver,driver.findElement(By.cssSelector("a[href='/UserIncomingCalls/IncomingCalls']")),br);
                                    
                                  logger.info("checkpoint4");  
 
 
                                 	 int featureOrder=0;String featureName="DND";
-                       			  	focusClick(driver,driver.findElement(By.xpath(".//*[@id='accordion_"+featureName+"']/h3")),br);    	  
+                       			  	focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature3']//h3")),br);    	  
              							System.out.println("c");
 
              							int divval=3;
              							try
                	       					{
-             								if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/h2")).isDisplayed())
+             								if(driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[3]/div/h2")).isDisplayed())
              								{
-             									statusTracker(br,"","DND Modal pop up is  displayed","","");
-             									//driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/button")).click();
-             									divval=3;
+             									statusTracker(br,"Fail","Verifying if the CF Modal pop up is displayed","CF Modal pop up is displayed","");
+                        	       				driver.findElement(By.cssSelector("i.icomatic.close-btn")).click();
+                        	       				divval=3;
              								}
                	       					}
                	       					catch(Exception e)
                	       					{
-               	       						statusTracker(br,"","DND Modal pop up is not displayed second time","","");
-               	       						first=1;
+               	       					statusTracker(br,"Pass","Verifying if the CF Modal pop up is displayed","CF Modal pop up is not displayed","");
+            	       					first=1;
                	       					}												
                  	  
-             							int rowCount=driver.findElements(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tbody")).size();
+             							int rowCount=driver.findElements(By.xpath("//select[@ng-change='changeTn()']/option")).size();
              							System.out.println("d: "+rowCount);
-             							int TN= Select_TN(driver,featureName,rowCount,br,divval);
-             							String TN1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div["+divval+"]/table/tbody["+TN+"]/tr/td[1]")).getText();
 
-                                         if(TN1!=null)
+             							 if(rowCount!= 0)
                                          {
-                                                  focusClick(driver,driver.findElement(By.linkText("Switch to User mode")),br);
-                                                  logger.info("UserMode");
-                                                                                         
-                                                  focusClick(driver,driver.findElement(By.xpath("//section[@id='homepage-shortcuts']/div/a[3]/span/i")),br);
+                                                  /*focusClick(driver,driver.findElement(By.xpath("//section[@id='homepage-shortcuts']/div/a[3]/span/i")),br);
                                   
                                                   logger.info("DND");
                                                   new Select(driver.findElement(By.xpath("//select"))).selectByVisibleText(TN1); 
@@ -362,12 +365,12 @@ public class UserDND extends CommonFunctions {
                                                  
                                                   }while(focusSearch(driver,driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")),br));
                                                   focusClick(driver, driver.findElement(By.cssSelector("#collapseFeature3 > div.accordian-header > div.header-right")),br);
-                                               Thread.sleep(3000);
+                                               Thread.sleep(3000);*/
                                    
                                                Boolean St=driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/div[1]/label")).isEnabled();
                                                System.out.println(St);
                                  
-                                                  status1="On";
+                                                  //status1="On";
                                                   if(St=true)
                                                   {
                                                   status1="Off";
