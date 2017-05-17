@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.support.ui.Select;
 
 import DevVersionFeaturesFile.CommonFunctions;
@@ -11,6 +12,7 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
+
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -337,7 +339,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                   
                   Thread.sleep(3000);
 
-                  focusClick(driver,driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)),br);
+                  focusClick(driver,driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)),br);
                   int chk=0;
                   do{
                 	  chk++;
@@ -362,7 +364,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                   
                   Thread.sleep(3000);
 
-                  focusClick(driver,driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)),br);
+                  focusClick(driver,driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)),br);
       
                   do{
                 	  chk++;
@@ -398,13 +400,13 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
               		num=randomNO(3333,6666);
               		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
                     driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys(phoneline+num);
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                     focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
               	  }
               	  
               	Thread.sleep(3000);
 
-                  driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+                  driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
                   int chk=0;
                   do{
                 	  chk++;
@@ -424,7 +426,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                   Thread.sleep(3000);
                   focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_lable+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[1]/span[3]/label")),br);
                   Thread.sleep(3000);
-                  driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+                  driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
       
                   do{             
                 	  chk++;
@@ -457,12 +459,13 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                 		num=randomNO(3333,6666);
                 		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
                 		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys(phoneline+num);
-                		Thread.sleep(3000);
-                		focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
+                		Thread.sleep(5000);
+                		focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeatureSCF']/div[3]//tbody[1]/tr[2]//div[@id='scf-cs']/div[2]//div[2]/div/div["+TN1+"]//button")),br);
+                		
                 	  	}
                   }
                   Thread.sleep(3000);
-                  driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+                  driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
                   int chk=0;
                   do{
                 	  chk++;
@@ -492,7 +495,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 	  	    
 	  	    focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div[2]/span/button")),br);
 	  	    Thread.sleep(3000);
-	  	  driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+	  	  driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
 		int chk=0;
 		do{
 			chk++;
@@ -521,7 +524,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
     		focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
     	  	}
   			Thread.sleep(3000);
-  			driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+  			driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
   			int chk=0;
   			do{
   				chk++;
@@ -532,7 +535,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
   	  	    
   	  	    focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div[2]/span/button")),br);
   	  	    Thread.sleep(3000);
-  	  	    driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+  	  	    driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
 			chk=0;
 			do{
 				chk++;
@@ -597,13 +600,13 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                  driver.findElement(By.xpath(SCFxpath_GPSexecute_acccode+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[3]/input")).sendKeys(acode);
          	}
          	Thread.sleep(3000);
-         	driver.findElement(By.cssSelector(SCFcssselector_GPSexecute_save1)).click();
+         	driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
                  
          	Thread.sleep(6000);
          	                                
-         	if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]//div[2]/div/div/ul/li")).isDisplayed())
+         	if(driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).isDisplayed())
          	{
-         		statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]/div[2]/div/div/ul/li")).getText(),"Error message should be displayed");
+         		statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.cssSelector("div[class='message-box ng-scope'] li")).getText(),"Error message should be displayed");
                 schk="Pass";
             }
             else
@@ -714,15 +717,18 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 
                                     switchTo(driver, "Admin",tlim,br);
                   
-                                    focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);                      
-                                    //driver.get("https://voicemanager-staging.timewarnercable.com");
-                                    do{
-                                    }while(driver.findElements(By.xpath(xpath_GPSexecute_xpath1)).size()<0);
-                  
+                                    if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+              					  {
+              						  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+              					  }
+              					  else
+              					  {
+              						  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+              					  }
                                     Acccode="1111";//driver.findElement(By.xpath("//html/body/section/section/div[1]/aside[1]/ul/li/strong")).getText();
                                     logger.info("Acccode home"+Acccode);
                                     System.out.println("a1"+Acccode);
-                                    focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath1)),br);             
+                                    focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);             
                                     System.out.println("b");
                                  
                                     driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);

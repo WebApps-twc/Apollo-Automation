@@ -31,6 +31,8 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.*;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -46,12 +48,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
-
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 import java.beans.EventHandler;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.WebDriverWait.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -417,15 +419,15 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  int j=0,featureOrder=-1;
 		  for(int i=0;i<=count1;i++)
 		  {
-			  System.out.println("in1");		  
-			  if(driver.findElements(By.id("collapseFeature"+i)).size()>0)
+			  System.out.println("in1: "+i);		  
+			  if(driver.findElements(By.id("collapseFeature2"+i)).size()>0)
 			  {
-	    			  System.out.println("in3");
+	    			  System.out.println("in3: "+1);
 
-	    			  if(driver.findElement(By.id("collapseFeature"+i)).getAttribute("ng-repeat").contains("outgoingCall") || !(driver.findElement(By.id("collapseFeature"+i)).getAttribute("ng-if").contains("==")))
+	    			  if(driver.findElement(By.id("collapseFeature2"+i)).getAttribute("ng-repeat").contains("outgoingCall") || !(driver.findElement(By.id("collapseFeature2"+i)).getAttribute("ng-if").contains("==")))
 	    			  {
 	    				
-	    				list=driver.findElement(By.cssSelector("#collapseFeature"+i+" > div.accordian-header > h3.ng-binding")).getText();
+	    				list=driver.findElement(By.cssSelector("#collapseFeature2"+i+" > div.accordian-header > h3.ng-binding")).getText();
 	    				System.out.println("Features searched: "+list);
 	    				if(list.equals(featureName))
 	    				{
@@ -438,7 +440,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 	    			  }
 	    			  else
 	    			  {
-	    				  System.out.println("Features present: "+driver.findElement(By.cssSelector("#collapseFeature"+i+" > div.accordian-header > h3.ng-binding")).getText() + " Not available for purchase : "+i);
+	    				  System.out.println("Features present: "+driver.findElement(By.cssSelector("#collapseFeature2"+i+" > div.accordian-header > h3.ng-binding")).getText() + " Not available for purchase : "+i);
 	      				    				
 	    			  }
 				  
@@ -446,10 +448,47 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  }
 		  return (featureOrder);
 	  }
+	
+	public int FeatureListIncomingCW(WebDriver driver,int count1, String featureName)
+	  {
+		  String list="";
+		  int j=0,featureOrder=-1;
+		  for(int i=0;i<=count1;i++)
+		  {
+			  System.out.println("in1: "+i);		  
+			  if(driver.findElements(By.id("collapseFeature3"+i)).size()>0)
+			  {
+	    			  System.out.println("in3: "+1);
+
+	    			  if(driver.findElement(By.id("collapseFeature3"+i)).getAttribute("ng-repeat").contains("outgoingCall") || !(driver.findElement(By.id("collapseFeature2"+i)).getAttribute("ng-if").contains("==")))
+	    			  {
+	    				
+	    				list=driver.findElement(By.cssSelector("#collapseFeature3"+i+" > div.accordian-header > h3.ng-binding")).getText();
+	    				System.out.println("Features searched: "+list);
+	    				if(list.equals(featureName))
+	    				{
+	    					featureOrder=j;
+	    					i=100;
+	    				}
+	    					    				
+	    				j++;
+	    				    				
+	    			  }
+	    			  else
+	    			  {
+	    				  System.out.println("Features present: "+driver.findElement(By.cssSelector("#collapseFeature3"+i+" > div.accordian-header > h3.ng-binding")).getText() + " Not available for purchase : "+i);
+	      				    				
+	    			  }
+				  
+			  }
+		  }
+		  return (featureOrder);
+	  }
+	
 
 	  public void turnOnOff(int featureOrder, WebDriver driver, String br,int tab)
 	  {
-		  	  Boolean onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+		  	 Boolean onoff=driver.findElement(By.id("lines"+2)).isSelected();
 		  	  String on="OFF";
 		  	  String not="ON";
 		  	  if (onoff)
@@ -457,21 +496,20 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  		  on="ON";
 		  		  not="OFF";
 		  	  }
-				  
-		  	  int val=11;
-		  	  if(envvalue==0)
-		  		  val=17;
-		  	  
-			  Boolean r=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+				  int val=11;
+	  	  if(envvalue==0)
+	  		  val=17; 
+			  Boolean r=driver.findElement(By.id("lines"+2)).isSelected();
 			  System.out.println("bool : "+r);
+		 
 			  if(tab==1)
-				  driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/div/label")).click();
+				  driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[2]/form/div[4]/div/label")).click();
 			  else
-				  driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/label")).click();
+				  driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[2]/form/div[4]/label")).click();
 			  
 			  for(int i=1;i<100;i++){}
 				  	  
-			  driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+val+"]/button[2]")).click();
+			  driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[2]/form/div["+val+"]/button[2]")).click();
 			  for(int i=1;i<100;i++){}
 			  
 			  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
@@ -492,17 +530,75 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  if(driver.findElements(By.id("dataSaveSucess")).size()>0 && driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 			  {
 				 System.out.println("Success");
-				 statusTracker(br,"Pass","Verify switching feature from "+ on+" to "+ not,"Successfully switched feature","Successfully able to switch feature");
+				 statusTracker(br,"Pass","Verify switching feature from" +on+" to "+not ,"Successfully switched feature","Successfully able to switch feature");
 			  }
 			  else
 			  {
 				 System.out.println("Fail");
-				 statusTracker(br,"Fail","Verify switching feature from "+ on+" to "+ not,"Unsuccessfully switched feature","Successfully able to switch feature");
+				 statusTracker(br,"Fail","Verify switching feature from" +on+" to "+not ,"Unsuccessfully switched feature","Successfully able to switch feature");
 				 
 				 driver.navigate().refresh();
-				 driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")).click();
+				 driver.findElement(By.cssSelector("#collapseFeature2 > div.accordian-header > div.header-right")).click();
 			  }	  	  		  
 	  }
+	  
+	  
+	  public void turnOnOffCW(int featureOrder, WebDriver driver, String br,int tab)
+	  {
+		  	 Boolean onoff=driver.findElement(By.id("lines"+3)).isSelected();
+		  	  String on="OFF";
+		  	  String not="ON";
+		  	  if (onoff)
+		  	  {
+		  		  on="ON";
+		  		  not="OFF";
+		  	  }
+				  int val=11;
+	  	  if(envvalue==0)
+	  		  val=17; 
+			  Boolean r=driver.findElement(By.id("lines"+3)).isSelected();
+			  System.out.println("bool : "+r);
+		 
+			  if(tab==1)
+				  driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/div[4]/div/label")).click();
+			  else
+				  driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/div[4]/label")).click();
+			  
+			  for(int i=1;i<100;i++){}
+				  	  
+			  driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/div["+val+"]/button[2]")).click();
+			  for(int i=1;i<100;i++){}
+			  
+			  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
+			  {
+				  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
+				  {
+					  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
+					  driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")).click();
+				  }
+			  }
+			  		
+			  int chk=0;
+			  do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+			  
+			  if(driver.findElements(By.id("dataSaveSucess")).size()>0 && driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+			  {
+				 System.out.println("Success");
+				 statusTracker(br,"Pass","Verify switching feature from" +on+" to "+not ,"Successfully switched feature","Successfully able to switch feature");
+			  }
+			  else
+			  {
+				 System.out.println("Fail");
+				 statusTracker(br,"Fail","Verify switching feature from" +on+" to "+not ,"Unsuccessfully switched feature","Successfully able to switch feature");
+				 
+				 driver.navigate().refresh();
+				 driver.findElement(By.cssSelector("#collapseFeature3 > div.accordian-header > div.header-right")).click();
+			  }	  	  		  
+	  }
+	  
 	  
 	  public void turnOnOffSelected(int featureOrder, String featureName,WebDriver driver, String br, int numSuspended,int tab,String[] tnSuspendedStatus)
 	  {
@@ -648,7 +744,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  if(tab==1)
 			  {
 			  try{
-				 if(driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+(5+i)+"]/div")).isDisplayed())
+				 if(driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div["+(5+i)+"]/div")).isDisplayed())
 				 {
 					 System.out.println("in11");
 					  numberOfTns++;
@@ -667,7 +763,58 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  else
 			  {
 				  try{
-					  if(driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+(5+i)+"]")).isDisplayed())
+					  if(driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div["+(5+i)+"]")).isDisplayed())
+							 
+						 {
+							 System.out.println("in11");
+							  numberOfTns++;
+						 }
+						 else
+						 {
+							 System.out.println("in22");
+							  i=101;
+						 }
+						}
+					  catch(Exception e)
+					  {
+						  i=101;
+					  }
+			  }
+		  }
+		 		  		  
+		  return numberOfTns;
+	  }
+	  
+	  public int countNumberTnsCW(int featureOrder, String featureName, WebDriver driver,int tab)
+	  {
+		  int numberOfTns=0;
+		  for(int i=0;i<50;i++){}
+		  for(int i=0;i<100;i++)
+		  {
+				  //if(driver.findElements(By.id("check"+featureName+i)).size()>0)
+			  if(tab==1)
+			  {
+			  try{
+				 if(driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div["+(5+i)+"]/div")).isDisplayed())
+				 {
+					 System.out.println("in11");
+					  numberOfTns++;
+				 }
+				 else
+				 {
+					 System.out.println("in22");
+					  i=101;
+				 }
+				}
+			  catch(Exception e)
+			  {
+				  i=101;
+			  }
+			  }
+			  else
+			  {
+				  try{
+					  if(driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div["+(5+i)+"]")).isDisplayed())
 							 
 						 {
 							 System.out.println("in11");
@@ -841,7 +988,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  {
 			  if(tab==1)
 			  {
-			  if(isAttributePresent(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tbody["+(1+i)+"]/tr/td[2]/div/label")),"disabled"))
+			  if(isAttributePresent(driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[3]/table/tbody["+(1+i)+"]/tr/td[2]/div/label")),"disabled"))
 			  {
 				  a[i]="yes";
 				  System.out.println("yes");
@@ -853,7 +1000,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  }
 			  }
 			  else{
-				  if(isAttributePresent(driver.findElement(By.xpath("//div[@id='collapseFeature']/div[2]/form/div["+(5+i)+"]")),"disabled"))
+				  if(isAttributePresent(driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div["+(5+i)+"]")),"disabled"))
 				  {
 					  a[i]="yes";
 					  System.out.println("yes");
@@ -869,6 +1016,43 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  }
 		  return a;
 	  }
+	public String[] suspendedStatusDND(int numberOfTns, int featureOrder,String featureName, WebDriver driver,int tab)
+	  {
+		  String []a=new String[numberOfTns];
+		  
+		  for(int i=0;i<numberOfTns;i++)
+		  {
+			  if(tab==1)
+			  {
+			  if(isAttributePresent(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/table/tbody["+(1+i)+"]/tr/td[2]/div/label")),"disabled"))
+			  {
+				  a[i]="yes";
+				  System.out.println("yes");
+			  }
+			  else
+			  {
+				  a[i]="no";
+				  System.out.println("no");	  
+			  }
+			  }
+			  else{
+				  if(isAttributePresent(driver.findElement(By.xpath("//div[@id='collapseFeature_"+featureName+"']/div[2]/form/div["+(5+i)+"]")),"disabled"))
+				  {
+					  a[i]="yes";
+					  System.out.println("yes");
+				  }
+				  else
+				  {
+					  a[i]="no";
+					  System.out.println("no");	  
+				  }
+			  }
+		
+		  
+		  }
+		  return a;
+	  }
+	
 	     
 	public boolean suspended(String a[], WebDriver driver)
 	  {
@@ -903,9 +1087,9 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		
 		  //driver.findElement(By.xpath(xpath_ACRunsavedpopup_xpath1)).click();
 		  if(tab==1)
-			  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/div/label")).click();
+			  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/div/label")).click();
 		  else			  
-			  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/label")).click();
+			  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/label")).click();
 		  
 		  logger.info("TurnOFF/ON");
 		  driver.findElement(By.linkText("Home")).click();
@@ -917,7 +1101,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  driver.findElement(By.id("cancelSaveFeature")).click();
 			  System.out.println("In here 2");
 			  logger.info("pop up display1");
-			  if(driver.findElements(By.xpath("//html/body/section/div[4]/div[2]")).size()>0)
+			  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
 			  {
 				  logger.info("Success");
 				  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
@@ -930,9 +1114,9 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  }     
 		  
 		  if(tab==1)
-			  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/div/label")).click();
+			  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/div/label")).click();
 		  else
-			  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/label")).click();
+			  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/label")).click();
 			  
 		  logger.info("TurnON");
 		  if(tab==1)
@@ -943,7 +1127,7 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
 		  logger.info("OK");
 
-		  if(driver.findElements(By.xpath("//html/body/section/div[4]/div[1]/div")).size()>0)
+		  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
 		  {
 			  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page","Successfully navigated to Outgoing calls Page on clicking OK","Success");
 			//  state="Pass";
@@ -955,6 +1139,68 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  }
 		 // return state;
 	  }
+	
+	public void UnsavedpopupCW(String br, WebDriver driver, int featureOrder,int tab) throws InterruptedException
+	  {
+		  logger.info("Unsavedpopup");
+		
+		  //driver.findElement(By.xpath(xpath_ACRunsavedpopup_xpath1)).click();
+		  if(tab==1)
+			  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/div/label")).click();
+		  else			  
+			  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/label")).click();
+		  
+		  logger.info("TurnOFF/ON");
+		  driver.findElement(By.linkText("Home")).click();
+		  Boolean CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();
+		  logger.info("pop up display");
+		  if(CH==true)
+		  {
+			  System.out.println("In here 1");
+			  driver.findElement(By.id("cancelSaveFeature")).click();
+			  System.out.println("In here 2");
+			  logger.info("pop up display1");
+			  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
+			  {
+				  logger.info("Success");
+				  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
+			  }
+			  else
+			  {
+				  logger.info("Fail");
+				  statusTracker(br,"Fail","Cancel did not work","Unsuccessful","Unable to process successfully");
+			  }
+		  }     
+		  
+		  if(tab==1)
+			  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/div/label")).click();
+		  else
+			  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/label")).click();
+			  
+		  logger.info("TurnON");
+		  if(tab==1)
+			  driver.findElement(By.linkText("Outgoing Calls")).click();
+		  else
+			  driver.findElement(By.linkText("Incoming Calls")).click();  
+			  
+		  driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
+		  logger.info("OK");
+
+		  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
+		  {
+			  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page","Successfully navigated to Outgoing calls Page on clicking OK","Success");
+			//  state="Pass";
+		  }
+		  else
+		  {
+			  logger.info("Fail");
+			  statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
+		  }
+		 // return state;
+	  }
+	
+	
+	
 	  
 	public void Cancel(String br,WebDriver driver, int featureOrder,int tab)
 	  {
@@ -963,29 +1209,82 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 	    	  driver.findElement(By.linkText("Incoming Calls")).click();
 	      else
 	    	  driver.findElement(By.linkText("Outgoing Calls")).click();
-	    	  
-	      driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")).click();
-	      boolean b= driver.findElement(By.id("lines"+featureOrder)).isSelected();
+	      int chk=0;  
+	      do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	      
+	      driver.findElement(By.cssSelector("#collapseFeature2 > div.accordian-header > div.header-right")).click();
+	      boolean b= driver.findElement(By.id("lines"+2)).isSelected();
 	      
 	      if(tab==1)
-	    	  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/div/label")).click();
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/div/label")).click();
 	      else
-	    	  driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/form/div[4]/label")).click();
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature2']/div[2]/form/div[4]/label")).click();
 	    	
 	      int val=11;
 	  	  if(envvalue==0)
 	  		  val=17;
-	      driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureOrder+"']/div[2]/form/div["+val+"]/button[1]")).click();
+	      driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[2]/form/div["+val+"]/button[1]")).click();
 	      
-	      int chk=0;
+	      int chk1=0;
 		  do{
-			 System.out.println("Processing!" +chk);
-			 chk++;
+			 System.out.println("Processing!" +chk1);
+			 chk1++;
 		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 	      
-		  driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")).click();
+		  driver.findElement(By.cssSelector("#collapseFeature2 > div.accordian-header > div.header-right")).click();
 		  
-	      if(b==driver.findElement(By.id("lines"+featureOrder)).isSelected())
+	      if(b==driver.findElement(By.id("lines"+2)).isSelected())
+	      {
+	    	  logger.info("Success");
+	    	 // state="Pass";
+	    	  statusTracker(br,"Pass","Verify if the user is able to cancel the changes made","Successfully be able to cancel order","Should be able to successfully cancel the order");
+	      }
+	      else
+	      {
+	    	  logger.info("Fail");
+	    	  statusTracker(br,"Fail","Verify if the user is able to cancel the changes made","Cancelling the order did not revert the changes made","Should be able to successfully cancel the order");
+	      }
+	      //return state;
+	  }
+	
+	public void CancelCW(String br,WebDriver driver, int featureOrder,int tab)
+	  {
+	      logger.info("Cancel");
+	      if(tab==1)
+	    	  driver.findElement(By.linkText("Incoming Calls")).click();
+	      else
+	    	  driver.findElement(By.linkText("Outgoing Calls")).click();
+	      int chk=0;  
+	      do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	      
+	      driver.findElement(By.cssSelector("#collapseFeature3 > div.accordian-header > div.header-right")).click();
+	      boolean b= driver.findElement(By.id("lines"+3)).isSelected();
+	      
+	      if(tab==1)
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/div/label")).click();
+	      else
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature3']/div[2]/form/div[4]/label")).click();
+	    	
+	      int val=11;
+	  	  if(envvalue==0)
+	  		  val=17;
+	      driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/div["+val+"]/button[1]")).click();
+	      
+	      int chk1=0;
+		  do{
+			 System.out.println("Processing!" +chk1);
+			 chk1++;
+		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	      
+		  driver.findElement(By.cssSelector("#collapseFeature3 > div.accordian-header > div.header-right")).click();
+		  
+	      if(b==driver.findElement(By.id("lines"+3)).isSelected())
 	      {
 	    	  logger.info("Success");
 	    	 // state="Pass";
@@ -1013,11 +1312,11 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		   
 		    if(driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[2]/a")).isDisplayed())
 		    {
-			   statusTracker(br, "Pass","Verifiy if the cancel in unsaved pop up is closes pop up","The cancel closes the unsaved pop up","The cancel should close the pop up");
+			   statusTracker(br, "Pass","Verify if the cancel in unsaved pop up is closes pop up","The cancel closes the unsaved pop up","The cancel should close the pop up");
 		    }
 		    else
 		    {
-			   statusTracker(br,"Fail","Verifiy id the cancel in unsaved pop up is closes pop up","The cancel is not closes the unsaved pop up","The cancel should close the pop up");
+			   statusTracker(br,"Fail","Verify id the cancel in unsaved pop up is closes pop up","The cancel is not closes the unsaved pop up","The cancel should close the pop up");
 		    }
 		    
 		    focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
@@ -1028,26 +1327,27 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		      }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 		     if(driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[2]/a")).isDisplayed())
 		     {
-			   statusTracker(br, "Pass","Verifiy if the save in unsaved pop up Redirects to Home","The save Redirects to Home","The save should Redirects to Home");
+			   statusTracker(br, "Pass","Verify if the save in unsaved pop up Redirects to Home","The save Redirects to Home","The save should Redirects to Home");
 		     }
 		     else
 		     {
-			   statusTracker(br, "Fail","Verifiy if the save in unsaved pop up Redirects to Home","The save is not Redirected to Home","The save should Redirects to Home");
+			   statusTracker(br, "Fail","Verify if the save in unsaved pop up Redirects to Home","The save is not Redirected to Home","The save should Redirects to Home");
 		     }		     
 		  }
 	  
 	public void login(WebDriver driver,String username, String password)
 	  {
-		  driver.get("http://165.237.40.67/TEST2");
+		 //driver.get("http://165.237.40.67/TEST2");
+		//driver.get("http://10.136.212.72/TEST3");
 		  envvalue=1;
-		  driver.findElement(By.id("UserName")).clear();
+		  /*driver.findElement(By.id("UserName")).clear();
 		  driver.findElement(By.id("UserName")).sendKeys(username);		  
-		  driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+		  driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();*/
 		  
-		  //driver.get("https://voicemanager.timewarnercable.com/");
-		  //driver.findElement(By.id("Ecom_User_ID")).sendKeys(username);
-		  //driver.findElement(By.id("Ecom_Password")).sendKeys(password);
-		  //driver.findElement(By.id("btnLogin")).click();
+		  driver.get("https://voicemanager.timewarnercable.com/");
+		  driver.findElement(By.id("Ecom_User_ID")).sendKeys(username);
+		  driver.findElement(By.id("Ecom_Password")).sendKeys(password);
+		  driver.findElement(By.id("btnLogin")).click();
 		  
 		  //driver.findElement(By.id("UserName")).clear();
 		  //driver.findElement(By.id("UserName")).sendKeys(username);		  
@@ -1709,6 +2009,39 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 								+ "\\chromedriver.exe");
 						capabilities = DesiredCapabilities.chrome();
 						driver = new ChromeDriver(capabilities);
+					}
+
+				}
+				else if (br.equalsIgnoreCase("phantomjs")) {
+					logger.info(""+"went inside phantomJS");
+					
+					logger.info(""+"i went inside this loop of phantomJS");
+					String currentdir = System.getProperty("user.dir");
+					File dir1 = new File(".");
+					capabilities = DesiredCapabilities.phantomjs();
+					ArrayList<String> cliArgsCap = new ArrayList<String>();
+					capabilities = DesiredCapabilities.phantomjs();
+					cliArgsCap.add("--web-security=false");
+					cliArgsCap.add("--ssl-protocol=any");
+					cliArgsCap.add("--ignore-ssl-errors=true");
+					capabilities.setCapability("takesScreenshot", true);
+					capabilities.setCapability(
+					    PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+					capabilities.setCapability(
+					    PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS,
+					        new String[] { "--logLevel=2" });
+					if (Grid_Status.equalsIgnoreCase("No")) {
+						logger.info(""+"Current dir : "
+								+ dir1.getCanonicalPath());
+						String spath = dir1.getCanonicalPath();
+						spath = spath.replaceAll("\\\\", "\\\\\\\\");
+						spath = spath + "\\" + "Resource" + "\\"
+								+ "Browser_Drivers";
+						logger.info(""+"spath is ---" + spath);
+						System.setProperty("phantomjs.binary.path", spath
+								+ "\\phantomjs.exe");
+						driver = new PhantomJSDriver(capabilities);
+						
 					}
 
 				} else {

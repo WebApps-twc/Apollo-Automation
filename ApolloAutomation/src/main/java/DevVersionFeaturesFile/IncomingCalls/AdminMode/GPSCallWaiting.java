@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.IncomingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -87,13 +87,16 @@ public class GPSCallWaiting extends CommonFunctions
     	  if(!(InternalException(driver,br)))
           {
     	  switchTo(driver, "Admin",tlim,br);
-    	  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br); 
-    	  //driver.get("https://voicemanager-staging.timewarnercable.com");
-    	  do{
-    	  }while(driver.findElements(By.xpath(xpath_GPSexecute_xpath1)).size()<0);
-    	  
+    	  if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+		  {
+			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+		  }
+		  else
+		  {
+			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+		  }
     	  System.out.println("a1");
-    	  focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath1)),br);
+    	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);
     	  System.out.println("b");
  	  
    	  
@@ -106,17 +109,17 @@ public class GPSCallWaiting extends CommonFunctions
     	  int count1=driver.findElements(By.xpath(xpath_GPSexecute_xpath)).size();
     	  System.out.println("count here: " + count1);   //a.findElements(By.tagName("id")).size());
     	  driver.manage().timeouts().implicitlyWait(0,TimeUnit.MILLISECONDS);
-    	  	
+    	  
     	  String featureName="Call Waiting";
-    	  int featureOrder=FeatureListIncoming(driver,count1,featureName);
+    	  int featureOrder=FeatureListIncomingCW(driver,count1,featureName);
 
     	  System.out.println("outttttttt");
-    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
+    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature3 > div.accordian-header > div.header-right")),br);
     	  System.out.println("c");
     	  
-    	  int numberOfTns=countNumberTns(featureOrder, featureName,driver,1);
+    	  int numberOfTns=countNumberTnsCW(featureOrder, featureName,driver,1);
     	  System.out.println("d: "+numberOfTns);
-    	  tnSuspendedStatus=new String[numberOfTns];
+    	  /*tnSuspendedStatus=new String[numberOfTns];
     	  tnSuspendedStatus=suspendedStatus(numberOfTns,featureOrder, featureName,driver,1);
     	  
     	  System.out.println("e: "+tnSuspendedStatus.length);
@@ -129,29 +132,29 @@ public class GPSCallWaiting extends CommonFunctions
 
     	  String featureStatus="";
     	  if(suspended)
-    		  statusTracker(br,"","Lines which are suspended: "+numberSuspended,"","");
+    		  statusTracker(br,"","Lines which are suspended: "+numberSuspended,"","");*/
     		  
-    		  Boolean onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+    		  Boolean onoff=driver.findElement(By.id("lines"+3)).isSelected();
         	  if(onoff)
         		  System.out.println("Feature was ON");
         	  else
         		  System.out.println("Feature was OFF");
         	  
-        	  turnOnOff(featureOrder,driver,br,1);
+        	  turnOnOffCW(featureOrder,driver,br,1);
         	 
         	  
-        	  onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+        	  onoff=driver.findElement(By.id("lines"+3)).isSelected();
         	  if(onoff)
         		  System.out.println("Feature was ON");
         	  else
         		  System.out.println("Feature was OFF");
         	  
-        	  turnOnOff(featureOrder,driver,br,1);
+        	  turnOnOffCW(featureOrder,driver,br,1);
         	  
-        	  turnOnOffSelected(featureOrder,featureName,driver,br, numberSuspended,1,tnSuspendedStatus);
+        	  //turnOnOffSelected(featureOrder,featureName,driver,br, numberSuspended,1,tnSuspendedStatus);
         	  
-        	  Unsavedpopup(br,driver, featureOrder,1);
-              Cancel(br,driver, featureOrder,1);
+        	  UnsavedpopupCW(br,driver, featureOrder,1);
+              CancelCW(br,driver, featureOrder,1);
         	      	  
 			//first=1;
               first=1;
