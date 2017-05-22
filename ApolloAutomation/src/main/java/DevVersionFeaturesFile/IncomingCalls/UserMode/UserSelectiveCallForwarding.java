@@ -1,18 +1,20 @@
 package DevVersionFeaturesFile.IncomingCalls.UserMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
 import java.io.File;
-
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebDriver;
+
+
+
+
 
 
 import jxl.Cell;
@@ -22,6 +24,8 @@ import jxl.WorkbookSettings;
 
 public class UserSelectiveCallForwarding extends CommonFunctions {
 	
+	String accst;
+	String initialstate,chngetostate;
 	String table, tns[];
     String tlimit,username,pwd;
     int tncount;				                        
@@ -53,12 +57,12 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 				try
 				{
 			
-					if(focusSearch(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[1]/i")),br))
+					if(focusSearch(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[1]/i")),br))
 					{
 						System .out.println("TN is suspended");
 						continue;
 					}                                    
-					else if(driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/input")).getAttribute("class").contains("not"))
+					else if(driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/input")).getAttribute("class").contains("not"))
 					{ 
 						System.out.println("tn2");
 						TN=j;
@@ -66,8 +70,8 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 					}
 					else
 					{
-						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/label")),br);
-						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature"+featureName+"']/div[3]/table/tfoot/tr/td/button[2]")),br);
+						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div["+val+"]/table/tbody["+j+"]/tr[1]/td[2]/div/label")),br);
+						focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[3]/table/tfoot/tr/td/button[2]")),br);
 			  			  						  
 						int chk=0;
 						do{	
@@ -97,13 +101,12 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	
 	public String turnoff(WebDriver driver, String status, String acc,String br)
 	  {
-		  String initialstate=status, chngetostate="Off",state="Fail", accst=acc;
+		  initialstate="On";chngetostate="Off";
+          String state="fail"; accst=acc;
 		  
-		  focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-		  
-		  for(int i=1;i<50;i++){}
-		  focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
-
+          focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
+          
+          focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
 	      int chk=0;
 	      do{
 	          chk++;
@@ -119,15 +122,12 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	          logger.info("Fail");
 	          statusTracker(br,"Fail","Verify order process for changing status from: "+initialstate +" to: "+chngetostate+ " with "+accst,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
 	        }
-	      for(int i=1;i<50;i++){}
-	      focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-
-	      String num=randomNO(6666,9999);
-	      driver.findElement(By.id("accountCodeCalls")).clear();
-	      driver.findElement(By.id("accountCodeCalls")).sendKeys(phoneline+num);
-	      for(int i1=1;i1<50;i1++){}
-	      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
-
+	         
+	         initialstate="Off";chngetostate="On";
+	         
+	         focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
+	          
+	          focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
 	      do{
 	          chk++;
 	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
@@ -148,27 +148,21 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	  
 	  public String turnOn(WebDriver driver, String status, String acc,String br)
 	  {
-	      String initialstate=status, chngetostate="On",state = "Fail", accst=acc;
-	      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+		  String accst=acc;
+	      initialstate=status;chngetostate="On";
+          System.out.println(initialstate);
+          System.out.println(chngetostate);
+          String state="fail";
 
-		  String num=randomNO(6666,9999);
-		    driver.findElement(By.id("newNumber")).sendKeys(phoneline+num);
-		    focusClick(driver,driver.findElement(By.xpath(AddnewNum)),br);
+	      
+	      focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
+          
+          focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
+           int chk=0;
 
-		    do{
-		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-		    
-		    num=randomNO(6666,9999);
-		    driver.findElement(By.id("accountCodeCalls")).clear();
-		    driver.findElement(By.id("accountCodeCalls")).sendKeys(phoneline+num);
-		  for(int i=1;i<50;i++){}
-		  focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
-
-	      int chk=0;
-	      do{
-	          chk++;
-	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-
+ 	      do{
+ 	          chk++;
+ 	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 	        if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 	        {
 	          logger.info("Success");
@@ -179,28 +173,26 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	          logger.info("Fail");
 	          statusTracker(br,"Fail","Verify order process for changing status from: "+ initialstate +" to: "+chngetostate+ " with "+accst,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
 	        }
-	        
-	      for(int i1=1;i1<50;i1++){}
-	      focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
+	        String initialstate1="On",chngetostate1="Off";
+            System.out.println("later"+initialstate);
+            System.out.println("later"+chngetostate);
+	        focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
+	          
+	          focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
 
-	      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
-	      
-	      do{
-	          //logger.info("Processing!" +chk);
-	          chk++;
-	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-
-	      if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
-	        {
-	          logger.info("Success");
-	          statusTracker(br,"Pass","Verify order process for changing status from: "+chngetostate +" to: "+initialstate+ " with "+accst,"Successfully be able to process order","Successfully processed order");
-	          state="Pass";
-	        }
-	         else
-	        {
-	          logger.info("Fail");
-	          statusTracker(br,"Fail","Verify order process for changing status from: "+chngetostate +" to: "+initialstate+ " with "+accst,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
-	        }
+	 	      do{
+	 	          chk++;
+	 	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+		        if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+		        {
+		          logger.info("Success");
+		          statusTracker(br,"Pass","Verify order process for changing status from: "+ initialstate +" to: "+chngetostate+ " with "+accst,"Successfully be able to process order","Successfully processed order");
+		        }
+		        else
+		        {
+		          logger.info("Fail");
+		          statusTracker(br,"Fail","Verify order process for changing status from: "+ initialstate +" to: "+chngetostate+ " with "+accst,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
+		        }
 		return state;
 		  
 	  }
@@ -579,25 +571,30 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	              }
 	              logger.info("a");
 
-	              switchTo(driver, "Admin",tlim,br);   
-	              focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]")),br);
-
+	              if(driver.findElement(By.cssSelector("a[href='/UserMain/UserCallSettings']")).isDisplayed())
+        		  {
+        			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+        		  }
+        		  else
+        		  {
+        			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+        		  }
 	              logger.info("checkpoint1");
                   
                   for(int i=1;i<20;i++){}
                   Acccode=driver.findElement(org.openqa.selenium.By.xpath("//html/body/section/section/div[1]/aside[1]/ul/li[1]/strong")).getText();
                   logger.info("Acccode"+Acccode);
                   
-                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[3]")),br);
+                  focusClick(driver,driver.findElement(By.cssSelector("a[href='/UserIncomingCalls/IncomingCalls']")),br);
                  
                 	  int featureOrder=0;String featureName="SCF";
-                	  focusClick(driver,driver.findElement(By.xpath("//*[@id='accordion_SCF']/h3")),br);    	  
+                	  focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature4']//h3")),br);    	  
 							System.out.println("c");
 
 							int divval=3;
 							try
  	       					{
-								if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/div/h2")).isDisplayed())
+								if(driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[3]/div/h2")).isDisplayed())
 								{
 									statusTracker(br,"","SCF Modal pop up is  displayed","","");
 									//driver.findElement(By.xpath(".//*[@id='collapseFeature_"+featureName+"']/div[3]/div/button")).click();
@@ -610,15 +607,15 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
  	       						first=1;
  	       					}												
    	  
-							int numberOfTns=driver.findElements(By.xpath("//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody")).size(); 
+							/*int numberOfTns=driver.findElements(By.xpath("//*[@id='collapseFeature4']/div["+divval+"]/table/tbody")).size(); 
 							System.out.println("d: "+numberOfTns);
 							int TN= Select_TN(driver,featureName,numberOfTns,br,divval);
 							System.out.println("TN1"+TN);
-                        	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN+"]/tr[1]/td[1]")).getText();
+                        	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeature4']/div["+divval+"]/table/tbody["+TN+"]/tr[1]/td[1]")).getText();
                         	phoneline=phoneline1.substring(0, 8);
-                        	System.out.println("phoneline"+phoneline);
+                        	System.out.println("phoneline"+phoneline);*/
 							
-	              if(phoneline1!=null)
+	             /* if(phoneline1!=null)
 	              {
 	              focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[1]/a")),br);
 
@@ -629,33 +626,32 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
                 	  //logger.info("Processing!" +chk);
                 	 
                   }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-                /*  phoneline_ac=driver.findElement(By.xpath("//html/body/header/div[4]/div[3]/div/div/span/select/option[1]")).getText();*/
+                  phoneline_ac=driver.findElement(By.xpath("//html/body/header/div[4]/div[3]/div/div/span/select/option[1]")).getText();
                   phoneline=phoneline_ac.substring(0,8);
                   logger.info("phoneline"+phoneline);
-                  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature4 > div.accordian-header > div.header-right")),br);
+                  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature4 > div.accordian-header > div.header-right")),br);*/
                                                      
                   boolean status= driver.findElement(By.id("toggleButton24")).isSelected();
                   int cnt;
-                  logger.info("Feature"+driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"));
-                  if(driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"))
+                  logger.info("Feature"+driver.findElement(By.xpath("//html/body/section/div[12]/div[1]/h3")).getText().equals("Custom Ring"));
+                  if(driver.findElement(By.xpath("//html/body/section/div[12]/div[1]/h3")).getText().equals("Custom Ring"))
                   {
                 	  butnxpath="//html/body/section/div[8]/div[2]/div[1]/label";
                 	  cnt=driver.findElements(org.openqa.selenium.By.xpath("//html/body/section/div[8]/div[2]/form/div[3]/div")).size();
                 	  logger.info("cnt is"+cnt);
-                	  accdcheck="//html/body/section/div[8]/div[2]/form/div[3]/div[3]/div/label";
+                	  /*accdcheck="//html/body/section/div[8]/div[2]/form/div[3]/div[3]/div/label";
                 	  AddnewNum="//html/body/section/div[8]/div[2]/form/div[1]/div[2]/div/button";
-                	  Err="//html/body/section/div[8]/div[2]/div[2]/div/div/div/ul";                	  
-                	  //tncount=driver.findElements(By.xpath("//html/body/section/div[8]/div[2]/form/section/label")).size();
+                	  Err="//html/body/section/div[8]/div[2]/div[2]/div/div/div/ul";                	 */ 
                   }
                   else
                   {
                 	  butnxpath="//html/body/section/div[7]/div[2]/div[1]/label";
                 	  cnt=driver.findElements(org.openqa.selenium.By.xpath("//html/body/section/div[7]/div[2]/form/div[3]/div")).size();
-                	  accdcheck="//html/body/section/div[7]/div[2]/form/div[3]/div[3]/div/label";
+                	  logger.info("cnt is"+cnt);
+                	  /*accdcheck="//html/body/section/div[7]/div[2]/form/div[3]/div[3]/div/label";
                 	  AddnewNum="//html/body/section/div[7]/div[2]/form/div[1]/div[2]/div/button";
                 	  Err="//html/body/section/div[7]/div[2]/div[2]/div/div/div/ul";
-                	  System.out.println("frntn"+frntn);
-                	  //tncount=driver.findElements(By.xpath("//html/body/section/div[7]/div[2]/form/section/label")).size();
+                	  System.out.println("frntn"+frntn);*/
                   }
                   
                   if(cnt==3)
@@ -751,7 +747,6 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	              Thread.sleep(2000);
           
 	              first=1;
-	              }
    		       
 	  }
 	      catch (Exception e)
