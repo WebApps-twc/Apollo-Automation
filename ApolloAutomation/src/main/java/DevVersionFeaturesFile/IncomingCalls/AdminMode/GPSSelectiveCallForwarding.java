@@ -483,6 +483,37 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                 	  	}
   	}	
   
+  public void DeleteTn(WebDriver driver,String br, int val) throws Exception
+  { int chk=0;
+	  int cnt;
+	  cnt=driver.findElements(By.xpath("//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div")).size();
+	  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div[1]/span")),br);
+	  
+	  logger.info("The total number of phone numbers present: "+cnt);
+	  for(int i=2; i<= cnt; i++)
+	  {
+		  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div[2]/div/div[2]/span")),br);
+	  }
+	  Thread.sleep(3000);
+	  focusClick(driver, driver.findElement(By.xpath(SCFxpath_GPSexecute_lable+"/tbody["+TN1+"]/tr[2]/td/div/div/div/div[1]/span[1]/label")),br);
+	  Thread.sleep(3000);
+	  focusClick(driver,driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)),br);
+		  
+	  do{
+          chk++;
+        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+
+        if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+        {
+  	    	statusTracker(br,"Pass","Verify order process for Deleting TN","Successfully be able to process order","Successfully processed order");
+        }
+        else
+        {
+      	  logger.info("Fail");
+      	  statusTracker(br,"Fail","Verify order process for Deleting TN","Unable to process order","Unable to process successfully");
+        }
+  } 
+  
   public void DeltTn(WebDriver driver,String br, int val) throws InterruptedException
   {
 	  int tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div")).size();
@@ -522,6 +553,7 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
     		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
     		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys(phoneline+num);
     		Thread.sleep(3000);
+    		
     		focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
     	  	}
   			Thread.sleep(3000);
@@ -560,33 +592,53 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
   
   public void maxTN(WebDriver driver,String br,int val) throws Exception
   {
-	  int tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div")).size();
+	  int tnlst= (driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div")).size()) - 1;
 	  System.out.println("tnlst"+tnlst);
-	  if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody[1]/tr[2]/td/div/div[2]/div/div[1]/button")).isDisplayed())
-		{
-		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody[1]/tr[2]/td/div/div[2]/div/div[1]/button")),br);
-		  focusClick(driver,driver.findElement(By.cssSelector("span[ng-click='confirm()']")),br);
-		  Thread.sleep(3000);
-		  driver.findElement(By.xpath(SCFcssselector_GPSexecute_save1)).click();
-		  int chk=0;
-		  do{
-  		  chk++;
-		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-		}
-  	  System.out.println("tnlst"+tnlst);
-  	do
+	  
+	  for(int i= tnlst; i<30; i++)
   	  {
-    		String num=randomNO(3333,6666);
-    		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
-    		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys(phoneline+num);
-    		Thread.sleep(5000);
+    		//num=randomNO(2222,9999);
+    		int p=10;
+      		p = p+i;
+	  		String phno = "72586102"+p;
+	  		logger.info("Phone number to be added"+phno);
+	  		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
+    		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys(phno);
+    		Thread.sleep(3000);
     		focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
-    		tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div")).size();
-  	  }while(tnlst<=31);
+            Thread.sleep(3000);
+    		//tnlst=driver.findElements(By.xpath(".//*[@id='collapseFeatureSCR']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div/div/div/div/div")).size();
+  	  }
+	  
+  	
+  		focusClick(driver, driver.findElement(By.xpath("//*[@id='collapseFeatureSCF']/div[3]//tbody[1]/tr[2]/td/div/div[2]/div/div[3]/button[2]")),br);
+	  
+	  do{
+      }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	  
+	  int cnt1=(driver.findElements(By.xpath("//*[@id='collapseFeatureSCF']/div[3]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div")).size()) - 1;
+	  
+	  if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+    {
+      logger.info("Success");
+      statusTracker(br,"Pass","Verify order process for adding 30 TN's and count is: "+cnt1,"Successfully be able to process order","Successfully processed order");
+    }
+    else
+    {
+      logger.info("Fail");
+      statusTracker(br,"Fail","Verify order process for adding 30 TN's and count is: "+cnt1,"Thr order is failed to process"+ driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).getText(),"Unable to process successfully");
+    }
+  	
+	  driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
+		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).sendKeys("5658241250");
+		Thread.sleep(5000);
+		focusClick(driver,driver.findElement(By.xpath(SCFxpath_GPSexecute_Add+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/span/button")),br);
+		
   	if(driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).isDisplayed())
  	{
- 		statusTracker(br,"Pass","Verify if message is displayed when adding 30 TN's to list","The message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+val+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/span")).getText(),"Error message should be displayed");
-    }
+ 		statusTracker(br,"Pass","Verify if message is displayed when adding 30 TN's to list","The message is displayed: "+ driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).getText(),"Error message should be displayed");
+ 		driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[2]/div/div/input")).clear();
+ 	}
     else
     {
     	statusTracker(br,"Fail","Verify if message is displayed when adding 30 TN's to list","The message is not displayed","The message should be displayed");
@@ -935,91 +987,14 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                     				turnOn(driver, br,acc, divval);
                                     			}                     
                                     			logger.info("orderprocess is done");                       
-                                    			EditTn(driver,br,divval);
-                                    			DeltTn(driver,br,divval);
-                                    			TNValidation(driver,br,a2,divval); 
                                     			maxTN(driver,br,divval);
+                                    			DeleteTn(driver,br,divval);
+                                    			TNValidation(driver,br,a2,divval); 
+                                    			
                                     			                                    		
                                       		  	}
                                       		  	
                                       		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[6]/button")),br);
-                                      		  
-                                      		/*driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
-                                      		logger.info("OK");
-
-                                      		if(driver.findElements(By.xpath("//html/body/section/div[4]/div[1]/div")).size()>0)
-                                      		{
-                                  			  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page by closing the configure close","Successfully navigated to Outgoing calls Page on clicking OK","Success");
-                                  			//  state="Pass";
-                                      		}
-                                      		else
-                                      		{
-                                  			  logger.info("Fail");
-                                  			  statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
-                                      		}
-                                                
-                                    	 }
-                                    	
-                                    	
-                                    	/*driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).clear();
-                                        driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).sendKeys("9193220001");
-                            			
-                                        //driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[3]/button[1]")).click();
-                                        focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody[1]/tr[2]/td/div/div[2]/div/div[3]/button[@ng-click='cancel()']")),br);
-                                        focusClick(driver,driver.findElement(By.cssSelector("span[ng-click='confirm()']")),br);
-                                  	  	Thread.sleep(2000);                                           
-                                        //if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[2]/td/div/div[2]/div/div[3]/button[1]")).getAttribute("disabled").equals("disabled"))
-                                        if(driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div[3]/table/tbody[1]/tr[2]/td/div/div[2]/div/div[3]/button[@ng-click='cancel()']")).getAttribute("disabled").equals("disabled"))
-                                  	  	{
-                                      	  logger.info("Success");
-                                      	 // state="Pass";
-                                      	  statusTracker(br,"Pass","Verify if the user is able to cancel the changes made","Successfully be able to cancel order","Should be able to successfully cancel the order");
-                                        }
-                                        else
-                                        {
-                                      	  logger.info("Fail");
-                                      	  statusTracker(br,"Fail","Verify if the user is able to cancel the changes made","Cancelling the order did not revert the changes made","Should be able to successfully cancel the order");
-                                        }
-                                        
-                                        driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).clear();
-                                        driver.findElement(By.xpath(SCFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div[1]/div/div[2]/div/input")).sendKeys("9193220001");
-                                        focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[6]/button")),br);
-                                        
-                                        Boolean CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();
-                              		  	logger.info("pop up display");
-                              		  	if(CH==true)
-                              		  	{
-                              			  System.out.println("In here 1");
-                              			  driver.findElement(By.id("cancelSaveFeature")).click();
-                              			  System.out.println("In here 2");
-                              			  logger.info("pop up display1");
-                              			  if(driver.findElements(By.xpath("//html/body/section/div[4]/div[2]")).size()>0)
-                              			  {
-                              				  logger.info("Success");
-                              				  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
-                              			  }
-                              			  else
-                              			  {
-                              				  logger.info("Fail");
-                              				  statusTracker(br,"Fail","Cancel did not work","Unsuccessful","Unable to process successfully");
-                              			  }
-                              		  	}
-                              		  	
-                              		  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeatureSCF']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[6]/button")),br);
-                              		  
-                              		driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
-                              		logger.info("OK");
-
-                              		if(driver.findElements(By.xpath("//html/body/section/div[4]/div[1]/div")).size()>0)
-                              		{
-                          			  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page by closing the configure close","Successfully navigated to Outgoing calls Page on clicking OK","Success");
-                          			//  state="Pass";
-                              		}
-                              		else
-                              		{
-                          			  logger.info("Fail");
-                          			  statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
-                              		}*/
                                    }
                           }                         
       

@@ -17,6 +17,12 @@ import org.openqa.selenium.WebDriver;
 
 
 
+
+
+
+
+
+
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -99,15 +105,18 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 			return TN;	
 		}
 	
-	public String turnoff(WebDriver driver, String status, String acc,String br)
+	public String turnoff(WebDriver driver, String status, String br)
 	  {
 		  initialstate="On";chngetostate="Off";
-          String state="fail"; accst=acc;
-		  
+          String state="fail"; 
+          int chk=0;
+          //accst=acc;
+          
+         
           focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
           
           focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
-	      int chk=0;
+	      
 	      do{
 	          chk++;
 	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
@@ -122,8 +131,35 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	          logger.info("Fail");
 	          statusTracker(br,"Fail","Verify order process for changing status from: "+initialstate +" to: "+chngetostate+ " with "+accst,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
 	        }
-	         
+	         if(driver.findElement(By.xpath("//[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")).isDisplayed());
+	         {
+	        	 focusClick(driver,  driver.findElement(By.xpath("//[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")),br);
+	        	 
+	         }
+	        
 	         initialstate="Off";chngetostate="On";
+	         driver.findElement(By.cssSelector("form[name='selectiveCallForward'] [name='newNumber']")).clear();
+			  driver.findElement(By.cssSelector("form[name='selectiveCallForward'] [name='newNumber']")).sendKeys("8956325485");
+			  focusClick(driver,  driver.findElement(By.xpath("//form[@name='selectiveCallForward']/div[1]//button[1]")),br);
+			  do{
+		          chk++;
+		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+			  
+			  if(driver.findElement(By.cssSelector("section[class='inner-box ng-scope']")).isDisplayed())
+			  {
+				  logger.info("Success");
+		          statusTracker(br,"Pass","Verify if the phone numbers are getting added ","The Phone number has been added Successfully ","Successfully processed order");
+			  }
+			  else
+			  {
+				  logger.info("Fail");
+		          statusTracker(br,"Fail","Verify if the phone numbers are getting added ","The Phone number has not been added ","Thr order is failed to process");
+			  }
+	          //String num=randomNO(3333,6666);
+	          //logger.info(num);
+	          driver.findElement(By.name("accountCodeCalls")).clear();
+			  driver.findElement(By.name("accountCodeCalls")).sendKeys("7456325485");
+			  
 	         
 	         focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
 	          
@@ -146,19 +182,45 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	      return state;
 	  }
 	  
-	  public String turnOn(WebDriver driver, String status, String acc,String br)
+	  public String turnOn(WebDriver driver, String status, String br) throws InterruptedException
 	  {
-		  String accst=acc;
 	      initialstate=status;chngetostate="On";
           System.out.println(initialstate);
           System.out.println(chngetostate);
           String state="fail";
-
-	      
+          int chk=0;
+          
+          if(driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")).isDisplayed())
+	      {
+	        focusClick(driver,  driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")),br);
+	        Thread.sleep(2000);
+	      }
+          driver.findElement(By.cssSelector("form[name='selectiveCallForward'] [name='newNumber']")).clear();
+		  driver.findElement(By.cssSelector("form[name='selectiveCallForward'] [name='newNumber']")).sendKeys("8956325485");
+		  focusClick(driver,  driver.findElement(By.xpath("//form[@name='selectiveCallForward']/div[1]//button[1]")),br);
+		  do{
+	          chk++;
+	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+		  
+		  if(driver.findElement(By.cssSelector("section[class='inner-box ng-scope']")).isDisplayed())
+		  {
+			  logger.info("Success");
+	          statusTracker(br,"Pass","Verify if the phone numbers are getting added ","The Phone number has been added Successfully ","Successfully processed order");
+		  }
+		  else
+		  {
+			  logger.info("Fail");
+	          statusTracker(br,"Fail","Verify if the phone numbers are getting added ","The Phone number has not been added ","Thr order is failed to process");
+		  }
+          //String num=randomNO(3333,6666);
+          //logger.info(num);
+          driver.findElement(By.name("accountCodeCalls")).clear();
+		  driver.findElement(By.name("accountCodeCalls")).sendKeys("7456325485");
+		  
 	      focusClick(driver,  driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/div[1]/label")),br);
           
           focusClick(driver, driver.findElement(By.xpath(".//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
-           int chk=0;
+           
 
  	      do{
  	          chk++;
@@ -245,7 +307,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	  }
 	  
 	  public void DeltTn(WebDriver driver,String br)
-	  {
+	  { int chk=0;
 		  int cnt;
 		  if(driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"))
           {
@@ -270,7 +332,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 
 			  focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
 
-			  int chk=0;
+			 
 			  do{
 		          chk++;
 		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
@@ -297,13 +359,12 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 			  focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
 
 		      do{
-		          //chk++;
+		          chk++;
 		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 		      focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/form/section/label/i")),br);
 
 		      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
 
-			  int chk=0;
 			  do{
 		          chk++;
 		        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
@@ -320,6 +381,33 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 		        }	      
 		  }
 	  }
+	  
+	  public void DeleteTn(WebDriver driver,String br) throws Exception
+	  { int chk=0;
+		  int cnt;
+		  cnt=driver.findElements(By.xpath("//section[@class='inner-box ng-scope']/label")).size();
+		  logger.info("The total number of phone numbers present: "+cnt);
+		  for(int i=1; i<= cnt; i++)
+		  {
+			  focusClick(driver,driver.findElement(By.xpath("//section[@class='inner-box ng-scope']/label[1]")),br);
+		  }
+		  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
+  		  
+		  do{
+	          chk++;
+	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+
+	        if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+	        {
+	          logger.info("Success");
+	          statusTracker(br,"Pass","Verify order process for Deleting all the Phone numbers one by one","Successfully be able to process order","Successfully processed order");
+	        }
+	        else
+	        {
+	          logger.info("Fail");
+	          statusTracker(br,"Fail","Verify order process for Deleting all the Phone numbers one by one","Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
+	        }
+	  } 
 	  
 	  public void DeltTnAll(WebDriver driver,String br) throws Exception
 	  {
@@ -391,30 +479,40 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	  public void maxTN(WebDriver driver,String br) throws Exception
 	  {
 		  int cnt;
-		  if(driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"))
-          {
-			  cnt=driver.findElements(By.xpath("//html/body/section/div[8]/div[2]/form/section/label")).size();
-          }
-          else
-          {
-        	  cnt=driver.findElements(By.xpath("//html/body/section/div[7]/div[2]/form/section/label")).size();
-          }
+		  
+		  if(driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")).isDisplayed())
+	      {
+	        focusClick(driver,  driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]//div[1]/div[2]//a")),br);
+	        Thread.sleep(2000);
+	       
+	          logger.info("Success");
+	          statusTracker(br,"Pass","Verify order process for DeletAll","Successfully Deleted all the TN's","Successfully processed order");
+	      }
+		  
+		  cnt=driver.findElements(By.xpath("//section[@class='inner-box ng-scope']/label")).size();
+        	  
 		  System.out.println("cnt"+cnt);
-		  for(int i=cnt;i<30;i++){
-	  		  String num=randomNO(6666,9999);
-	  		  driver.findElement(By.id("newNumber")).clear();
-	  		  driver.findElement(By.id("newNumber")).sendKeys(phoneline+num);	 
-	  		focusClick(driver,driver.findElement(By.xpath(AddnewNum)),br);
+		  
+		  for(int i=cnt;i<30;i++) 
+		  {
+	  		  //String num=randomNO(6666,9999);
+			  int p=10;
+			  p = p+i;
+	  		  String phno = "52132654"+p;
+	  		  logger.info("Phone number to be added"+phno);
+			  driver.findElement(By.id("newNumber")).clear();
+	  		  driver.findElement(By.id("newNumber")).sendKeys(phno);	 
 	  		  
+	  		  focusClick(driver,driver.findElement(By.xpath("//form[@name='selectiveCallForward']/div[1]//button[1]")),br);
 	  		  do{
 	  	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 		  }
-		  focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+		  focusClick(driver, driver.findElement(By.xpath("//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
 	  	  
 		  do{
 	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
 		  
-		  int cnt1=driver.findElements(By.xpath("//html/body/section/div[8]/div[2]/form/section/label")).size();
+		  int cnt1=driver.findElements(By.xpath("//section[@class='inner-box ng-scope']/label")).size();
 		  
 		  if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 	      {
@@ -424,23 +522,44 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	      else
 	      {
 	        logger.info("Fail");
-	        statusTracker(br,"Fail","Verify order process for adding 30 TN's and count is: "+cnt1,"Thr order is failed to process"+ driver.findElement(By.xpath(Err)).getText(),"Unable to process successfully");
+	        statusTracker(br,"Fail","Verify order process for adding 30 TN's and count is: "+cnt1,"Thr order is failed to process"+ driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).getText(),"Unable to process successfully");
 	      }
+		  logger.info("Trying to add more than 30 Phone numbers");
+		  
+		  driver.findElement(By.id("newNumber")).clear();
+  		  driver.findElement(By.id("newNumber")).sendKeys("5213265440");
+  		focusClick(driver,driver.findElement(By.xpath("//form[@name='selectiveCallForward']/div[1]//button[1]")),br);
+		  do{
+	        }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+		  
+		  if(driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).isDisplayed())
+	   	  {
+	   		  statusTracker(br,"Pass","Verify if error message is displayed when adding more than 30 TN","Error message is displayed: "+ driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).getText(),"Error message should be displayed");
+	   		  Thread.sleep(2000);
+	   		  driver.findElement(By.id("newNumber")).clear();
+	   	  }
+	   	  else
+	   	  {
+	   	  	  statusTracker(br,"Fail","Verify if error message is displayed when adding more than 30 TN","Error message is not displayed","Error message should be displayed");
+	   	  }
+		  
 		  
 		  String num1=randomNO(1111,5555);
 		  driver.findElement(By.id("newNumber")).clear();
 		  driver.findElement(By.id("newNumber")).sendKeys(phoneline+num1);
-		  focusClick(driver,driver.findElement(By.xpath(AddnewNum)),br);
+		  focusClick(driver,driver.findElement(By.xpath("//form[@name='selectiveCallForward']/div[1]//button[1]")),br);
 
 		  Thread.sleep(2000);
-		  if(driver.findElement(By.xpath(Err)).isDisplayed())
-	   	     {
-	   		  statusTracker(br,"Pass","Verify if error message is displayed when adding more than 30 TN","Error message is displayed: "+ driver.findElement(By.xpath(Err)).getText(),"Error message should be displayed");
-	   	     }
-	   	  	 else
-	   	  	 {
-	   	  		 statusTracker(br,"Fail","Verify if error message is displayed when adding more than 30 TN","Error message is not displayed","Error message should be displayed");
-	   	  	 }
+		  if(driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).isDisplayed())
+	   	  {
+	   		  statusTracker(br,"Pass","Verify if error message is displayed when adding wrong TN","Error message is displayed: "+ driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).getText(),"Error message should be displayed");
+	   		  Thread.sleep(2000);
+	   		  driver.findElement(By.id("newNumber")).clear();
+	   	  }
+	   	  else
+	   	  {
+	   	  	  statusTracker(br,"Fail","Verify if error message is displayed when adding wrong TN","Error message is not displayed","Error message should be displayed");
+	   	  }
 	  }
 	  
 	  public String TNcheck(String Tn, String acode,WebDriver driver, int check,String br) throws Exception
@@ -450,32 +569,22 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	         driver.findElement(By.name("accountCodeCalls")).clear();
 	         driver.findElement(By.name("accountCodeCalls")).sendKeys(Tn);       
 	          
-	         if(check1==2)
-	         {
-	        	 driver.findElement(By.name("accountCodeForwarding")).clear();
-	        	 driver.findElement(By.name("accountCodeForwarding")).sendKeys(acode);
-	         }
-	         if(check1==3)
-	         {
-	        	 Tn=2+Acccode;
-	        	 logger.info("ac"+Tn);
-	        	 driver.findElement(By.name("accountCodeForwarding")).clear();
-	        	 driver.findElement(By.name("accountCodeForwarding")).sendKeys(Tn);
-	         }
-	         focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+	         focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature4']/div[2]/form/div[4]/button[2]")),br);
 	                 
 	         Thread.sleep(2000);
 	     
-	         if(driver.findElement(By.xpath(Err)).isDisplayed())
-	   	     {
-	   		  statusTracker(br,"Pass","Verify if error message is displayed for TO field when adding "+Tn+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(Err)).getText(),"Error message should be displayed");
-	   		  schk="Pass";
-	   	     }
-	   	  	 else
-	   	  	 {
-	   	  		 statusTracker(br,"Fail","Verify if error message is displayed for TO field when adding "+Tn+" TN","Error message is not displayed","Error message should be displayed");
-	   	  		 schk="Fail";
-	   	  	 }
+             
+	         if(driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).isDisplayed())
+	         {
+	        	 statusTracker(br,"Pass","Verify if error message is displayed when adding wrong Phone number","Error message is displayed: "+ driver.findElement(By.xpath("//div[@id='collapseFeature4']/div[2]/div[2]/div[@class='message-box']")).getText(),"Error message should be displayed");
+	        	 schk="Pass";
+	         }
+	         else
+	         {
+	        	 statusTracker(br,"Fail","Verify if error message is displayed when adding wrong Phone number","Error message is not displayed","Error message should be displayed");
+	        	 schk="Fail";
+	         }
+	         
 	         return schk;
 	  }  
 	  
@@ -502,7 +611,7 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	  }  
 	    
 	  //TN Validation
-	  public String TNValidation(WebDriver driver, int a,String br) throws Exception
+	  public String TNValidation(WebDriver driver, String br) throws Exception
 	  {
 		     statusTracker(br,"","","Error Validation","");
 	         String schk ="Pass";
@@ -511,36 +620,6 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
 	         schk=TNcheck("9000004000","",driver,1,br);
 	         schk=TNcheck("9760004000","",driver,1,br);
 	         schk=TNcheck("9999","",driver,1,br);
-	         if(driver.findElement(By.xpath("//html/body/section/div[6]/div[1]/h3")).getText().equals("Custom Ring"))
-             {
-	        	 
-	        	 frntn=driver.findElement(By.xpath("//html/body/section/div[8]/div[2]/form/section/label[1]")).getText();
-             }
-	         else
-	         {
-	        	 frntn=driver.findElement(By.xpath("//html/body/section/div[7]/div[2]/form/section/label[1]")).getText();
-	         }
-	         schk=TNcheck(phoneline_ac,"",driver,1,br);
-	         System.out.println("frntn"+frntn);
-	         schk=TNcheck(frntn,"",driver,1,br);
-	         if(a==1 || a==2)
-	         {
-	          schk=TNcheck("9193220101","",driver,2,br); 
-	          schk=TNcheck("9193220101","2",driver,2,br);
-	          schk=TNcheck("919322","2",driver,2,br);
-	          if(a==1)
-	        	 schk=TNcheck("9193220101","",driver,3,br);
-	         schk="Pass";
-	         }
-	         
-	         schk=TNcheck2("0223004000",driver,br);
-	         schk=TNcheck2("1223004000",driver,br);
-	         schk=TNcheck2("9000004000",driver,br);
-	         schk=TNcheck2("9760004000",driver,br);
-	         schk=TNcheck2("9999",driver,br);
-	         schk=TNcheck2(phoneline_ac,driver,br);
-	         schk=TNcheck2(frntn,driver,br);
-	         
 	         return schk;
 	  }
 	  	    
@@ -607,142 +686,23 @@ public class UserSelectiveCallForwarding extends CommonFunctions {
  	       						first=1;
  	       					}												
    	  
-							/*int numberOfTns=driver.findElements(By.xpath("//*[@id='collapseFeature4']/div["+divval+"]/table/tbody")).size(); 
-							System.out.println("d: "+numberOfTns);
-							int TN= Select_TN(driver,featureName,numberOfTns,br,divval);
-							System.out.println("TN1"+TN);
-                        	phoneline1=driver.findElement(org.openqa.selenium.By.xpath(".//*[@id='collapseFeature4']/div["+divval+"]/table/tbody["+TN+"]/tr[1]/td[1]")).getText();
-                        	phoneline=phoneline1.substring(0, 8);
-                        	System.out.println("phoneline"+phoneline);*/
-							
-	             /* if(phoneline1!=null)
-	              {
-	              focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[1]/a")),br);
-
-                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[3]")),br);
-                  focusDropdown(driver,"//html/body/header/div[4]/div[3]/div/div/span",phoneline_ac,br);
-                  //new Select(driver.findElement(By.xpath("//select"))).selectByVisibleText(phoneline_ac);
-                  do{
-                	  //logger.info("Processing!" +chk);
-                	 
-                  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-                  phoneline_ac=driver.findElement(By.xpath("//html/body/header/div[4]/div[3]/div/div/span/select/option[1]")).getText();
-                  phoneline=phoneline_ac.substring(0,8);
-                  logger.info("phoneline"+phoneline);
-                  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature4 > div.accordian-header > div.header-right")),br);*/
-                                                     
                   boolean status= driver.findElement(By.id("toggleButton24")).isSelected();
                   int cnt;
-                  logger.info("Feature"+driver.findElement(By.xpath("//html/body/section/div[12]/div[1]/h3")).getText().equals("Custom Ring"));
-                  if(driver.findElement(By.xpath("//html/body/section/div[12]/div[1]/h3")).getText().equals("Custom Ring"))
+                  
+                  if(status==true)
                   {
-                	  butnxpath="//html/body/section/div[8]/div[2]/div[1]/label";
-                	  cnt=driver.findElements(org.openqa.selenium.By.xpath("//html/body/section/div[8]/div[2]/form/div[3]/div")).size();
-                	  logger.info("cnt is"+cnt);
-                	  /*accdcheck="//html/body/section/div[8]/div[2]/form/div[3]/div[3]/div/label";
-                	  AddnewNum="//html/body/section/div[8]/div[2]/form/div[1]/div[2]/div/button";
-                	  Err="//html/body/section/div[8]/div[2]/div[2]/div/div/div/ul";                	 */ 
+              	  status1="On";
+              	  state=turnoff(driver, status1,br);
                   }
                   else
                   {
-                	  butnxpath="//html/body/section/div[7]/div[2]/div[1]/label";
-                	  cnt=driver.findElements(org.openqa.selenium.By.xpath("//html/body/section/div[7]/div[2]/form/div[3]/div")).size();
-                	  logger.info("cnt is"+cnt);
-                	  /*accdcheck="//html/body/section/div[7]/div[2]/form/div[3]/div[3]/div/label";
-                	  AddnewNum="//html/body/section/div[7]/div[2]/form/div[1]/div[2]/div/button";
-                	  Err="//html/body/section/div[7]/div[2]/div[2]/div/div/div/ul";
-                	  System.out.println("frntn"+frntn);*/
+              	  status1="Off";
+              	  state=turnOn(driver, status1,br);
+              	  
                   }
-                  
-                  if(cnt==3)
-                  {
-                	  int a1=1;
-                	  boolean acntcd= driver.findElement(By.id("check")).isSelected();
-                	  logger.info("acntcd is"+acntcd);
-                	  if(acntcd==true)
-                      {
-                		  logger.info("check is");
-                		  statusTracker(br,"","The Account code is"+Acccode,"","");     
-                		  focusClick(driver,driver.findElement(By.xpath(accdcheck)),br);
-                		  driver.findElement(By.name("accountCodeForwarding")).sendKeys(Acccode);
-                      }
-                	  else
-                	  {
-                		  driver.findElement(By.name("accountCodeForwarding")).clear();
-                		  driver.findElement(By.name("accountCodeForwarding")).sendKeys(Acccode);
-                	  }
-                	  logger.info("check is");
-                	  String acc="Verified Account code";
-                	  if(status==true)
-                      {
-                  	  status1="On";
-                  	  state=turnoff(driver, status1, acc,br);
-                      }
-                      else
-                      {
-                  	  status1="Off";
-                  	  state=turnOn(driver, status1, acc,br);
-                      }
-                	  logger.info("orderprocess is done");                                                                 
-                  	  EditTn(driver,br);
-                      maxTN(driver,br);
-                  	  DeltTn(driver,br); 
-                  	  TNValidation(driver,a1,br);
-                  	  DeltTnAll(driver,br);
-                  	  //TNValidation(driver,a1,br);
-                  }
-                  else if(cnt==2)
-                  {
-                	  int a2=2;
-                	  driver.findElement(By.name("accountCodeForwarding")).clear();
-            		  driver.findElement(By.name("accountCodeForwarding")).sendKeys("8956325485");
-            		  String acc="Non-Verified Account code";
-            		  if(status==true)
-                      {
-                  	  status1="On";
-                  	  state=turnoff(driver, status1, acc,br);
-                      }
-                      else
-                      {
-                  	  status1="Off";
-                  	  state=turnOn(driver, status1, acc,br);
-                      }                     
-                      logger.info("orderprocess is done");
-                                           
-                  	  EditTn(driver,br);
-                      maxTN(driver,br);
-                  	  DeltTn(driver,br);
-                  	  TNValidation(driver,a2,br);
-                  	  DeltTnAll(driver,br);                  	  
-                  }
-                  else
-                  {
-                	int a3=3;
-                	String acc="No Account code";
-                    if(status==true)
-                    {
-                	  status1="On";
-                	  state=turnoff(driver, status1, acc,br);
-                    }
-                    else
-                    {
-                	  status1="Off";
-                	  state=turnOn(driver, status1, acc,br);
-                    }
-                    logger.info("orderprocess is done");
-
-                	  EditTn(driver,br);  
-                      maxTN(driver,br);
-                	  DeltTn(driver,br);
-                	  TNValidation(driver,a3,br);
-                	  DeltTnAll(driver,br);
-                	  //TNValidation(driver,a3,br);
-                  }                
-                  
-                  String canbut="//html/body/div[2]/div/div[2]/span";
-              	  String Savbut="//html/body/div[2]/div/div[2]/a/span";  
-              	  focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-              	  unsave(driver,br,canbut,Savbut);
+                  maxTN(driver,br);
+              	  DeleteTn(driver,br); 
+          	  	  TNValidation(driver,br);
                   
 	              Thread.sleep(2000);
           
