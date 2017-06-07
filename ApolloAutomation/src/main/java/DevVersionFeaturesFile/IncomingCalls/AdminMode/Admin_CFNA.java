@@ -512,10 +512,10 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 
                focusClick(driver,driver.findElement(By.xpath(CFxpath_GPSexecute_save1+"/tbody["+TN1+"]/tr[2]/td/div/div["+bval+"]/div/div["+val1+"]/button[2]")),br);
                  
-                Thread.sleep(6000);
-                if(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/div/div/div/ul/li")).isDisplayed())
+                Thread.sleep(3000);
+                if(driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).isDisplayed())
                 {
-                 statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath(".//*[@id='collapseFeature_CF']/div["+divval+"]/div/div/div/ul/li")).getText(),"Error message should be displayed");
+                 statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.cssSelector("div[class='message-box ng-scope']")).getText(),"Error message should be displayed");
                 schk="Pass";
                  }
             else
@@ -535,21 +535,6 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
          schk=TNcheck("9000004000","",driver,1,br,divval,feature,val);
          schk=TNcheck("9760004000","",driver,1,br,divval,feature,val);         
          schk=TNcheck(phoneline1,"",driver,1,br,divval,feature,val);
-                  
-         if(a==1)
-         {
-                 schk=TNcheck("9193220101","",driver,2,br,divval,feature,val); 
-                 schk=TNcheck("9193220101","2",driver,2,br,divval,feature,val);
-                 schk=TNcheck("919322","2",driver,2,br,divval,feature,val);
-                 String ac=2+Acccode;
-                 TNcheck("9193220101",ac,driver,2,br,divval,feature,val);
-         }
-         else if(a==2)
-         {
-                 schk=TNcheck("9193220101","",driver,3,br,divval,feature,val); 
-                 schk=TNcheck("9193220101","2",driver,3,br,divval,feature,val);
-                 schk=TNcheck("919322","2",driver,3,br,divval,feature,val);
-         }
          
          return schk;
   }
@@ -597,16 +582,18 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                   System.out.println("a");
 
                                     switchTo(driver, "Admin",tlim,br);
-                  
-                                    focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);                      
-                                    //driver.get("https://voicemanager-staging.timewarnercable.com");
-                                    do{
-                                    }while(driver.findElements(By.xpath(xpath_GPSexecute_xpath1)).size()<0);
-                  
+                                    if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+              					  {
+              						  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+              					  }
+              					  else
+              					  {
+              						  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+              					  }
                                     Acccode=driver.findElement(By.xpath("//html/body/section/section/div[1]/aside[1]/ul/li/strong")).getText();
                                     logger.info("Acccode home"+Acccode);
                                     System.out.println("a1"+Acccode);
-                                    focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath1)),br);             
+                                    focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);             
                                     System.out.println("b");
                                  
                                     driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
@@ -826,10 +813,10 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
                                                                                 driver.findElement(By.xpath(CFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div["+bval+"]/div/input")).clear();
 								                                                driver.findElement(By.xpath(CFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div["+bval+"]/div/input")).sendKeys("9193220001");
 								                                                                                
-								                                                driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody[1]/tr[2]/td/div/div[3]/div/div[3]/button[1]")).click();
+								                                                driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody[1]/tr[2]/td/div/div[3]/div/div[4]/button[1]")).click();
 								                                                                  
 								                                                Thread.sleep(2000);                                           
-								                                                if(!(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody[1]/tr[2]/td/div/div[3]/div/div[3]/button[1]")).isEnabled()))
+								                                                if(!(driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody[1]/tr[2]/td/div/div[3]/div/div[4]/button[1]")).isEnabled()))
 								                                                {
 								                                                  logger.info("Success");
 								                                                 // state="Pass";
@@ -845,32 +832,16 @@ public void turnOnOffSelected(String feature,WebDriver driver, String br, int nu
 								                                                driver.findElement(By.xpath(CFxpath_GPSexecute_TNinput+"/tbody["+TN1+"]/tr[2]/td/div/div["+bval+"]/div/input")).sendKeys("9193220001");
 								                                                focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
 								                                                
-								                                                Boolean CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();
-                                                                                logger.info("pop up display");
-                                                                                if(CH==true)
-                                                                                {
-                                                                                  System.out.println("In here 1");
-                                                                                  driver.findElement(By.id("cancelSaveFeature")).click();
-                                                                                  System.out.println("In here 2");
-                                                                                  logger.info("pop up display1");
-                                                                                  if(driver.findElements(By.xpath("//html/body/section/div[4]/div[2]")).size()>0)
-                                                                                  {
-                                                                                                  logger.info("Success");
-                                                                                                  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
-                                                                                  }
-                                                                                  else
-                                                                                  {
-                                                                                                  logger.info("Fail");
-                                                                                                  statusTracker(br,"Fail","Cancel did not work","Unsuccessful","Unable to process successfully");
-                                                                                  }
-                                                                                }
                                                                                 
-			                                                                  focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
-			                                                                  
-			                                                                driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
+			                                                                  //focusClick(driver,driver.findElement(By.xpath(".//*[@id='collapseFeature_"+feature+"']/div["+divval+"]/table/tbody["+TN1+"]/tr[1]/td[5]/button")),br);
+			                                                                  Thread.sleep(3000);
+			                                                                  focusClick(driver,driver.findElement(By.xpath("//a[@ng-click='confirm()']/span")),br);
+			                                                          		  
+			                                                            		//driver.findElement(By.cssSelector("a[ng-click='confirm()'] span")).click();
+			                                                                //driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
 			                                                                logger.info("OK");
 			
-			                                                                if(driver.findElements(By.xpath("//html/body/section/div[4]/div[1]/div")).size()>0)
+			                                                                if(driver.findElements(By.xpath("//html/body/section/div[5]/div[1]/div")).size()>0)
 			                                                                {
 			                                                                                  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page by closing the configure close","Successfully navigated to Outgoing calls Page on clicking OK","Success");
 			                                                                                //  state="Pass";
