@@ -48,23 +48,17 @@ public class UserCallForwardBusy extends CommonFunctions {
 	  {
 		  String st="OFF";
 		    
-		     focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/div[4]/div/div[3]/form/div/div/div/div/div/label/span")),br);
+		     focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[3]/form//div/label/span[2]")),br);
 		     for(int i=1;i<100;i++){}
 	      
 	  
-	  focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+	  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 	  int chk=0;
 	   do{
            Thread.sleep(1000);
             chk++;
-          }while((driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed())&&chk<=40);
-        if(chk>50)
-        {
-      	  statusTracker(br,"","Order Processing is taking too much time  exiting from Feature","","");  
-      	driver.navigate().refresh();
-        }
-                           
-        else
+          }while(driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed());
+        
 	   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 	     {
 	      
@@ -73,7 +67,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 	      else
 	     {
 	       
-	       statusTracker(br,"Fail","Verify order process for changing from On to "+st,"Not able to process order"+ driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div")).getText(),"Successfully processed order");
+	       statusTracker(br,"Fail","Verify order process for changing from On to "+st,"Not able to process order","Successfully processed order");
 	     }
 	   
 	   
@@ -81,7 +75,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 	  
 	  public void EditTN(String br,WebDriver driver,String d,int featureOrder,String TN) throws Exception
 	  {
-		  TN=TN.substring(0,8);
+		  //TN=TN.substring(0,8);
 		  int divcount;String st = null;
 		  divcount=driver.findElements(By.xpath("//html/body/section/div[5]/div[2]/div[4]/div[1]/div[2]/form/div/div")).size();
 		  logger.info("divcount is........."+divcount);
@@ -100,20 +94,14 @@ public class UserCallForwardBusy extends CommonFunctions {
 		  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
 		  for(int i=1;i<100;i++){}
 
-		  focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+		  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 	
 	   int chk=0;
 	   do{
            Thread.sleep(1000);
             chk++;
           }while((driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed())&&(chk<=40));
-        if(chk>40)
-        {
-      	  statusTracker(br,"","Order Processing is taking too much time  exiting from Feature","","");  
-      	  driver.navigate().refresh();
-        }
                            
-        else
 	   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
 	     {
 	      
@@ -124,61 +112,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 	       
 	       statusTracker(br,"Fail","Verify order process for editing TN with non verified Account code ","Not able to process order for non verified Account code"+ driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div")).getText(),"Successfully processed order with non verified Account code");
 	     }
-		  }
-	   //Verified Account code
-		  else if (divcount==6)
-		  {
-			 //    driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/div[4]/div/div[3]/form/div/div/div/div/div/label/span")).click();
-			 // for(int i=1;i<100;i++){}
-			  driver.findElement(By.name("forwardBusyCallTo")).clear();
-		       TN1=TN+randomNO(3333,9999);
-			   driver.findElement(By.name("forwardBusyCallTo")).sendKeys(TN1);
-			  for(int i=1;i<100;i++){}
-			  if(driver.findElement(By.id("second")).isSelected())
-			  {
-			   focusClick(driver, driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[4]/div[1]/div[3]/form/div/div[4]/label")),br);
-
-			  driver.findElement(By.name("forwardBusyCallAccount")).clear();
-			  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
-			  
-			  for(int i=1;i<100;i++){}
-			  }
-			  driver.findElement(By.name("forwardBusyCallAccount")).clear();
-			  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
-			  
-			  for(int i=1;i<100;i++){}
-
-			  focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
-		
-		   int chk=0;
-		   do{
-               Thread.sleep(1000);
-               System.out.println(chk);
-                chk++;
-                
-              }while((driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed()) && chk<=50);
-            if(chk>=50)
-            {
-          	  statusTracker(br,"","Order Processing is taking too much time  exiting from Feature","","");  
-          	driver.navigate().refresh();
-            }
-                               
-            else
-		   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
-		     {
-		      
-		       statusTracker(br,"Pass","Verify order process for editing TN with  verified Account code "," Successfully be able to process order with  verified Account code","Successfully processed orderwith  verified Account code");                                                                   
-		     }
-		      else
-		     {
-		       
-		       statusTracker(br,"Fail","Verify order process for editing TN with  verified Account code ","Not able to process order for  verified Account code"+ driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div")).getText(),"Successfully processed order with  verified Account code");
-		     }  
-			  
-			  
-		  }
-		  //Normal TN
-		  else
+	  }
 		  {
 			  //   driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/div[4]/div/div[3]/form/div/div/div/div/div/label/span")).click();
 			  //for(int i=1;i<100;i++){}
@@ -187,12 +121,12 @@ public class UserCallForwardBusy extends CommonFunctions {
 			   driver.findElement(By.name("forwardBusyCallTo")).sendKeys(TN1);
 		
 			  
-			   focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+			   focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 			   int chk=0;
 			   do{
 	               Thread.sleep(1000);
 	                chk++;
-	              }while((driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed())&&chk<=40);
+	              }while(driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed());
                 if(chk>40)
                 {
               	  statusTracker(br,"","Order Processing is taking too much time  exiting from Feature","","");  
@@ -220,24 +154,13 @@ public class UserCallForwardBusy extends CommonFunctions {
 	         driver.findElement(By.name("forwardBusyCallTo")).clear();
 			 driver.findElement(By.name("forwardBusyCallTo")).sendKeys(TN);
 			
-			  
 			//Non Verified Account code Or Verified 
-		   	  if (divcount==5||divcount==6)
-		   	  {
-		   		  
-		         
-		       driver.findElement(By.name("forwardBusyCallAccount")).clear();
-				driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acc);
-				
-				  
-				 
-		   	  }
-			  focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+			  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 			Thread.sleep(4000); 
 		    
-				  if(driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div")).isDisplayed())
+				  if(driver.findElement(By.cssSelector("div[class='error-box inverted spacing'] div[class='message-box']")).isDisplayed())
 				  	  {
-				  		  statusTracker(br,"Pass","Verify if error message is displayed when adding "+check+" TN","Error message is displayed: "+ driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div")).getText(),"Error message should be displayed");
+				  		  statusTracker(br,"Pass","Verify if error message is displayed when adding "+check+" TN","Error message is displayed: "+ driver.findElement(By.cssSelector("div[class='error-box inverted spacing'] div[class='message-box']")).getText(),"Error message should be displayed");
 				  		  schk="Pass";
 				  	  }
 		  	  	 else
@@ -277,9 +200,41 @@ public class UserCallForwardBusy extends CommonFunctions {
 		  schk=TNcheck(br,TN1,"3","Account code less than specified lenght",driver,divcount);
 		  
 	  }
+	
 	public void Turnon(String br,WebDriver driver,String d,int featureOrder,String TN) throws Exception
 	  {
-		TN=TN.substring(0,8);
+		String st="On";
+		 
+		  logger.info("Turn On");
+			  
+		     driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[3]/form//div/label/span[2]")).click();
+
+		     driver.findElement(By.name("forwardBusyCallTo")).clear();
+		TN=TN+randomNO(3333,9999);
+		   driver.findElement(By.name("forwardBusyCallTo")).sendKeys("9586585446");
+
+		   focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
+	   int chk=0;
+	   do{
+         Thread.sleep(1000);
+          chk++;
+        }while(driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed());
+                         
+	   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+	     {
+	     
+	       statusTracker(br,"Pass","Verify order process for changing from Off to "+st+"with non verified Account code "," Successfully be able to process order ","Successfully processed order");                                                                   
+	     }
+	      else
+	     {
+	    
+	       statusTracker(br,"Fail","Verify order process for changing from Off to "+st+"with non verified Account code ","Not able to process order","Successfully processed order");
+	     }
+	  }
+	
+	public void Turnon_old(String br,WebDriver driver,String d,int featureOrder,String TN) throws Exception
+	  {
+		//TN=TN.substring(0,8);
 		String st="On";
 		 
 		  logger.info("Turn On");
@@ -290,7 +245,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 		  if (divcount==5)
 		  {
 			  
-		     driver.findElement(By.xpath("//div[@id='collapseFeature"+featureOrder+"']/div[2]/div[4]/div/div[3]/form/div/div/div/div/div/label/span")).click();
+		     driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[3]/form//div/label/span[2]")).click();
 		  for(int i=1;i<100;i++){}
 		  driver.findElement(By.name("forwardBusyCallTo")).clear();
 		TN=TN+randomNO(3333,9999);
@@ -299,7 +254,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 		  driver.findElement(By.name("forwardBusyCallAccount")).clear();
 		  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
 		  for(int i=1;i<100;i++){}
-	    focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+	    focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 	   int chk=0;
 	   do{
            Thread.sleep(1000);
@@ -345,7 +300,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 			  driver.findElement(By.name("forwardBusyCallAccount")).clear();
 			  driver.findElement(By.name("forwardBusyCallAccount")).sendKeys(acccode);
 			  for(int i=1;i<100;i++){}
-		    focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+		    focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 		   int chk=0;
 		   do{
               Thread.sleep(1000);
@@ -383,7 +338,7 @@ public class UserCallForwardBusy extends CommonFunctions {
 			   driver.findElement(By.name("forwardBusyCallTo")).sendKeys(TN1);
 			 Thread.sleep(6000);
 			  
-			   focusClick(driver,driver.findElement(By.cssSelector("form[name=\"forwardBusyCallForm\"] > div.col-16 > div.accordian-actions > button.btn.btn-primary")),br);
+			   focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")),br);
 			   int chk=0;
 			   do{
 	               Thread.sleep(1000);
@@ -409,7 +364,6 @@ public class UserCallForwardBusy extends CommonFunctions {
 		  }
 		  
 	  }
-	  
 	
 	  public String randomNO(int max, int min)
 	  {
@@ -423,7 +377,42 @@ public class UserCallForwardBusy extends CommonFunctions {
 	  		logger.info("TN"+s1);
 	  		return(s1);
 	  		
-	  }    
+	  } 
+	  public void cancel(WebDriver driver,String br) throws Exception
+	  {
+		  logger.info("Switching the feature");
+		  driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[3]/form//div/label/span[2]")).click();
+		  driver.findElement(By.cssSelector("a[href='/UserOutgoingCalls/OutgoingCalls']")).click();
+		  Thread.sleep(2000);
+		  logger.info("Clicking on cancel in the pop-up");
+		  driver.findElement(By.cssSelector("[class='modal-footer'] span[id='cancelSaveFeature']")).click();
+		  boolean enable = driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[3]//div[4]/button[2]")).isEnabled();
+		  if(enable)
+		  {
+              logger.info("Success");
+             statusTracker(br,"Pass","Verify if clicking on cancel navigating to Callforward Page","Successfully navigate back to Callforward Page on clicking cancel","Success");
+           }
+           else
+           {
+              logger.info("Fail");
+             statusTracker(br,"Fail","Cancel dint work","Unsuccessful","Unable to process successfully");
+           }
+		  Thread.sleep(2000);
+		  driver.findElement(By.cssSelector("a[href='/UserOutgoingCalls/OutgoingCalls']")).click();
+		  logger.info("Clicking on cancel in the pop-up");
+		  driver.findElement(By.cssSelector("[class='modal-footer'] a[id='unsavedFeature'] span")).click();
+		  Thread.sleep(2000);
+		  if(driver.findElements(By.xpath("/html/body/section/div[4]/div[1]/div")).size()>0)
+          {
+			  logger.info("Success");
+              statusTracker(br,"Pass","Verify if clicking on OK navigating to Outgoing Calls Page","Successfully navigated to Outgoing calls Page on clicking OK","Success");
+         }
+          else
+         {
+            logger.info("Fail");
+            statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
+         }
+	  }
 	  
 	  public void execute(String br, WebDriver driver, String url, int loc, String name1) throws Exception {
 	
@@ -469,28 +458,29 @@ public class UserCallForwardBusy extends CommonFunctions {
 
 	        	  switchTo(driver, "Admin",tlim,br);
 
-	        	  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
-	              	                  
-	              logger.info("checkpoint1");
-	                  
-	              if(driver.findElement(By.cssSelector("h3")).getText().equals("Account Codes"))
-	        	  { acccode = driver.findElement(By.xpath(xpath_Accountcode)).getText();
-	        		  logger.info(acccode);
-	        	  }
-	              focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[3]")),br);
-
+	        	  if(driver.findElement(By.cssSelector("a[href='/UserMain/UserCallSettings']")).isDisplayed())
+        		  {
+        			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+        		  }
+        		  else
+        		  {
+        			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+        		  }
+                  
+                  focusClick(driver,driver.findElement(By.cssSelector("a[href='/UserIncomingCalls/IncomingCalls']")),br);
+                       
 	              for(int i=1;i<40;i++){}
 	              
 	              driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);  
               		if(!(InternalException(driver,br)))
 	                    {
 
-			              int count1=driver.findElements(By.xpath(xpath_divCount)).size();
+			             int count1=driver.findElements(By.xpath(xpath_divCount)).size();
 			              String featureName="Call Forward Busy";
 			              int featureOrder=FeatureListIncoming(driver,count1,featureName);
 		
 			              System.out.println("Feature Order " + featureOrder);  
-			              focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
+			              focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature1 > div.accordian-header > div.header-right")),br);
 			             
 			               Thread.sleep(3000);
 			              
@@ -500,53 +490,31 @@ public class UserCallForwardBusy extends CommonFunctions {
 		
 			              if(TN1!=null)
 			              {
-			              driver.findElement(By.linkText("Switch to User mode")).click();
 		
-			            
-			              Thread.sleep(4000);
-			              driver.findElement(By.xpath(xpath_home_shortcut)).click();
-			              
-			               count1=driver.findElements(By.xpath(xpath_divCount)).size();
-			              logger.info("count here: " + count1);   
-			             
 			              featureName="Call Forward";
-			              featureOrder=FeatureListIncoming(driver,count1,featureName);
+			              //featureOrder=FeatureListIncoming(driver,count1,featureName);
 		
 			              logger.info("Feature"+featureOrder);
-			              
-			              //new Select(driver.findElement(By.xpath("//select"))).selectByVisibleText(TN1);
-			              focusDropdown(driver,"//html/body/header/div[4]/div[3]/div/div/span",TN1,br);
-			              do{
-			            	  //logger.info("Processing!" +chk);
-			            	 
-			              }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-			              focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
 			            
-			             
 			        	boolean status=driver.findElement(By.id(id_CFBUserTNStatus)).isSelected();
 			            logger.info("Status is"+status);
 			            if (status)
 			            	  {
-			            	Turnoff(br,driver,acccode,featureOrder);
-			                EditTN(br,driver,acccode,featureOrder,TN1);
-			                  Turnon(br,driver,acccode,featureOrder,TN1);
-			                  ErrorValidation(br,driver,TN1);
-			                 
+			            		Turnoff(br,driver,acccode,featureOrder);
+			            		EditTN(br,driver,acccode,featureOrder,TN1);
+			            		Turnon(br,driver,acccode,featureOrder,TN1);
+			                	ErrorValidation(br,driver,TN1);
 			            	  }
 			              else
 			            	  {
-			            	  Turnon(br,driver,acccode,featureOrder,TN1);
-			                  EditTN(br,driver,acccode,featureOrder,TN1);
-			                  Turnoff(br,driver,acccode,featureOrder);
-			                   ErrorValidation(br,driver,TN1);
-			                  
+			            	  	Turnon(br,driver,acccode,featureOrder,TN1);
+			            	  	EditTN(br,driver,acccode,featureOrder,TN1);
+			            	  	Turnoff(br,driver,acccode,featureOrder);
+			            	  	ErrorValidation(br,driver,TN1);
+			            	  	cancel(driver,br);
 			            	  }
+			            
 			           
-			            String canbut="//html/body/div[2]/div/div[2]/span";
-		            	  String Savbut="//html/body/div[2]/div/div[2]/a/span";                  	 
-		            	  unsave(driver,br,canbut,Savbut);
-			            	  	
-		                
 		              first=1;
 		              }
 	            }

@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.IncomingCalls.UserMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -49,11 +49,9 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                   {
                                   String initialstate=status, chngetostate="Off",state="Fail", accst=acc;
 
-                                  focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
+                                  focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[2]/form//div/label/span[2]")),br);
                                   
-                                  for(int i=1;i<100;i++){}
-
-                      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+                      focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
                       int chk=0;
                       do{
                           chk++;
@@ -69,15 +67,14 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                          logger.info("Fail");
                           statusTracker(br,"Fail","Verify the order process for changing the status from: "+initialstate +" to: "+chngetostate+ " with "+accst,"Unable to process order" + driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div/div")).getText(),"Unable to process successfully");
                         }
-                      for(int i=1;i<100;i++){}
+                      
+                      chngetostate="ON";
 
-                      focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-                      String num=randomNO(3333,6666);
+                      driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[2]/form//div/label/span[2]")).click();
                       driver.findElement(By.name("callForwardPhone")).clear();
-                      driver.findElement(By.name("callForwardPhone")).sendKeys(phoneline+num);
-                      for(int i1=1;i1<100;i1++){}
+                      driver.findElement(By.name("callForwardPhone")).sendKeys("5625895476");
 
-                      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+                      focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
                       
                       do{
                           chk++;
@@ -97,7 +94,62 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                       return state;
                   }
                   
-                  public String turnOn(WebDriver driver, String br, String status, String acc)
+                public String Turnon(WebDriver driver, String br, String status, String acc)
+          	  {
+          		String st="On";
+          		
+          		 String initialstate=status, chngetostate="ON";
+          		  logger.info("Turn On");
+          			  
+          		     driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[2]/form//div/label/span[2]")).click();
+
+          		     driver.findElement(By.name("callForwardPhone")).clear();
+          		//TN=TN+randomNO(3333,9999);
+          		   driver.findElement(By.name("callForwardPhone")).sendKeys("9259889546");
+
+          		   focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
+          	   int chk=0;
+          	   do{
+                    chk++;
+                  }while(driver.findElement(By.cssSelector("div.modal-loading")).isDisplayed());
+                                   
+          	   if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+          	     {
+          	     
+          	       statusTracker(br,"Pass","Verify order process for changing from Off to "+st+"with non verified Account code "," Successfully be able to process order ","Successfully processed order");                                                                   
+          	       status="Pass";
+          	     }
+          	      else
+          	     {
+          	    
+          	       statusTracker(br,"Fail","Verify order process for changing from Off to "+st+"with non verified Account code ","Not able to process order","Successfully processed order");
+          	       status="Fail";
+          	     }
+          	 String state="Fail", accst=acc;
+          	initialstate=status; chngetostate="Off";
+
+             focusClick(driver,driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[2]/form//div/label/span[2]")),br);
+             
+             focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
+             do{
+            	 chk++;
+             }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+
+             if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+             {
+            	 logger.info("Success");
+            	 statusTracker(br,"Pass","Verify the order process for changing the status from: "+initialstate +" to: "+chngetostate+ " with "+accst,"Successfully be able to process order","Successfully processed order");
+             }
+             else
+             {
+            	 logger.info("Fail");
+            	 statusTracker(br,"Fail","Verify the order process for changing the status from: "+initialstate +" to: "+chngetostate+ " with "+accst,"Unable to process order" + driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div/div")).getText(),"Unable to process successfully");
+             }
+          	 return status;
+          	  }
+                
+                
+                  public String turnOnold(WebDriver driver, String br, String status, String acc)
                   {
                       String initialstate=status, chngetostate="On",state = "Fail", accst=acc;
                                   
@@ -152,10 +204,10 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                   {
                                   String num=randomNO(3333,6666);
                                   driver.findElement(By.name("callForwardPhone")).clear();
-                                  driver.findElement(By.name("callForwardPhone")).sendKeys(phoneline+num);
+                                  driver.findElement(By.name("callForwardPhone")).sendKeys("8854752865");
                                   for(int i=1;i<10;i++){}
 
-                      focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+                                  focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
                       int chk=0;
                       do{
                           chk++;
@@ -180,33 +232,20 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                          driver.findElement(By.name("callForwardPhone")).clear();
                          driver.findElement(By.name("callForwardPhone")).sendKeys(ac);       
                           
-                         if(check1==2)
-                         {                      
-                                 driver.findElement(By.name("callForwardToAccount")).clear();
-                                 driver.findElement(By.name("callForwardToAccount")).sendKeys(acode);
-                         }
-                         if(check1==3)
-                         {
-                                 ac=2+Acccode;
-                                 logger.info("ac"+ac);
-                                 driver.findElement(By.name("callForwardToAccount")).clear();
-                                 driver.findElement(By.name("callForwardToAccount")).sendKeys(ac);
-                         }
-
-                         focusClick(driver,driver.findElement(By.cssSelector(svexpath)),br);
+                         focusClick(driver,driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")),br);
                                  
-                         Thread.sleep(6000);
+                         Thread.sleep(2000);
                      
-                         if(driver.findElement(By.xpath(".//*[@id='collapseFeature1']/div[2]/div[1]/div/div/div")).isDisplayed())
-                                     {
-                                                  statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[1]/div/div/div")).getText(),"Error message should be displayed");
-                                                  schk="Pass";
-                                     }
-                                                 else
-                                                 {
-                                                                 statusTracker(br,"Fail","Verify if error message is displayed when adding "+ac+" TN","Error message is not displayed","Error message should be displayed");
-                                                                 schk="Fail";
-                                                 }
+                         if(driver.findElement(By.cssSelector("div[class='error-box inverted spacing'] div[class='message-box']")).isDisplayed())
+                         {
+                                statusTracker(br,"Pass","Verify if error message is displayed when adding "+ac+" TN/Acc code","Error message is displayed: "+ driver.findElement(By.cssSelector("div[class='error-box inverted spacing'] div[class='message-box']")).getText(),"Error message should be displayed");
+                                schk="Pass";
+                         }
+                         else
+                         {
+                               statusTracker(br,"Fail","Verify if error message is displayed when adding "+ac+" TN","Error message is not displayed","Error message should be displayed");
+                               schk="Fail";
+                          }
                          return schk;
                   }  
                   //TN Validation
@@ -219,21 +258,45 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                          schk=TNcheck("9000004000","",driver,1,br);
                          schk=TNcheck("9760004000","",driver,1,br);
                          schk=TNcheck("9999","",driver,1,br);
-                         schk=TNcheck(phoneline_ac,"",driver,1,br);
                          
-                         if(a==1 || a==2)
-                         {
-                         schk=TNcheck("9193220101","",driver,2,br); 
-                         schk=TNcheck("9193220101","2",driver,2,br);
-                         schk=TNcheck("919322","2",driver,2,br);
-                         
-                         if(a==1)
-                                 schk=TNcheck("9193220101","",driver,3,br);
-                         
-                         schk="Pass";
-                         }
                          return schk;
                   }
+                  
+                  public void cancel(WebDriver driver,String br) throws Exception
+            	  {
+            		  logger.info("Switching the feature");
+            		  driver.findElement(By.xpath("//div[@id='collapseFeature1']/div[2]/div[4]/div/div[2]/form//div/label/span[2]")).click();
+            		  driver.findElement(By.cssSelector("a[href='/UserOutgoingCalls/OutgoingCalls']")).click();
+            		  Thread.sleep(2000);
+            		  logger.info("Clicking on cancel in the pop-up");
+            		  driver.findElement(By.cssSelector("[class='modal-footer'] span[id='cancelSaveFeature']")).click();
+            		  boolean enable = driver.findElement(By.xpath("//*[@id='collapseFeature1']/div[2]/div[4]/div[1]/div[2]//div[4]/button[2]")).isEnabled();
+            		  if(enable)
+            		  {
+                          logger.info("Success");
+                         statusTracker(br,"Pass","Verify if clicking on cancel navigating to Callforward Page","Successfully navigate back to Callforward Page on clicking cancel","Success");
+                       }
+                       else
+                       {
+                          logger.info("Fail");
+                         statusTracker(br,"Fail","Cancel dint work","Unsuccessful","Unable to process successfully");
+                       }
+            		  Thread.sleep(2000);
+            		  driver.findElement(By.cssSelector("a[href='/UserOutgoingCalls/OutgoingCalls']")).click();
+            		  logger.info("Clicking on cancel in the pop-up");
+            		  driver.findElement(By.cssSelector("[class='modal-footer'] a[id='unsavedFeature'] span")).click();
+            		  Thread.sleep(2000);
+            		  if(driver.findElements(By.xpath("/html/body/section/div[4]/div[1]/div")).size()>0)
+                      {
+            			  logger.info("Success");
+                          statusTracker(br,"Pass","Verify if clicking on OK navigating to Outgoing Calls Page","Successfully navigated to Outgoing calls Page on clicking OK","Success");
+                     }
+                      else
+                     {
+                        logger.info("Fail");
+                        statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
+                     }
+            	  }
                   
                     
                   public void execute(String br, WebDriver driver, String url, int loc, String name1) throws Exception {
@@ -272,14 +335,17 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                          {
                                   logger.info("a1");
                                   switchTo(driver,"Admin",tlim,br); 
-                                  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
-                            
-                              logger.info("checkpoint1");
+                                  if(driver.findElement(By.cssSelector("a[href='/UserMain/UserCallSettings']")).isDisplayed())
+                        		  {
+                        			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+                        		  }
+                        		  else
+                        		  {
+                        			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+                        		  }
+                                  
+                                  focusClick(driver,driver.findElement(By.cssSelector("a[href='/UserIncomingCalls/IncomingCalls']")),br);
                   for(int i=1;i<20;i++){}
-                  Acccode=driver.findElement(org.openqa.selenium.By.xpath("//html/body/section/section/div[1]/aside[1]/ul/li[1]/strong")).getText();
-                  logger.info("Acccode"+Acccode);
-                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[3]")),br);
-
                   driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);  
                  
                  if(!(InternalException(driver,br)))
@@ -298,139 +364,63 @@ public class UserCallForwardUnconditional extends CommonFunctions {
                               if(phoneline_ac!=null)
                               {
                   switchTo(driver, "User",tlim,br);
-                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[3]")),br);
-
-                  //new Select(driver.findElement(By.xpath("//select"))).selectByVisibleText(phoneline_ac);
-                  focusDropdown(driver,"//html/body/header/div[4]/div[3]/div/div/span",phoneline_ac,br);
-                              do{
-                                  
-                                 
-                              }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-                
-               
-                  phoneline=phoneline_ac.substring(0,8);
-                  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature1 > div.accordian-header > div.header-right")),br);
                   
                   boolean status= driver.findElement(By.id("toggleButton2")).isSelected();
                   
                   int cnt=driver.findElements(org.openqa.selenium.By.xpath("//html/body/section/div[5]/div[2]/div[4]/div[1]/div[2]/form/div/div")).size();
                   logger.info("cnt is"+cnt);
                   
-                  if(cnt==6)
-                  {
-                                  int a1=1;
-                                  boolean acntcd= driver.findElement(By.id("first")).isSelected();
-                                  logger.info("acntcd is"+acntcd);
-                                  if(acntcd==true)
-                      {
-                                                  logger.info("check is");
-                                                  statusTracker(br,"","The Account code is"+Acccode,"","");    
-                                                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[5]/div[2]/div[4]/div[1]/div[2]/form/div/div[4]/label")),br);           
-                                                  driver.findElement(By.name("callForwardToAccount")).sendKeys(Acccode);
-                      }
-                                  else
-                                  {
-                                                  driver.findElement(By.name("callForwardToAccount")).clear();
-                                                  driver.findElement(By.name("callForwardToAccount")).sendKeys(Acccode);
-                                  }
-                                  logger.info("check is");
-                                  String acc="Verified Account code";
-                                  if(status==true)
-                      {
-                                  status1="On";
-                                  state=turnoff(driver, br,status1, acc);
-                      }
-                      else
-                      {
-                                  status1="Off";
-                                  state=turnOn(driver, br,status1, acc);
-                      }
-                                  logger.info("orderprocess is done");                       
-                                  EditTn(driver,br);
-                                  
-                      TNValidation(driver,br,a1);                     
-                  }
-                  else if(cnt==5)
-                  {
-                                  int a2=2;
-                                  driver.findElement(By.name("callForwardToAccount")).clear();
-                                  driver.findElement(By.name("callForwardToAccount")).sendKeys("8956325485");
-                                  String acc="Non-Verified Account code";
-                                  if(status==true)
-                      {
-                                  status1="On";
-                                  state=turnoff(driver, br,status1, acc);
-                      }
-                      else
-                      {
-                                  status1="Off";
-                                  state=turnOn(driver, br,status1, acc);
-                      }                     
-                      logger.info("orderprocess is done");
-
-                                  EditTn(driver,br);
-                                  
-                      TNValidation(driver,br,a2);                      
-                  }
-                  else
-                  {
-                                int a3=3;
-                                String acc="No Account code";
+                    int a3=3;
+                    String acc="No Account code";
                     if(status==true)
                     {
-                                  status1="On";
-                                  state=turnoff(driver, br,status1, acc);
+                          status1="On";
+                          state=turnoff(driver, br,status1, acc);
                     }
                     else
                     {
-                                  status1="Off";
-                                  state=turnOn(driver, br,status1, acc);
+                          status1="Off";
+                          state=Turnon(driver, br,status1, acc);
                     }
                     logger.info("orderprocess is done");
-                                  EditTn(driver,br);
-                                  
-                                  TNValidation(driver,br,a3);                         
+                    EditTn(driver,br);
+                    TNValidation(driver,br,a3); 
+                    cancel(driver,br);
                   } 
-                                                  
-                  String canbut="//html/body/div[2]/div/div[2]/span";
-                  String Savbut="//html/body/div[2]/div/div[2]/a/span";                               
-                  unsave(driver,br,canbut,Savbut);
+                  first=1;  
                   
-                              Thread.sleep(2000);
-                  first=1;      
-                              }
                 }
-                  }    
-                    }
-                      catch (Exception e)
-                      {
-                                  exceptionHandler(br,e,driver);
-                      }
-                    }
-                    catch (Exception e)
-                    {
-                                exceptionHandler(br,e, driver);
+          }    
+      }
+      catch (Exception e)
+      {
+          exceptionHandler(br,e,driver);
+      }
+   }
+   catch (Exception e)
+   {
+       exceptionHandler(br,e, driver);
                       
-                    }
-                    finally {
-                                //statusTracker("end","","");
-                      wb.close();
+    }
+     finally {
+           //statusTracker("end","","");
+         wb.close();
                      
-                    }
-                  }
+     }
+  }
                   
-                  private boolean assertTrue(Object elementPresent) {
-                                // TODO Auto-generated method stub
-                                return false;
-                }
+  private boolean assertTrue(Object elementPresent) {
+      // TODO Auto-generated method stub
+      return false;
+  }
 
-                private Object isElementPresent(By id) {
-                                // TODO Auto-generated method stub
-                                return null;
-                }
+  private Object isElementPresent(By id) {
+       // TODO Auto-generated method stub
+       return null;
+  }
 
-                private boolean isElementPresent(WebDriver driver, By xpath) {
-                                // TODO Auto-generated method stub
-                                return false;
-                }
-                }
+   private boolean isElementPresent(WebDriver driver, By xpath) {
+        // TODO Auto-generated method stub
+        return false;
+   }
+}
