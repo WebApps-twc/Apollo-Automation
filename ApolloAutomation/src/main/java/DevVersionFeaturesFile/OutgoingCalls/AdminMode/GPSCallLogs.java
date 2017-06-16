@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.OutgoingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -49,6 +49,7 @@ public class GPSCallLogs extends CommonFunctions
 		this.path = path;
 	}
     
+  
   public void execute(String br, WebDriver driver,String url, int loc, String name1) throws Exception {
 
 	  xpath_GPSexecute_xpath1 = GPS.getProperty("xpath_GPSexecute_xpath1");
@@ -89,15 +90,20 @@ public class GPSCallLogs extends CommonFunctions
     	  if(!(InternalException(driver,br)))
           {
     	  switchTo(driver, "Admin",tlim,br);
-    	  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br); 
-    	  //driver.get("https://voicemanager-staging.timewarnercable.com");
-    	  do{
-    	  }while(driver.findElements(By.xpath(xpath_GPSexecute_xpath2)).size()<0);
+    	  if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+		  {
+			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+		  }
+		  else
+		  {
+			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+		  }
+    	  
     	  
     	  System.out.println("a1");
-    	  focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath2)),br);
-    	  System.out.println("b");
- 	  
+    	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);
+    	  Thread.sleep(6000);
+    	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath2)),br);
     	  if(!(InternalException(driver,br)))
           {
     	  driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
@@ -114,7 +120,7 @@ public class GPSCallLogs extends CommonFunctions
 
     	  System.out.println("outttttttt");
     	 
-    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
+    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature1 > div.accordian-header > div.header-right")),br);
     	  System.out.println("c");
     	  
     	  int numberOfTns=countNumberTns(featureOrder, featureName,driver,2);
@@ -134,27 +140,22 @@ public class GPSCallLogs extends CommonFunctions
     	  if(suspended)
     		  statusTracker(br,"","Lines which are suspended: "+numberSuspended,"","");
     		  
-    		  Boolean onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+    		  Boolean onoff=driver.findElement(By.id("lines1")).isSelected();
         	  if(onoff)
+        	  {
         		  System.out.println("Feature was ON");
+        		  turnOnOffCallLog(featureOrder,driver,br,2);
+        	  }
         	  else
+        	  {
         		  System.out.println("Feature was OFF");
-        	  
-        	  turnOnOff(featureOrder,driver,br,2);
+        		  turnOnOffCallLog(featureOrder,driver,br,2);
+        	  }
         	 
+        	  turnOnOffSelectedCallLog(featureOrder,featureName,driver,br, numberSuspended,2,tnSuspendedStatus);
         	  
-        	  onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
-        	  if(onoff)
-        		  System.out.println("Feature was ON");
-        	  else
-        		  System.out.println("Feature was OFF");
-        	  
-        	  turnOnOff(featureOrder,driver,br,2);
-        	  
-        	  turnOnOffSelected(featureOrder,featureName,driver,br, numberSuspended,2,tnSuspendedStatus);
-        	  
-        	  Unsavedpopup(br,driver, featureOrder,2);
-              Cancel(br,driver, featureOrder,2);
+        	  UnsavedpopupCallLog(br,driver, featureOrder,2);
+        	  CancelCallLog(br,driver, featureOrder,2);
         	      	  
 			//first=1;
               first=1;
@@ -179,7 +180,7 @@ public class GPSCallLogs extends CommonFunctions
      
     }
   }
-}
 
+}
 
 
