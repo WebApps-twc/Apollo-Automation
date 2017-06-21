@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.OutgoingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -57,8 +57,6 @@ public class GPSCallReturn69 extends CommonFunctions
 	  css_GPSexecute_css3 = GPS.getProperty("css_GPSexecute_css3");
 	  xpath_GPSexecute_xpath4 = GPS.getProperty("xpath_GPSexecute_xpath4");
 
-	  System.out.println("enne inge");
-	  
 	 // arrcount=0;
     int tlim=3;
     File data = new File(this.path);
@@ -89,15 +87,20 @@ public class GPSCallReturn69 extends CommonFunctions
     	  if(!(InternalException(driver,br)))
           {
     	  switchTo(driver, "Admin",tlim,br);
-    	  focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
-    	  //driver.get("https://voicemanager-staging.timewarnercable.com");
-    	  do{
-    	  }while(driver.findElements(By.xpath(xpath_GPSexecute_xpath2)).size()<0);
+    	  if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+		  {
+			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+		  }
+		  else
+		  {
+			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+		  }
+    	  
     	  
     	  System.out.println("a1");
-    	  focusClick(driver,driver.findElement(By.xpath(xpath_GPSexecute_xpath2)),br);
-    	  System.out.println("b");  
-   	  
+    	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);
+    	  Thread.sleep(6000);
+    	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath2)),br);
     	  driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
     	  
     	  System.out.println("checkpoint1");
@@ -112,7 +115,7 @@ public class GPSCallReturn69 extends CommonFunctions
     	  int featureOrder=FeatureListIncoming(driver,count1,featureName);
 
     	  System.out.println("outttttttt");
-    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature"+featureOrder+" > div.accordian-header > div.header-right")),br);
+    	  focusClick(driver,driver.findElement(By.cssSelector("#collapseFeature2 > div.accordian-header > div.header-right")),br);
     	  System.out.println("c");
     	  
     	  int numberOfTns=countNumberTns(featureOrder, featureName,driver,2);
@@ -132,34 +135,30 @@ public class GPSCallReturn69 extends CommonFunctions
     	  if(suspended)
     		  statusTracker(br,"","Lines which are suspended: "+numberSuspended,"","");
     		  
-    		  Boolean onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
+    		  Boolean onoff=driver.findElement(By.id("lines2")).isSelected();
         	  if(onoff)
+        	  {
         		  System.out.println("Feature was ON");
+        	  	  turnOnOffReturn69(featureOrder,driver,br,2);
+        	  }
         	  else
+        	  {
         		  System.out.println("Feature was OFF");
-        	  
-        	  turnOnOff(featureOrder,driver,br,2);
+        	  	  turnOnOffReturn69(featureOrder,driver,br,2);
+        	  }
         	 
+        	  turnOnOffSelectedReturn69(featureOrder,featureName,driver,br, numberSuspended,2,tnSuspendedStatus);
         	  
-        	  onoff=driver.findElement(By.id("lines"+featureOrder)).isSelected();
-        	  if(onoff)
-        		  System.out.println("Feature was ON");
-        	  else
-        		  System.out.println("Feature was OFF");
-        	  
-        	  turnOnOff(featureOrder,driver,br,2);
-        	  
-        	  turnOnOffSelected(featureOrder,featureName,driver,br, numberSuspended,2,tnSuspendedStatus);
-        	  
-        	  Unsavedpopup(br,driver, featureOrder,2);
-              Cancel(br,driver, featureOrder,2);
+        	  UnsavedpopupReturn69(br,driver, featureOrder,2);
+        	  CancelReturn69(br,driver, featureOrder,2);
         	      	  
 			//first=1;
               first=1;
       }
                   
-          }
+    }
       }
+    	  
       
       catch (Exception e)
       {

@@ -1,6 +1,6 @@
 package DevVersionFeaturesFile.OutgoingCalls.AdminMode;
 
-import com.thoughtworks.selenium.Selenium;
+
 
 import DevVersionFeaturesFile.CommonFunctions;
 
@@ -20,6 +20,9 @@ import java.io.PrintStream;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+
+
+
 //import org.apache.bcel.generic.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -38,10 +41,11 @@ public class GPSCustomCallerId extends CommonFunctions {
     int tncount,ck;			
     
     String xpath_GPSexecute_xpath;
-	
+    String xpath_GPSexecute_xpath1;
+    String xpath_GPSexecute_xpath2;
     String butnxpath;//=".//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label";
     String svexpath="(//button[@type='submit'])[9]";
-    String butnxpath1="//html/body/section/div[7]/div[2]/form/div[1]/label";
+    String butnxpath1="//*[@id='collapseFeature3']/div[2]//section/div[1]//div/label";
     String phoneline,phoneline_ac,Acccode;
 	int rank[]= new int[50];
 	
@@ -305,6 +309,10 @@ public class GPSCustomCallerId extends CommonFunctions {
 	  	    
 	  public void execute(String br, WebDriver driver, String url, int loc, String name1) throws Exception {
 	
+		  xpath_GPSexecute_xpath1 = GPS.getProperty("xpath_GPSexecute_xpath1");
+		  xpath_GPSexecute_xpath2 = GPS.getProperty("xpath_GPSexecute_xpath2");
+		  xpath_GPSexecute_xpath = GPS.getProperty("xpath_GPSexecute_xpath");
+		  
 		  Feature_Name="CFNA";
 		  int tlim=3;
 		  String status1="",state = "Fail";
@@ -332,17 +340,22 @@ public class GPSCustomCallerId extends CommonFunctions {
 	              if(!(InternalException(driver,br)))
 	              {
 	              switchTo(driver, "Admin",tlim,br);    
-	              focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
-	              
-	              xpath_GPSexecute_xpath = GPS.getProperty("xpath_GPSexecute_xpath");
-   
-	              logger.info("checkpoint1");
-                  for(int i=1;i<20;i++){}
-                  Acccode=driver.findElement(org.openqa.selenium.By.xpath("//html/body/section/section/div[1]/aside[1]/ul/li[1]/strong")).getText();
-                  logger.info("Acccode"+Acccode);
-                  focusClick(driver,driver.findElement(By.xpath("//html/body/section/div[2]/section/div/a[4]")),br);
-                 for(int i=1;i<30;i++){}
-
+	              if(driver.findElement(By.cssSelector("a[href='/AdminMain/AdminCallSettings']")).isDisplayed())
+	    		  {
+	    			  statusTracker(br,"Pass","Verifying Whether the home page is displayed","Successfully Logged into VoiceManager application, home page is displayed","");
+	    		  }
+	    		  else
+	    		  {
+	    			  statusTracker(br,"Fail","Verifying Whether the home page is displayed","Could not Log into VoiceManager application, home page is not displayed","");
+	    		  }
+	        	  
+	        	  
+	        	  System.out.println("a1");
+	        	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath1)),br);
+	        	  Thread.sleep(5000);
+	        	  focusClick(driver,driver.findElement(By.cssSelector(xpath_GPSexecute_xpath2)),br);
+	        	  driver.manage().timeouts().implicitlyWait(tlim,TimeUnit.SECONDS);
+	        	  
                  if(!(InternalException(driver,br)))
 	              {
                 	 
@@ -353,10 +366,12 @@ public class GPSCustomCallerId extends CommonFunctions {
 			           	  	 int featureOrder=FeatureListIncoming(driver,count1,featureName);
 			                 int numberOfTns=countNumberTns(featureOrder, featureName,driver);
 			                 ck=suspendedStatus(numberOfTns, featureOrder,featureName, driver);
+			                 ck = ck+1;
 			                 logger.info("ck"+ck);
 			                 butnxpath=".//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label";
 			                 boolean status= driver.findElement(By.id("toggleButton3")).isSelected();
-			                 boolean statusCh= driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label")).isSelected();
+			                // boolean statusCh= driver.findElement(By.xpath("//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label")).isSelected();
+			                 boolean statusCh= driver.findElement(By.xpath("//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label")).isSelected();
 			                 
 			                 if(statusCh==true)
 			                 {            	  
@@ -379,50 +394,19 @@ public class GPSCustomCallerId extends CommonFunctions {
 			            	   status2="Disabled";
 			            	   state=turnOn1(driver, status2,br);            	  
 			                 }
-			                 logger.info("Done");
-			                 if(driver.findElement(By.xpath(".//*[@id='collapseFeature3']/div[2]/form/section/div[2]/div["+ck+"]/div[1]/div/label")).isSelected()==true)
-			                 {logger.info("Done1");
-			                	 if(driver.findElement(By.xpath("//html/body/section/div[7]/div[2]/form/section/div[2]/div["+ck+"]/div[3]/span")).getAttribute("Class").equals("dropdown"))
-			                	 {logger.info("Done2");
-			                	 focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-			                		 if(driver.findElement(By.xpath("//html/body/section/div[7]/div[2]/form/section/div[2]/div["+ck+"]/div[3]/span")).getAttribute("Class").equals("dropdown disabled"))
-			                		 {
-			                			 statusTracker(br,"Pass","Target TN drop down behavior for Enable or Disable","Able to see the drop down is disabled on unselecting the check box","should be disabled on unchecking the checkbox");
-			                		 }
-			                		 else
-			                		 {
-			                			 statusTracker(br,"Fail","Target TN drop down behavior for Enable or Disable","Unable to see the drop down is disabled on unselecting the check box","should be disabled on unchecking the checkbox");
-			                		 }
-			                	 }
-			                 }
-			                 else
-			                 {logger.info("Done11");
-			                	 if(driver.findElement(By.xpath("//html/body/section/div[7]/div[2]/form/section/div[2]/div["+ck+"]/div[3]/span")).getAttribute("Class").equals("dropdown disabled"))
-			                	 {logger.info("Done22");
-			                	 focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-			                		 if(driver.findElement(By.xpath("//html/body/section/div[7]/div[2]/form/section/div[2]/div["+ck+"]/div[3]/span")).getAttribute("Class").equals("dropdown"))
-			                		 {
-			                			 statusTracker(br,"Pass","Target TN drop down behavior for Enable or Disable","Able to see the drop down is Enabled on selecting the check box","should be Enabled on checking the checkbox");
-			                		 }
-			                		 else
-			                		 {
-			                			 statusTracker(br,"Fail","Target TN drop down behavior for Enable or Disable","Unable to see the drop down is Enabled on selecting the check box","should be Enabled on checking the checkbox");
-			                		 }
-			                	 }
-			                 }
 			                 
-			                 String canbut="//html/body/div[12]/div/div[2]/span";
-			             	 String Savbut="//html/body/div[12]/div/div[2]/a/span";
+			                 String canbut="span[id='cancelSaveFeature']";
+			             	 String Savbut="a[id='unsavedFeature'] span";
 			             	focusClick(driver,driver.findElement(By.xpath(butnxpath)),br);
-			             	focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
+			             	focusClick(driver, driver.findElement(By.linkText("Incoming Calls")),br);
 			            	
 			         	   if(driver.findElements(By.xpath("//html/body/div[11]/div")).size()>0)
 			         	   {
 			         		   statusTracker(br,"","","The Unsaved pop up is displayed","");
 			         	   }
 			         	   
-			         	  focusClick(driver,driver.findElement(By.xpath(canbut)),br);
-			         	    if(driver.findElement(By.xpath("//html/body/header/div[4]/div[3]/div/nav/ul/li[2]/span")).isDisplayed())
+			         	  focusClick(driver,driver.findElement(By.cssSelector(canbut)),br);
+			         	    if(driver.findElement(By.xpath("//*[@id='collapseFeature3']/div[2]/form/h2")).isDisplayed())
 			         	    {
 			         		   statusTracker(br,"Pass","Verifiy id the cancel in unsaved pop up is closes","The cancel closes the unsaved pop up","the cancel should close the pop up");
 			         	    }
@@ -430,20 +414,22 @@ public class GPSCustomCallerId extends CommonFunctions {
 			         	    {
 			         		   statusTracker(br,"Fail","Verifiy id the cancel in unsaved pop up is closes","The cancel is not closes the unsaved pop up","the cancel should close the pop up");
 			         	    }
-			         	   focusClick(driver,driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[1]/a")),br);
+			         	   focusClick(driver, driver.findElement(By.linkText("Incoming Calls")),br);
 
-			         	  focusClick(driver,driver.findElement(By.xpath(Savbut)),br);
+			         	  focusClick(driver,driver.findElement(By.cssSelector(Savbut)),br);
 
 			         	    do{
 			         	      }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
-			         	     if(driver.findElement(By.xpath("//html/body/header/div[4]/div[2]/nav/ul/li[2]/a")).isDisplayed())
+			         	     if(driver.findElement(By.xpath("//*[@id='accordion_ACR']/h3")).isDisplayed())
 			         	     {
 			         		   statusTracker(br,"Pass","Verifiy id the save in unsaved pop up is closes","The save navigated properly","the save should navigated properly");
 			         	     }
 			         	     else
 			         	     {
 			         		   statusTracker(br,"Fail","Verifiy id the save in unsaved pop up is closes","The save navigated properly","the save should navigated properly");
-			         	     }                  
+			         	     }   
+			         	     
+			         	    focusClick(driver, driver.findElement(By.linkText("Outgoing Calls")),br);
 			                  
 				              Thread.sleep(2000);
 			                  first=1; 
