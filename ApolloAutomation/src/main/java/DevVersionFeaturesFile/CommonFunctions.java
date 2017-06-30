@@ -711,6 +711,91 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 			  }	  	  		  
 	  }
 	  
+	  public void turnOnOffSuspendedLine(int featureOrder, WebDriver driver, String br,int tab) throws InterruptedException
+	  {
+		  	 Boolean onoff=driver.findElement(By.id("lines7")).isSelected();
+		  	  String on="OFF";
+		  	  String not="ON";
+		  	  if (onoff)
+		  	  {
+		  		  on="ON";
+		  		  not="OFF";
+		  	  }
+				  int val=11;
+	  	  if(envvalue==0)
+	  		  val=17; 
+			  Boolean r=driver.findElement(By.id("lines7")).isSelected();
+			  System.out.println("bool : "+r);
+				 
+			  driver.findElement(By.cssSelector("div[id='collapseFeature7'] [class='switch enabled']")).click();
+			  
+			  driver.findElement(By.xpath(".//*[@id='collapseFeature7']/div[2]/form/div/button[2]")).click();
+			  Thread.sleep(5000);
+			  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
+			  {
+				  Thread.sleep(2000);
+				  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
+				  {
+					  Thread.sleep(2000);
+					  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
+					  driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")).click();
+				  }
+			  }
+			  		
+			  int chk=0;
+			  do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+			  
+			  if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+			  {
+				 System.out.println("Success");
+				 statusTracker(br,"Pass","Verify switching feature from" +on+" to "+not ,"Successfully switched feature","Successfully able to switch feature");
+			  }
+			  else
+			  {
+				 System.out.println("Fail");
+				 statusTracker(br,"Fail","Verify switching feature from" +on+" to "+not ,"Unsuccessfully switched feature","Successfully able to switch feature");
+			  }	  	  		  
+			  
+			  if (!onoff)
+		  	  {
+		  		  on="OFF";
+		  		  not="ON";
+		  	  }
+			  
+			  driver.findElement(By.cssSelector("div[id='collapseFeature7'] [class='switch enabled']")).click();
+			  Thread.sleep(2000);
+			  
+			  driver.findElement(By.xpath(".//*[@id='collapseFeature7']/div[2]/form/div/button[2]")).click();
+			  
+			  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
+			  {
+				  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
+				  {
+					  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
+					  driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")).click();
+				  }
+			  }
+			  		
+			  do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+			  
+			  if(driver.findElement(By.id("dataSaveSucess")).isDisplayed())
+			  {
+				 System.out.println("Success");
+				 statusTracker(br,"Pass","Verify switching feature from" +on+" to "+not ,"Successfully switched feature","Successfully able to switch feature");
+			  }
+			  else
+			  {
+				 System.out.println("Fail");
+				 statusTracker(br,"Fail","Verify switching feature from" +on+" to "+not ,"Unsuccessfully switched feature","Successfully able to switch feature");
+			  }	  	  		  
+	  }
+	  
 	  public void turnOnOffLastnumberRedial(int featureOrder, WebDriver driver, String br,int tab) throws InterruptedException
 	  {
 		  	 Boolean onoff=driver.findElement(By.id("lines5")).isSelected();
@@ -1227,7 +1312,130 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  }
 	}
 	  
-	  public void turnOnOffSelectedLastnumberRedial(int featureOrder, String featureName,WebDriver driver, String br, int numSuspended,int tab,String[] tnSuspendedStatus)
+	  public void turnOnOffSuspendedLine(int featureOrder, String featureName,WebDriver driver, String br, int numSuspended,int tab,String[] tnSuspendedStatus) throws InterruptedException
+	  {
+	  	  Boolean onoff=driver.findElement(By.id("lines7")).isSelected();
+	  	  String on="OFF";
+	  	  String not="ON";
+	  	  if (onoff)
+	  	  {
+	  		  on="ON";
+	  		  not="OFF";
+	  	  }
+			  
+		  Boolean r=driver.findElement(By.id("lines7")).isSelected();
+		  System.out.println("bool : "+r);
+		  		  		  
+		  int tncount=countNumberTns(featureOrder,featureName,driver,tab);
+		  System.out.println("tncount : "+tncount);
+		  int rand=Integer.parseInt(randomNO(0,tncount-1));
+		  int validTns = tncount-numSuspended;
+		  int rand1=0;
+		  if(validTns > 2)
+				  rand1=Integer.parseInt(randomNO(0,tncount-1));
+	  
+		  for(int i=1;i<1000;i++){}
+		  System.out.println("ok1");
+
+		  int newcount=rand+5;
+		  int newcount1=rand1+5;
+		  System.out.println("Ha in 0");
+		  
+		  	System.out.println("data "+newcount+" "+newcount1);
+		  if(tab==1)
+		  {
+		   if(driver.findElements(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount+"]/div/label")).size() >0)
+		   {
+			  System.out.println("Here now1 check"+featureName+rand);
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount+"]/div/label")).click();
+		   }
+		   else
+		   {
+			  System.out.println("Here now2");
+			  driver.findElement(By.id("check"+featureName+rand)).click();
+		   }
+		  
+		   System.out.println("ok2");
+		  
+		   if(validTns > 2){
+		   if(driver.findElements(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount1+"]/div/label")).size() >0)
+		   {
+			  System.out.println("Here now1 check"+featureName+rand1);
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount1+"]/div/label")).click();
+		   }
+		   else
+		   {
+			  System.out.println("Here now2");
+			  driver.findElement(By.id("check"+featureName+rand1)).click();
+		   }
+		   }
+		  }
+		  else{
+			  if(driver.findElements(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount+"]/label")).size() >0)
+			   {
+				  System.out.println("Here now1 check"+featureName+rand);
+				  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount+"]/label")).click();
+			   }
+			   else
+			   {
+				  System.out.println("Here now2");
+				  driver.findElement(By.id("check"+featureName+rand)).click();
+			   }
+			  
+			   System.out.println("ok2");
+			  
+			   if(validTns > 2){
+			   if(driver.findElements(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount1+"]/label")).size() >0)
+			   {
+				  System.out.println("Here now1 check"+featureName+rand1);
+				  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div["+newcount1+"]/label")).click();
+			   }
+			   else
+			   {
+				  System.out.println("Here now2");
+				  driver.findElement(By.id("check"+featureName+rand1)).click();
+			   }
+			   }
+		  }
+		  System.out.println("ok4");
+		  
+		  for(int i=1;i<100;i++){}
+		  int val=11;
+	  	  if(envvalue==0)
+	  		  val=17;
+		  driver.findElement(By.xpath(".//*[@id='collapseFeature7']/div[2]/form/div["+val+"]/button[2]")).click();
+			
+		  Thread.sleep(5000);
+		  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
+		  {
+			  Thread.sleep(2000);
+			  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
+			  {
+				  Thread.sleep(2000);
+				  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
+				  driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")).click();
+			  }
+		  }
+		  
+		  int chk=0;
+		  do{
+			 System.out.println("Processing!" +chk);
+			 chk++;
+		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+		  
+		  if(driver.findElements(By.id("dataSaveSucess")).size()>0)
+		  {
+			 System.out.println("Success");
+			 statusTracker(br,"Pass","Verify order process when some lines are selected","Successfully processed order","Successfully be able to process order");
+		  }
+		  else
+		  {
+			 System.out.println("Fail");
+			 statusTracker(br,"Pass","Verify order process when some lines are selected","Unsuccessfully processed order","Successfully be able to process order");
+		  }
+	}
+	  
+	  public void turnOnOffSelectedLastnumberRedial(int featureOrder, String featureName,WebDriver driver, String br, int numSuspended,int tab,String[] tnSuspendedStatus) throws InterruptedException
 	  {
 	  	  Boolean onoff=driver.findElement(By.id("lines5")).isSelected();
 	  	  String on="OFF";
@@ -1320,10 +1528,13 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 	  		  val=17;
 		  driver.findElement(By.xpath(".//*[@id='collapseFeature5']/div[2]/form/div["+val+"]/button[2]")).click();
 			  			  
-		  if(driver.findElements(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).size()>0)
+		  Thread.sleep(5000);
+		  if(driver.findElements(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).size()>0)
 		  {
-			  if(driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText().contains("warning"))
+			  Thread.sleep(2000);
+			  if(driver.findElement(By.cssSelector("#modal-warning > div.modal-container > div.modal-container-inner.modal-message > div.modal-header > h2")).getText().contains("Warning"))
 			  {
+				  Thread.sleep(2000);
 				  System.out.println("Warning message is displayed hence proceeding. Warning message: " + driver.findElement(By.cssSelector("div.modal-body-inner.ng-scope > div.ng-scope")).getText());
 				  driver.findElement(By.xpath("//div[@id='modal-warning']/div/div[2]/span[2]")).click();
 			  }
@@ -1872,6 +2083,65 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		 // return state;
 	  }
 	
+	public void UnsavedpopupSuspendedLine(String br, WebDriver driver, int featureOrder,int tab) throws InterruptedException
+	  {
+		  logger.info("Unsavedpopup");
+		
+		  //driver.findElement(By.xpath(xpath_ACRunsavedpopup_xpath1)).click();
+		  if(tab==1)
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/div/label")).click();
+		  else			  
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/label")).click();
+		  
+		  logger.info("TurnOFF/ON");
+		  driver.findElement(By.linkText("Home")).click();
+		  Boolean CH= driver.findElement(By.cssSelector("#modal-save > div.modal-container > div.modal-container-inner.modal-message > div.modal-body > div.modal-body-inner")).isDisplayed();
+		  logger.info("pop up display");
+		  if(CH==true)
+		  {
+			  System.out.println("In here 1");
+			  driver.findElement(By.id("cancelSaveFeature")).click();
+			  System.out.println("In here 2");
+			  logger.info("pop up display1");
+			  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
+			  {
+				  logger.info("Success");
+				  statusTracker(br,"Pass","Verify if clicking on cancel navigating to Feature Page","Successfully navigate back to Feature Page on clicking cancel","Success");
+			  }
+			  else
+			  {
+				  logger.info("Fail");
+				  statusTracker(br,"Fail","Cancel did not work","Unsuccessful","Unable to process successfully");
+			  }
+		  }     
+		  
+		  if(tab==1)
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/div/label")).click();
+		  else
+			  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/label")).click();
+			  
+		  logger.info("TurnON");
+		  if(tab==1)
+			  driver.findElement(By.linkText("Outgoing Calls")).click();
+		  else
+			  driver.findElement(By.linkText("Incoming Calls")).click();  
+			  
+		  driver.findElement(By.xpath("//a[@id='unsavedFeature']/span")).click();
+		  logger.info("OK");
+		  Thread.sleep(5000);
+		  if(driver.findElements(By.xpath("//html/body/section/div[6]/div/div")).size()>0)
+		  {
+			  statusTracker(br,"Pass","Verify if clicking on OK navigating to Feature Page","Successfully navigated to Outgoing calls Page on clicking OK","Success");
+			//  state="Pass";
+		  }
+		  else
+		  {
+			  logger.info("Fail");
+			  statusTracker(br,"Fail","OK dint work in Unsaved Pop Up","Unsuccessful","Unable to process successfully");
+		  }
+		 // return state;
+	  }
+	
 	public void UnsavedpopupLastnumberRedial(String br, WebDriver driver, int featureOrder,int tab) throws InterruptedException
 	  {
 		  logger.info("Unsavedpopup");
@@ -2126,6 +2396,56 @@ public Boolean selectFromDropDown(WebDriver driver,String locator, String value)
 		  driver.findElement(By.cssSelector("#collapseFeature2 > div.accordian-header > div.header-right")).click();
 		  
 		  if(driver.findElement(By.xpath(".//*[@id='collapseFeature2']/div[2]/form/div/button[2]")).isEnabled())
+	      //if(b==driver.findElement(By.id("lines1")).isSelected())
+		  {
+	    	  logger.info("Fail");
+	    	  statusTracker(br,"Fail","Verify if the user is able to cancel the changes made","Cancelling the order did not revert the changes made","Should be able to successfully cancel the order");
+	      }
+	      else
+	      {
+	    	  logger.info("Success");
+	    	 // state="Pass";
+	    	  statusTracker(br,"Pass","Verify if the user is able to cancel the changes made","Successfully be able to cancel order","Should be able to successfully cancel the order");
+	      }
+	      
+	      //return state;
+	  }
+	
+	public void CancelSuspendedLine(String br,WebDriver driver, int featureOrder,int tab)
+	  {
+	      logger.info("Cancel");
+	      if(tab==1)
+	    	  driver.findElement(By.linkText("Incoming Calls")).click();
+	      else
+	    	  driver.findElement(By.linkText("Outgoing Calls")).click();
+	      int chk=0;  
+	      do{
+				 System.out.println("Processing!" +chk);
+				 chk++;
+			  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	      
+	      driver.findElement(By.cssSelector("#collapseFeature7 > div.accordian-header > div.header-right")).click();
+	      boolean b= driver.findElement(By.id("lines"+2)).isSelected();
+	      
+	      if(tab==1)
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/div/label")).click();
+	      else
+	    	  driver.findElement(By.xpath("//div[@id='collapseFeature7']/div[2]/form/div[4]/label")).click();
+	    	
+	      int val=11;
+	  	  if(envvalue==0)
+	  		  val=17;
+	      driver.findElement(By.xpath(".//*[@id='collapseFeature7']/div[2]/form/div["+val+"]/button[1]")).click();
+	      
+	      int chk1=0;
+		  do{
+			 System.out.println("Processing!" +chk1);
+			 chk1++;
+		  }while(driver.findElement(By.cssSelector("img[alt='icon-loading.gif']")).isDisplayed());
+	      
+		  driver.findElement(By.cssSelector("#collapseFeature7 > div.accordian-header > div.header-right")).click();
+		  
+		  if(driver.findElement(By.xpath(".//*[@id='collapseFeature7']/div[2]/form/div/button[2]")).isEnabled())
 	      //if(b==driver.findElement(By.id("lines1")).isSelected())
 		  {
 	    	  logger.info("Fail");
